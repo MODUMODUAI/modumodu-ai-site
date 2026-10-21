@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>모두모두AI — 오픈마켓 상품 등록 프로그램</title>
+  <meta name="description" content="모두모두AI. AI 자동가공 안 하면 프로그램 이용료만. 수동 가공도 쉽게. 무제한 가공·무제한 등록. 원하는 공급사 추가, 마진 통계." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="모두모두AI — 오픈마켓 상품 등록 프로그램" />
+  <meta property="og:description" content="AI 자동가공 안 하면 프로그램 이용료만. 수동 가공도 쉽게. Windows PC 5대까지." />
+  <meta property="og:url" content="https://ibccomae-cpu.github.io/modumodu-ai-site/" />
+  <meta property="og:image" content="https://ibccomae-cpu.github.io/modumodu-ai-site/shots/01-products.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://ibccomae-cpu.github.io/modumodu-ai-site/" />
+  <link rel="icon" href="./favicon.svg?v=3" type="image/svg+xml" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="stylesheet" href="./styles.css?v=13" />
+  <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="모두모두AI 홈">
+      <img src="./favicon.svg?v=3" alt="" width="34" height="34" />
+      <span><span class="logo-a">모두</span><span class="logo-b">모두</span><span class="logo-ai">AI</span></span>
+    </a>
+    <div class="header-actions">
+      <a class="header-link" href="#shots">화면</a>
+      <a class="header-link" href="#features">기능</a>
+      <a class="header-link" href="#compare">비교</a>
+      <a class="header-link" href="#plans">요금</a>
+      <a class="header-link" href="#how">이용 방법</a>
+      <a class="header-link" href="#faq">FAQ</a>
+      <button type="button" class="header-link header-share" id="sharePageLink">링크 공유</button>
+      <a class="btn btn-primary" href="#buy">구매·결제</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="소개">
+      <div class="hero-copy">
+        <p class="brand-mark"><span class="a">모두</span><span class="b">모두</span><span class="ai">AI</span></p>
+        <h1>무제한 가공 · 무제한 등록<br />이 프로그램 하나로 완성</h1>
+        <p class="hero-lead">AI 자동가공은 필요할 때만. 안 쓰면 프로그램 이용료만 듭니다. 표에서 직접 고치는 수동 가공도 쉽습니다.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#buy" data-plan="trial">15일 무료로 시작</a>
+          <a class="btn btn-ghost" href="#shots">화면 보기</a>
+          <button type="button" class="btn btn-ghost" id="sharePageLinkHero">이 페이지 링크 공유</button>
+        </div>
+      </div>
+      <div class="hero-stage">
+        <video
+          class="hero-shot hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          poster="./shots/01-products.png?v=13"
+          width="1440"
+          height="900"
+          aria-label="모두모두AI 샘플 화면 미리보기"
+        >
+          <source src="./shots/hero-demo.webm?v=5" type="video/webm" />
+          <source src="./shots/hero-demo.mp4?v=5" type="video/mp4" />
+        </video>
+        <span class="sample-badge">샘플 화면</span>
+      </div>
+    </section>
+
+    <section class="markets" id="markets" aria-label="지원 오픈마켓">
+      <div class="markets-inner">
+        <p class="markets-label">지원 오픈마켓</p>
+        <div class="markets-viewport">
+          <ul class="markets-track" id="marketsTrack">
+            <li class="market-logo" data-market="smartstore"><span class="mark">N</span><span class="name">스마트스토어</span></li>
+            <li class="market-logo" data-market="coupang"><span class="mark">C</span><span class="name">쿠팡</span></li>
+            <li class="market-logo" data-market="st11"><span class="mark">11</span><span class="name">11번가</span></li>
+            <li class="market-logo" data-market="gmarket"><span class="mark">G</span><span class="name">지마켓</span></li>
+            <li class="market-logo" data-market="auction"><span class="mark">A</span><span class="name">옥션</span></li>
+            <li class="market-logo" data-market="kakao"><span class="mark">K</span><span class="name">카카오쇼핑</span></li>
+            <li class="market-logo" data-market="toss"><span class="mark">T</span><span class="name">토스</span></li>
+            <li class="market-logo" data-market="temu"><span class="mark">TM</span><span class="name">테무</span></li>
+            <li class="market-logo" data-market="ssg"><span class="mark">S</span><span class="name">SSG</span></li>
+            <li class="market-logo" data-market="lotteon"><span class="mark">L</span><span class="name">롯데ON</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="shots">
+      <h2>프로그램 화면</h2>
+      <p class="sub">실제 UI를 찍은 화면입니다. 마켓·상품 정보는 샘플로 바꿔 두었습니다.</p>
+      <div class="shot-grid">
+        <figure class="shot-card shot-card-wide">
+          <img src="./shots/01-products.png?v=13" alt="상품관리 화면" width="1440" height="900" loading="lazy" />
+          <span class="sample-badge">샘플 화면</span>
+          <figcaption><strong>상품관리</strong> · 무제한 가공 · 무제한 등록</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="./shots/02-orders.png?v=13" alt="주문관리 화면" width="1440" height="900" loading="lazy" />
+          <span class="sample-badge">샘플 화면</span>
+          <figcaption><strong>주문관리</strong> · 주문 처리 · 마진·마진율 통계</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="./shots/03-inquiries.png?v=13" alt="문의관리 화면" width="1440" height="900" loading="lazy" />
+          <span class="sample-badge">샘플 화면</span>
+          <figcaption><strong>문의관리</strong> · 목록과 답변</figcaption>
+        </figure>
+        <figure class="shot-card shot-card-wide">
+          <img src="./shots/04-ownerclan.png?v=13" alt="도매도매 상품 검색 화면" width="1440" height="900" loading="lazy" />
+          <span class="sample-badge">샘플 화면</span>
+          <figcaption><strong>도매도매</strong> · 가상 도매처에서 상품 고르기</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="./shots/06-wholesalers.png?v=13" alt="공급처 관리 화면" width="1440" height="900" loading="lazy" />
+          <span class="sample-badge">샘플 화면</span>
+          <figcaption><strong>공급처</strong> · 원하는 공급사 추가</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <img src="./shots/05-settings.png?v=13" alt="마켓·AI 설정 화면" width="1440" height="900" loading="lazy" />
+          <span class="sample-badge">샘플 화면</span>
+          <figcaption><strong>설정</strong> · 마켓 연동 · AI는 쓸 때만</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <h2>이렇게 씁니다</h2>
+      <p class="sub">AI 자동가공은 선택입니다. 수동으로도 쉽게 다듬고, 가공·등록은 횟수 제한 없이 이어 갑니다.</p>
+
+      <div class="feature-catalog">
+        <article class="feature-block feature-block-ai">
+          <p class="feature-kicker">AI는 선택</p>
+          <h3>자동가공 안 하면 프로그램 값만</h3>
+          <p>AI 자동가공을 켜지 않으면 모두모두AI에는 프로그램 이용료만 듭니다. AI를 쓸 때만 본인 API(Gemini · ChatGPT · Claude) 요금이 나가고, 안 쓰면 AI 비용은 없습니다.</p>
+        </article>
+        <article class="feature-block">
+          <p class="feature-kicker">수동도 쉽게</p>
+          <h3>표에서 바로 고치는 수동 가공</h3>
+          <p>상품명·가격·옵션·속성을 표에서 더블클릭해 바로 고칩니다. AI 없이도 등록·주문·문의까지 이 프로그램 하나로 편하게 돌릴 수 있습니다.</p>
+        </article>
+
+        <article class="feature-block feature-block-strong">
+          <p class="feature-kicker">횟수 제한 없음</p>
+          <h3>무제한 가공 · 무제한 등록</h3>
+          <p>상품을 다듬는 횟수, 마켓에 올리는 횟수에 한도가 없습니다. 많이 팔수록 프로그램을 더 자주 쓰면 됩니다.</p>
+        </article>
+
+        <article class="feature-block">
+          <h3>주문관리 무제한 · 마진 통계</h3>
+          <p>주문 확인부터 발주·송장까지 이어서 처리하고, 마진과 마진율 통계로 남긴 이익을 확인합니다.</p>
+        </article>
+
+        <article class="feature-block">
+          <h3>원하는 공급사 추가</h3>
+          <p>쓰는 공급사를 직접 등록해 상품을 가져옵니다. 도매처 검색 화면도 같은 프로그램 안에 있습니다.</p>
+        </article>
+
+        <article class="feature-block">
+          <h3>오픈마켓을 한곳에</h3>
+          <p>스마트스토어, 쿠팡, 11번가, 지마켓, 옥션, 카카오쇼핑, 토스, 테무, SSG, 롯데ON 등 계정을 묶어 상품·주문·문의를 이어 갑니다.</p>
+        </article>
+
+        <article class="feature-block">
+          <h3>이 프로그램 하나로 완성</h3>
+          <p>공급사 추가부터 수동·AI 가공, 등록, 주문, 문의까지 따로 프로그램을 나누지 않습니다. AI 없이도 충분히 쓸 수 있습니다.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="compare">
+      <h2>일반 등록 도구와 비교</h2>
+      <p class="sub">기본 수집만 되는 등록기와 달리, AI·수동 가공·주문까지 한곳에서 이어 갑니다. AI는 필요할 때만 쓰면 됩니다.</p>
+      <div class="compare-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th scope="col">기능</th>
+              <th scope="col" class="compare-us">모두모두AI</th>
+              <th scope="col">일반 등록기</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">상품 수집</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+            </tr>
+            <tr>
+              <th scope="row">AI 상품명</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-no" aria-label="미지원">X</span></td>
+            </tr>
+            <tr>
+              <th scope="row">AI 속성</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-no" aria-label="미지원">X</span></td>
+            </tr>
+            <tr>
+              <th scope="row">AI 태그</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-no" aria-label="미지원">X</span></td>
+            </tr>
+            <tr>
+              <th scope="row">AI 상세페이지</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-no" aria-label="미지원">X</span></td>
+            </tr>
+            <tr>
+              <th scope="row">AI 이미지 가공</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-no" aria-label="미지원">X</span></td>
+            </tr>
+            <tr>
+              <th scope="row">표에서 수동 가공</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-partial">일부</span></td>
+            </tr>
+            <tr>
+              <th scope="row">AI 안 쓰면 프로그램 값만</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-no" aria-label="미지원">X</span></td>
+            </tr>
+            <tr>
+              <th scope="row">무제한 가공 · 등록</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-partial">일부</span></td>
+            </tr>
+            <tr>
+              <th scope="row">최저가 상품 찾기</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-no" aria-label="미지원">X</span></td>
+            </tr>
+            <tr>
+              <th scope="row">광고·월간검색어 보조</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-no" aria-label="미지원">X</span></td>
+            </tr>
+            <tr>
+              <th scope="row">품절·재판매 연동</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-partial">일부</span></td>
+            </tr>
+            <tr>
+              <th scope="row">주문·문의·마진 통계</th>
+              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <td><span class="mark-partial">일부</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="compare-note">AI 기능은 본인 API로 직접 결제합니다. 자동가공을 켜지 않으면 모두모두AI에는 프로그램 이용료만 듭니다.</p>
+    </section>
+
+    <section class="section" id="plans">
+      <h2>요금</h2>
+      <p class="sub">AI 자동가공을 안 쓰면 프로그램 이용료만 듭니다. 월 정가 10만원 — 지금 전 요금 일시한정 할인.</p>
+
+      <div class="fee-split">
+        <article class="fee-card">
+          <p class="fee-label">프로그램 이용료</p>
+          <h3>AI 안 쓰면 이것만</h3>
+          <p><strong>무제한 가공 · 무제한 등록</strong> · 주문관리 무제한. 수동 가공으로도 충분히 운영할 수 있고, 원하는 공급사도 추가할 수 있습니다.</p>
+        </article>
+        <article class="fee-card fee-card-ai">
+          <p class="fee-label">예상 사용료</p>
+          <h3>AI 쓸 때만 · 본인 직접결제</h3>
+          <p>AI 자동가공을 켤 때만 본인 API(Gemini, ChatGPT, Claude) 요금이 나갑니다. 안 쓰면 AI 비용은 0원입니다. 모두모두AI에는 AI 요금을 받지 않습니다.</p>
+        </article>
+      </div>
+
+      <h3 class="plans-heading">프로그램 이용료</h3>
+      <p class="plans-note">월 정가 <strong>100,000원</strong>. <em>지금만</em> 전 요금 일시한정 할인 — 길수록 더 크게 깎입니다.</p>
+      <div class="plans">
+        <article class="plan" data-plan="trial">
+          <span class="plan-tag">체험</span>
+          <div class="name">15일 무료</div>
+          <div class="price">0원</div>
+          <p class="desc">프로그램 이용료 없음. AI 안 쓰면 추가 비용 없음.</p>
+          <a class="btn btn-line" href="#buy" data-plan="trial">무료 신청</a>
+        </article>
+        <article class="plan plan-sale" data-plan="m1">
+          <span class="plan-off">-30%</span>
+          <span class="plan-tag">일시한정</span>
+          <div class="name">1개월</div>
+          <div class="price-was">정가 100,000원</div>
+          <div class="price">70,000원</div>
+          <p class="plan-save"><strong>30,000원</strong> 즉시 할인</p>
+          <p class="desc">수동·AI 가공 · 등록 · 주문 무제한.</p>
+          <a class="btn btn-line" href="#buy" data-plan="m1">할인가로 결제</a>
+        </article>
+        <article class="plan plan-sale popular" data-plan="m3">
+          <span class="plan-off">-40%</span>
+          <span class="plan-tag">많이 고름</span>
+          <div class="name">3개월</div>
+          <div class="price-was">정가 300,000원</div>
+          <div class="price">180,000원 <small>월 환산 6만원</small></div>
+          <p class="plan-save"><strong>120,000원</strong> 즉시 할인</p>
+          <p class="desc">수동·AI 가공 · 등록 · 주문 무제한.</p>
+          <a class="btn btn-solid" href="#buy" data-plan="m3">할인가로 결제</a>
+        </article>
+        <article class="plan plan-sale" data-plan="m6">
+          <span class="plan-off">-50%</span>
+          <span class="plan-tag">반값</span>
+          <div class="name">6개월</div>
+          <div class="price-was">정가 600,000원</div>
+          <div class="price">300,000원 <small>월 환산 5만원</small></div>
+          <p class="plan-save"><strong>300,000원</strong> 즉시 할인</p>
+          <p class="desc">수동·AI 가공 · 등록 · 주문 무제한.</p>
+          <a class="btn btn-line" href="#buy" data-plan="m6">할인가로 결제</a>
+        </article>
+        <article class="plan plan-sale plan-sale-max" data-plan="y1">
+          <span class="plan-off">-60%</span>
+          <span class="plan-tag">최대 할인</span>
+          <div class="name">1년</div>
+          <div class="price-was">정가 1,200,000원</div>
+          <div class="price">480,000원 <small>월 환산 4만원</small></div>
+          <p class="plan-save"><strong>720,000원</strong> 즉시 할인</p>
+          <p class="desc">수동·AI 가공 · 등록 · 주문 무제한.</p>
+          <a class="btn btn-line" href="#buy" data-plan="y1">할인가로 결제</a>
+        </article>
+      </div>
+
+      <h3 class="plans-heading">예상 사용료</h3>
+      <div class="ai-fee">
+        <div class="ai-fee-main">
+          <div class="name">AI 자동가공만 · 본인 직접결제</div>
+          <div class="price">예상 사용료</div>
+          <p class="desc">AI 자동가공을 안 하면 프로그램 이용료만 듭니다. AI를 쓸 때만 키를 넣고 Gemini / ChatGPT / Claude에 직접 결제합니다. 수동 가공·등록·주문에는 AI 비용이 없습니다.</p>
+        </div>
+        <ul class="ai-fee-points">
+          <li>AI 자동가공 안 하면 → 프로그램 값만</li>
+          <li>수동 가공으로도 쉽게 운영 가능</li>
+          <li>모두모두AI에 AI 요금을 받지 않습니다</li>
+        </ul>
+      </div>
+
+      <div class="note-box">
+        프로그램 이용료는 이 페이지에서 카카오페이·네이버페이·토스페이로 결제합니다.
+        AI 자동가공을 쓰지 않으면 추가 비용 없이 프로그램만으로 수동 가공·등록·주문을 할 수 있습니다.
+        AI를 켤 때만 본인 API로 각 AI 서비스에 직접 결제합니다.
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <h2>이용 방법</h2>
+      <p class="sub">설치부터 연장까지 세 단계입니다.</p>
+      <div class="steps">
+        <div class="step">
+          <span>1</span>
+          <strong>요금 고르기</strong>
+          <p>아래에서 기간을 고르고, 카카오페이·네이버페이·토스페이로 이 페이지에서 결제합니다.</p>
+        </div>
+        <div class="step">
+          <span>2</span>
+          <strong>프로그램·키 받기</strong>
+          <p>결제 확인 후 프로그램과 이용 키를 이메일로 받습니다. 실행하면 바탕화면에 M 아이콘이 생깁니다.</p>
+        </div>
+        <div class="step">
+          <span>3</span>
+          <strong>기간 만료 전 연장</strong>
+          <p>만료되면 핵심 기능이 잠깁니다. 같은 방식으로 다시 결제해 기간을 이어 갑니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="section-head">
+        <div>
+          <h2>자주 묻는 질문</h2>
+          <p class="sub">결제·AI·수동 가공·마켓 연동에서 많이 묻는 내용입니다.</p>
+        </div>
+        <button type="button" class="btn btn-ghost section-share" id="shareFaqLink">FAQ 링크 공유</button>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>AI 자동가공을 안 써도 되나요?</summary>
+          <p>네. AI는 선택입니다. 자동가공을 켜지 않으면 모두모두AI에는 <strong>프로그램 이용료만</strong> 듭니다. 표에서 상품명·가격·옵션·속성을 직접 고치는 수동 가공으로도 등록·주문·문의까지 운영할 수 있습니다.</p>
+        </details>
+        <details>
+          <summary>AI를 쓰면 비용이 얼마나 더 나오나요?</summary>
+          <p>모두모두AI에는 AI 요금을 받지 않습니다. Gemini · ChatGPT · Claude 키를 본인이 넣고, 쓴 만큼 각 AI 서비스에 직접 결제합니다. 안 쓰면 AI 비용은 0원입니다.</p>
+        </details>
+        <details>
+          <summary>수동 가공은 어렵지 않나요?</summary>
+          <p>상품 목록 표에서 셀을 더블클릭해 바로 수정합니다. AI 없이도 가공·등록·주문 흐름을 이 프로그램 하나로 이어 갈 수 있도록 만들어 두었습니다.</p>
+        </details>
+        <details>
+          <summary>가공·등록 횟수 제한이 있나요?</summary>
+          <p>없습니다. 이용 기간 안에는 가공·등록·주문관리가 무제한입니다. AI 사용 여부와도 별개입니다.</p>
+        </details>
+        <details>
+          <summary>어떤 오픈마켓을 쓸 수 있나요?</summary>
+          <p>스마트스토어, 쿠팡, 11번가, 지마켓, 옥션, 카카오쇼핑, 토스, 테무, SSG, 롯데ON 등 계정을 묶어 상품·주문·문의를 이어 갑니다. 화면 미리보기에서 샘플을 확인할 수 있습니다.</p>
+        </details>
+        <details>
+          <summary>쓰는 공급사(도매처)를 추가할 수 있나요?</summary>
+          <p>네. 원하는 공급사를 직접 등록해 상품을 가져올 수 있고, 도매처 검색 화면도 같은 프로그램 안에 있습니다.</p>
+        </details>
+        <details>
+          <summary>15일 무료는 어떻게 신청하나요?</summary>
+          <p>아래 구매·결제에서「15일 무료」를 고르고 이름·이메일·연락처를 남기면 됩니다. 프로그램 이용료는 없고, AI를 쓸 때만 본인 API 요금이 나갈 수 있습니다.</p>
+        </details>
+        <details>
+          <summary>결제하면 언제 프로그램을 받나요?</summary>
+          <p>결제 확인 후 프로그램과 이용 키를 이메일로 보내 드립니다. 카카오페이·네이버페이·토스페이로 이 페이지에서 바로 결제할 수 있습니다.</p>
+        </details>
+        <details>
+          <summary>PC 몇 대까지 쓸 수 있나요? Mac도 되나요?</summary>
+          <p>Windows PC <strong>5대</strong>까지 쓸 수 있습니다. Chrome이 있는 환경에서 사용합니다. Mac·키 공유·재판매는 지원하지 않습니다.</p>
+        </details>
+        <details>
+          <summary>기간이 끝나면 어떻게 되나요?</summary>
+          <p>만료되면 핵심 기능이 잠깁니다. 같은 방식으로 다시 결제해 기간을 이어 가면 됩니다. 이용 기간 안의 업데이트는 받을 수 있습니다.</p>
+        </details>
+        <details>
+          <summary>환불은 가능한가요?</summary>
+          <p>이용 키를 아직 등록하지 않았고 구매일로부터 7일 이내이면 전액 환불합니다. 키를 한 번이라도 등록하면 단순 변심 환불이 어렵습니다. 자세한 내용은 아래 환불·이용 안내를 봐 주세요.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="policy">
+      <h2>환불·이용 안내</h2>
+      <p class="sub">분쟁을 줄이려고 규칙을 먼저 적어 둡니다.</p>
+      <div class="policy">
+        <details open>
+          <summary>환불</summary>
+          <p>이용 키를 아직 등록하지 않았고, 구매일로부터 7일 이내이면 전액 환불합니다. 키를 한 번이라도 등록하면 단순 변심 환불이 어렵습니다. 환불 시 해당 키는 바로 정지합니다.</p>
+        </details>
+        <details>
+          <summary>이용 범위</summary>
+          <p>Windows PC <strong>5대</strong>까지 사용할 수 있습니다. 재판매·키 공유는 금지합니다. Chrome이 있는 PC에서 사용합니다.</p>
+        </details>
+        <details>
+          <summary>업데이트</summary>
+          <p>이용 기간 안에는 모두모두AI 업데이트를 받을 수 있습니다. 실행할 때 새 버전이 있으면 안내창이 나옵니다. 기간이 끝나면 새 업데이트는 열리지 않을 수 있습니다.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section" id="buy">
+      <h2>구매·결제</h2>
+      <p class="sub">프로그램 이용료는 이 페이지에서 카카오페이·네이버페이·토스페이로 바로 결제합니다.</p>
+      <div class="buy">
+        <form class="buy-panel" id="orderForm">
+          <h3>결제하기</h3>
+          <p>요금과 결제 수단을 고른 뒤 정보를 입력하세요.</p>
+          <label>
+            요금
+            <select name="plan" id="planSelect" required>
+              <option value="trial">프로그램 15일 무료</option>
+              <option value="m1">프로그램 1개월 · 70,000원 (-30%)</option>
+              <option value="m3" selected>프로그램 3개월 · 180,000원 (-40%)</option>
+              <option value="m6">프로그램 6개월 · 300,000원 (-50%)</option>
+              <option value="y1">프로그램 1년 · 480,000원 (-60%)</option>
+            </select>
+          </label>
+          <div class="pay-field">
+            <span class="pay-field-label">결제 수단</span>
+            <div class="pay-methods" role="group" aria-label="결제 수단">
+              <button type="button" class="pay-btn pay-kakao is-active" data-pay="kakaopay" aria-pressed="true">카카오페이</button>
+              <button type="button" class="pay-btn pay-naver" data-pay="naverpay" aria-pressed="false">네이버페이</button>
+              <button type="button" class="pay-btn pay-toss" data-pay="tosspay" aria-pressed="false">토스페이</button>
+            </div>
+          </div>
+          <label>
+            이름
+            <input name="name" type="text" autocomplete="name" placeholder="홍길동" required />
+          </label>
+          <label>
+            이메일
+            <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </label>
+          <label>
+            연락처
+            <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" required />
+          </label>
+          <label>
+            남길 말
+            <textarea name="message" placeholder="사용 중인 오픈마켓, 문의 내용"></textarea>
+          </label>
+          <p class="pay-status" id="payStatus"></p>
+          <button class="btn btn-primary" id="paySubmit" type="submit">결제하기</button>
+        </form>
+        <aside class="buy-aside">
+          <p><strong>결제 안내</strong></p>
+          <ul>
+            <li>카카오페이 · 네이버페이 · 토스페이</li>
+            <li>결제 후 이용 키를 이메일로 보내 드립니다</li>
+            <li>AI 자동가공 안 하면 프로그램 이용료만 · 쓸 때만 본인 API</li>
+            <li>Windows PC 5대까지</li>
+          </ul>
+          <p><strong>문의</strong></p>
+          <ul>
+            <li>이메일: <a id="contactEmail" href="mailto:hello@example.com">hello@example.com</a></li>
+            <li>카카오톡: <span id="contactKakao">채널명 입력 예정</span></li>
+          </ul>
+          <p>실제 결제창을 열려면 `website/config.js`의 <code>portoneImpCode</code>에 포트원 가맹 코드를 넣고, 관리자에서 세 페이를 켜 두면 됩니다.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>모두모두AI</strong> · 오픈마켓 상품 등록 프로그램</div>
+    <div>가격·계좌·카카오 정보는 확정 후 `website/config.js`에서 수정하세요.</div>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+  <nav class="page-jump" aria-label="페이지 이동">
+    <button type="button" id="jumpTop" title="맨 위로">▲</button>
+    <button type="button" id="jumpBottom" title="맨 아래로">▼</button>
+  </nav>
+  <script src="./config.js?v=3"></script>
+  <script src="./script.js?v=4"></script>
+</body>
+</html>
