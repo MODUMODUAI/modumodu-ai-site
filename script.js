@@ -331,8 +331,12 @@
     const data = new FormData(joinForm);
     const phone = String(data.get("phone") || "").trim();
     const email = String(data.get("email") || "").trim();
-    if (path === "/signup" && !phone && !email) {
-      if (joinStatus) joinStatus.textContent = "전화번호 또는 이메일을 입력해 주세요.";
+    if (!email) {
+      if (joinStatus) joinStatus.textContent = "이메일을 입력해 주세요.";
+      return;
+    }
+    if (path === "/signup" && !phone) {
+      if (joinStatus) joinStatus.textContent = "전화번호를 입력해 주세요.";
       return;
     }
     const button = document.getElementById(path === "/login" ? "joinLogin" : "joinSubmit");
@@ -342,7 +346,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          login_id: String(data.get("login_id") || "").trim(),
+          login_id: email,
           password: String(data.get("password") || ""),
           phone,
           email,

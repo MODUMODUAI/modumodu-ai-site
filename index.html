@@ -349,7 +349,7 @@
         <div class="step">
           <span>1</span>
           <strong>회원가입</strong>
-          <p>아이디와 연락처를 남기면 이 페이지에서 시험용을 받습니다.</p>
+          <p>이메일과 전화번호를 남기면 이 페이지에서 시험용을 받습니다.</p>
         </div>
         <div class="step">
           <span>2</span>
@@ -364,10 +364,10 @@
       </div>
       <form class="buy-panel join-panel" id="joinForm">
         <h3>회원가입</h3>
-        <p>가입하거나, 이미 아이디가 있으면 로그인하면 시험용 다운로드가 나옵니다.</p>
+        <p>이메일로 가입합니다. 전화번호도 함께 남깁니다. 이미 가입한 이메일이면 로그인하면 시험용 다운로드가 나옵니다.</p>
         <label>
-          아이디
-          <input name="login_id" type="text" autocomplete="username" minlength="4" maxlength="40" placeholder="영문·숫자 4자 이상" required />
+          이메일
+          <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
         </label>
         <label>
           비밀번호
@@ -375,11 +375,7 @@
         </label>
         <label>
           전화번호
-          <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" />
-        </label>
-        <label>
-          이메일
-          <input name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+          <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" required />
         </label>
         <p class="pay-status" id="joinStatus"></p>
         <div class="join-actions">
@@ -539,6 +535,6 @@
     <button type="button" id="jumpBottom" title="맨 아래로">▼</button>
   </nav>
   <script src="./config.js?v=5"></script>
-  <script src="./script.js?v=5"></script>
+  <script src="./script.js?v=6"></script>
 </body>
 </html>
