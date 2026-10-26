@@ -47,19 +47,54 @@
     updatePayHint();
   }
 
-  function updatePayHint() {
+  function won(amount) {
+    return `${Number(amount || 0).toLocaleString("ko-KR")}원`;
+  }
+
+  function supplierChoice() {
+    const packs = Math.max(0, Number(document.getElementById("supplierPacks")?.value || 0));
+    const ownerclan = Boolean(document.getElementById("ownerclan")?.checked);
+    const rule = cfg.supplier || {};
+    const monthly = packs * Number(rule.packMonthly || 0) + (ownerclan ? Number(rule.ownerclanMonthly || 0) : 0);
+    const count = Number(rule.freeCount || 10) + packs * Number(rule.packSize || 10);
+    const bits = [`공급사 ${count}개`];
+    if (ownerclan) bits.push("오너클랜 전체");
+    return { packs, ownerclan, monthly, count, label: bits.join(" · ") };
+  }
+
+  function paymentQuote() {
     const plan = planSelect?.value || "m3";
-    const info = cfg.plans?.[plan];
-    if (!info) return;
-    if (!info.amount) {
-      setPayStatus("무료 체험은 결제 없이 신청됩니다.");
+    const info = cfg.plans?.[plan] || { label: plan, price: "", amount: 0, months: 0 };
+    const extra = supplierChoice();
+    const months = Number(info.months || 0);
+    const supplierAmount = extra.monthly * months;
+    return {
+      plan,
+      info,
+      extra,
+      months,
+      supplierAmount,
+      amount: Number(info.amount || 0) + supplierAmount,
+    };
+  }
+
+  function updatePayHint() {
+    const quote = paymentQuote();
+    const button = document.getElementById("paySubmit");
+    if (!quote.amount) {
+      if (button) button.textContent = "무료 신청";
+      setPayStatus("무료 체험은 결제 없이 신청됩니다. 공급사 추가 요금은 유료 기간에 월 단위로 붙습니다.");
       return;
     }
+    const parts = [`${quote.info.label} ${quote.info.price || won(quote.info.amount)}`];
+    if (quote.supplierAmount) parts.push(`${quote.extra.label} ${won(quote.supplierAmount)}`);
+    if (button) button.textContent = `${won(quote.amount)} 결제하기`;
+    const total = `${parts.join(" + ")} · 합계 ${won(quote.amount)}`;
     if (!cfg.portoneImpCode) {
-      setPayStatus("결제 연결 준비 중입니다. 가맹 코드가 등록되면 카카오·네이버·토스페이로 바로 결제됩니다.");
+      setPayStatus(`${total}. 가맹 연결 전에는 신청 메일이 열립니다.`);
       return;
     }
-    setPayStatus(`${info.label} ${info.price} · ${cfg.payMethods?.[selectedPay]?.label || "페이"}로 결제`);
+    setPayStatus(`${total} · ${cfg.payMethods?.[selectedPay]?.label || "페이"}로 결제`);
   }
 
   function ensurePortone() {
@@ -82,6 +117,8 @@
       "모두모두AI 이용 문의입니다.",
       "",
       `요금: ${planInfo.label} (${planInfo.price})`,
+      `공급사: ${planInfo.supplierLabel || "-"}`,
+      `합계: ${planInfo.totalLabel || planInfo.price}`,
       `결제수단: ${payLabel || "-"}`,
       `이름: ${name}`,
       `이메일: ${email}`,
@@ -122,7 +159,7 @@
         pg: method.pg,
         pay_method: "card",
         merchant_uid: merchantUid,
-        name: `모두모두AI ${planInfo.label}`,
+        name: `모두모두AI ${planInfo.label}${planInfo.supplierLabel ? ` + ${planInfo.supplierLabel}` : ""}`,
         amount: planInfo.amount,
         buyer_email: email,
         buyer_name: name,
@@ -176,25 +213,32 @@
   });
 
   planSelect?.addEventListener("change", updatePayHint);
+  document.getElementById("supplierPacks")?.addEventListener("change", updatePayHint);
+  document.getElementById("ownerclan")?.addEventListener("change", updatePayHint);
 
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(form);
-    const plan = String(data.get("plan") || "m3");
-    const planInfo = cfg.plans?.[plan] || { label: plan, price: "", amount: 0 };
+    const quote = paymentQuote();
+    const planInfo = {
+      ...quote.info,
+      amount: quote.amount,
+      supplierLabel: quote.extra.label,
+      totalLabel: won(quote.amount),
+    };
     const name = String(data.get("name") || "").trim();
     const email = String(data.get("email") || "").trim();
     const phone = String(data.get("phone") || "").trim();
     const message = String(data.get("message") || "").trim();
     const payLabel = cfg.payMethods?.[selectedPay]?.label || selectedPay;
 
-    if (!planInfo.amount) {
+    if (!quote.amount) {
       openInquiryMail({ planInfo, name, email, phone, message, payLabel: "무료 체험" });
       showToast("무료 체험 신청 메일을 열었습니다.");
       return;
     }
 
-    requestPay({ plan, planInfo, name, email, phone, payKey: selectedPay });
+    requestPay({ plan: quote.plan, planInfo, name, email, phone, payKey: selectedPay });
   });
 
   const track = document.getElementById("marketsTrack");

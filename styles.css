@@ -828,6 +828,16 @@ button.header-share {
 .buy-panel textarea { min-height: 96px; resize: vertical; }
 .buy-panel input::placeholder,
 .buy-panel textarea::placeholder { color: rgba(255, 255, 255, 0.45); }
+.buy-panel label.check-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.buy-panel label.check-line input {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+}
 .buy-panel .btn-primary {
   width: 100%;
   margin-top: 6px;
