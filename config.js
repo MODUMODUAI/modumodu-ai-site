@@ -6,7 +6,7 @@ window.MODUMODU_SITE = {
   /** 공개 주소. 링크 공유·FAQ 공유에 이 주소를 씁니다. */
   siteUrl: "https://modumoduai.github.io/modumodu-ai-site",
   /** 회원가입 주소. 비어 있으면 가입 버튼이 준비 중으로 남습니다. */
-  memberApi: "https://modumodu-join.newfeeld.workers.dev",
+  memberApi: "https://49.247.136.222:8443",
 
   /**
    * 포트원(구 아임포트) 가맹점 식별코드.

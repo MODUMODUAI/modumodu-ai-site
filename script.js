@@ -303,120 +303,39 @@
 
   const joinForm = document.getElementById("joinForm");
   const joinStatus = document.getElementById("joinStatus");
-  const joinDownload = document.getElementById("joinDownload");
-  const joinPhoneBox = document.getElementById("joinPhoneBox");
-  const joinWho = document.getElementById("joinWho");
-  let joinTicket = "";
-
-  function showJoinResult(data) {
-    const url = String(data?.download_url || "").trim();
-    if (joinStatus) {
-      const who = data.email || data.login_id || "회원";
-      joinStatus.textContent = url
-        ? `${who} 님, 아래에서 시험용을 받으세요.`
-        : "전화번호가 저장되면 시험용을 받을 수 있습니다.";
-    }
-    if (!joinDownload) return;
-    joinDownload.hidden = !url;
-    joinDownload.replaceChildren();
-    if (!url) return;
-    const link = document.createElement("a");
-    link.href = url;
-    link.textContent = "시험용 프로그램 다운로드";
-    joinDownload.append(link);
-  }
-
-  function showPhoneStep(data) {
-    joinTicket = data.ticket || "";
-    if (joinPhoneBox) joinPhoneBox.hidden = false;
-    if (joinWho) {
-      const who = data.email ? `${data.email} · ` : "";
-      joinWho.textContent = `${who}${data.provider_label || "로그인"} 계정입니다. 전화번호를 남겨 주세요.`;
-    }
-    if (joinStatus) joinStatus.textContent = "";
-  }
-
-  async function postJoin(path, payload) {
-    const api = String(cfg.memberApi || "").replace(/\/+$/, "");
-    if (!api) {
-      showToast("회원가입 주소가 아직 없습니다.");
-      return null;
-    }
-    const response = await fetch(`${api}${path}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const detail = result.detail || "로그인하지 못했습니다.";
-      if (joinStatus) joinStatus.textContent = detail;
-      showToast(detail);
-      return null;
-    }
-    return result;
-  }
-
-  async function startProvider(provider) {
-    const state = crypto.randomUUID().replace(/-/g, "");
-    sessionStorage.setItem("modumodu-oauth-provider", provider);
-    sessionStorage.setItem("modumodu-oauth-state", state);
-    const result = await postJoin("/auth/start", { provider, state });
-    if (result?.url) window.location.assign(result.url);
-  }
-
-  async function finishProvider() {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code") || "";
-    const state = params.get("state") || "";
-    if (!code) return;
-    const provider = sessionStorage.getItem("modumodu-oauth-provider") || "";
-    const saved = sessionStorage.getItem("modumodu-oauth-state") || "";
-    const clean = `${window.location.origin}${window.location.pathname}${window.location.hash || "#how"}`;
-    window.history.replaceState({}, "", clean);
-    if (!provider || !saved || saved !== state) {
-      if (joinStatus) joinStatus.textContent = "로그인을 다시 시작해 주세요.";
-      return;
-    }
-    const result = await postJoin("/auth/finish", { provider, code, state });
-    if (!result) return;
-    if (result.need_phone) {
-      showPhoneStep(result);
-      document.getElementById("how")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-    if (joinPhoneBox) joinPhoneBox.hidden = true;
-    showJoinResult(result);
-    showToast("로그인했습니다.");
-  }
 
   joinForm?.addEventListener("submit", (event) => {
     event.preventDefault();
-    const phone = String(new FormData(joinForm).get("phone") || "").trim();
-    if (!joinTicket) {
-      if (joinStatus) joinStatus.textContent = "먼저 구글, 카카오, 네이버 중 하나로 로그인하세요.";
+    const data = new FormData(joinForm);
+    const loginId = String(data.get("login_id") || "").trim();
+    const password = String(data.get("password") || "");
+    const phone = String(data.get("phone") || "").trim();
+    const api = String(cfg.memberApi || "").replace(/\/+$/, "");
+    if (!api) {
+      showToast("회원가입 주소가 아직 없습니다.");
       return;
     }
-    if (!phone) {
-      if (joinStatus) joinStatus.textContent = "전화번호를 입력해 주세요.";
-      return;
-    }
-    postJoin("/auth/phone", { ticket: joinTicket, phone }).then((result) => {
-      if (!result) return;
-      if (joinPhoneBox) joinPhoneBox.hidden = true;
-      showJoinResult(result);
-      showToast("회원가입이 되었습니다.");
-    });
-  });
-  document.querySelectorAll("[data-provider]").forEach((button) => {
-    button.addEventListener("click", () => {
-      startProvider(button.getAttribute("data-provider") || "").catch(() => {
+    if (joinStatus) joinStatus.textContent = "가입하는 중입니다.";
+    fetch(`${api}/api/account/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ login_id: loginId, password, phone }),
+    })
+      .then(async (response) => {
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          const detail = result.detail || "가입하지 못했습니다.";
+          if (joinStatus) joinStatus.textContent = detail;
+          showToast(detail);
+          return;
+        }
+        if (joinStatus) joinStatus.textContent = `${loginId} 님, 가입되었습니다. 테스트 주소에서 같은 아이디와 비밀번호로 들어가세요.`;
+        showToast("회원가입이 되었습니다.");
+        joinForm.reset();
+      })
+      .catch(() => {
         if (joinStatus) joinStatus.textContent = "가입 서버에 연결하지 못했습니다.";
       });
-    });
-  });
-  finishProvider().catch(() => {
-    if (joinStatus) joinStatus.textContent = "로그인에 실패했습니다.";
   });
 
   applyContact();
