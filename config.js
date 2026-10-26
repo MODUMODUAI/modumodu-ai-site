@@ -1,5 +1,5 @@
 window.MODUMODU_SITE = {
-  contactEmail: "wjmorning@naver.com",
+  contactEmail: "modumoduai@gmail.com",
   contactPhone: "010-9214-6997",
   contactKakao: "",
   contactBank: "안내 후 개별 전달",

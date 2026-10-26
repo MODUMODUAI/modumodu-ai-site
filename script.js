@@ -133,7 +133,7 @@
   }
 
   function openInquiryMail({ planInfo, name, email, phone, message, payLabel }) {
-    const to = cfg.contactEmail || "wjmorning@naver.com";
+    const to = cfg.contactEmail || "modumoduai@gmail.com";
     const subject = `[모두모두AI] ${planInfo.label} 문의 - ${name}`;
     const body = [
       "모두모두AI 이용 문의입니다.",
