@@ -18,10 +18,10 @@ window.MODUMODU_SITE = {
   portoneImpCode: "",
   plans: {
     trial: { label: "프로그램 15일 무료", price: "0원", amount: 0 },
-    m1: { label: "프로그램 1개월", price: "70,000원", amount: 70000, was: "100,000원" },
-    m3: { label: "프로그램 3개월", price: "180,000원", amount: 180000, was: "300,000원" },
-    m6: { label: "프로그램 6개월", price: "300,000원", amount: 300000, was: "600,000원" },
-    y1: { label: "프로그램 1년", price: "480,000원", amount: 480000, was: "1,200,000원" },
+    m1: { label: "프로그램 1개월", price: "80,000원", amount: 80000, was: "200,000원" },
+    m3: { label: "프로그램 3개월", price: "210,000원", amount: 210000, was: "600,000원" },
+    m6: { label: "프로그램 6개월", price: "360,000원", amount: 360000, was: "1,200,000원" },
+    y1: { label: "프로그램 1년", price: "600,000원", amount: 600000, was: "2,400,000원" },
   },
   payMethods: {
     kakaopay: { label: "카카오페이", pg: "kakaopay" },
