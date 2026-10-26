@@ -29,9 +29,23 @@
 - 키 발급 예: LICENSE_SIGNING_SECRET=비밀 .venv\Scripts\python.exe -c "from app.license import issue_key; print(issue_key(expires_at='2027-12-31', plan='m3'))"
 - 여러 PC에 걸쳐 대수를 강제하려면 LICENSE_SERVER_URL(또는 license_url.txt) 필요
 
+공개 주소 (GitHub Pages)
+- https://ibccomae-cpu.github.io/modumodu-ai-site/
+- 이용 방법·시험용: https://ibccomae-cpu.github.io/modumodu-ai-site/#how
+- FAQ: https://ibccomae-cpu.github.io/modumodu-ai-site/#faq
+- 저장소: https://github.com/ibccomae-cpu/modumodu-ai-site
+- siteUrl 은 website/config.js 에 넣어 두었습니다. 링크 공유 시 이 주소를 씁니다.
+- 사이트 다시 올릴 때: website 폴더만 그 저장소 main 에 푸시하면 Pages가 갱신됩니다.
+
 아직 없는 것
 - 결제 완료 서버 검증(웹훅)
-- 라이선스 키 자동 발급·라이선스 서버
-- 도메인 연결
+- 결제 후 라이선스 키 자동 발급
+- 고유 도메인(예: modumodu.ai) 연결
+
+시험용 다운로드
+- 이용 방법(#how)에서 회원가입한 뒤 받습니다.
+- 파일은 최신 프로그램에서 주소 수집과 저장된 로그인 정보를 뺀 것입니다.
+- 받는 주소: GitHub Releases `test-2026.10.22.8` 의 modumodu-trial.zip
+- 가입 명단은 서버 프로그램의 고객 화면 「사이트 가입」에 나옵니다. 비밀번호는 저장하지 않습니다.
 
 월 정가 100,000원. 전 요금 일시한정 할인(1개월 -30% ~ 1년 -60%). config.js · index.html.

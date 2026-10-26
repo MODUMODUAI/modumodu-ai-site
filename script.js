@@ -301,6 +301,78 @@
     if (window.location.hash) setTimeout(scrollToHashTarget, 80);
   });
 
+  const joinForm = document.getElementById("joinForm");
+  const joinStatus = document.getElementById("joinStatus");
+  const joinDownload = document.getElementById("joinDownload");
+
+  function showJoinResult(data) {
+    const url = String(data?.download_url || "").trim();
+    if (joinStatus) {
+      joinStatus.textContent = url
+        ? `${data.login_id} 님, 아래에서 시험용을 받으세요.`
+        : "가입되었습니다. 시험용 파일은 곧 이 자리에 올라옵니다.";
+    }
+    if (!joinDownload) return;
+    joinDownload.hidden = !url;
+    joinDownload.replaceChildren();
+    if (!url) return;
+    const link = document.createElement("a");
+    link.href = url;
+    link.textContent = "시험용 프로그램 다운로드";
+    joinDownload.append(link);
+  }
+
+  async function submitJoin(path) {
+    const api = String(cfg.memberApi || "").replace(/\/+$/, "");
+    if (!api) {
+      showToast("회원가입 주소가 아직 없습니다.");
+      return;
+    }
+    const data = new FormData(joinForm);
+    const phone = String(data.get("phone") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    if (path === "/signup" && !phone && !email) {
+      if (joinStatus) joinStatus.textContent = "전화번호 또는 이메일을 입력해 주세요.";
+      return;
+    }
+    const button = document.getElementById(path === "/login" ? "joinLogin" : "joinSubmit");
+    if (button) button.disabled = true;
+    try {
+      const response = await fetch(`${api}${path}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          login_id: String(data.get("login_id") || "").trim(),
+          password: String(data.get("password") || ""),
+          phone,
+          email,
+        }),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const detail = payload.detail || "가입하지 못했습니다.";
+        if (joinStatus) joinStatus.textContent = detail;
+        showToast(detail);
+        return;
+      }
+      showJoinResult(payload);
+      showToast(path === "/login" ? "로그인했습니다." : "회원가입이 되었습니다.");
+    } catch (error) {
+      if (joinStatus) joinStatus.textContent = "가입 서버에 연결하지 못했습니다.";
+      showToast("가입 서버에 연결하지 못했습니다.");
+    } finally {
+      if (button) button.disabled = false;
+    }
+  }
+
+  joinForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitJoin("/signup");
+  });
+  document.getElementById("joinLogin")?.addEventListener("click", () => {
+    submitJoin("/login");
+  });
+
   applyContact();
   syncPayButtons();
   updatePayHint();
