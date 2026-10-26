@@ -310,6 +310,7 @@
     const loginId = String(data.get("login_id") || "").trim();
     const password = String(data.get("password") || "");
     const phone = String(data.get("phone") || "").trim();
+    const serial = String(data.get("serial") || "").trim();
     const api = String(cfg.memberApi || "").replace(/\/+$/, "");
     if (!api) {
       showToast("회원가입 주소가 아직 없습니다.");
@@ -319,7 +320,7 @@
     fetch(`${api}/api/account/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ login_id: loginId, password, phone }),
+      body: JSON.stringify({ login_id: loginId, password, phone, serial }),
     })
       .then(async (response) => {
         const result = await response.json().catch(() => ({}));

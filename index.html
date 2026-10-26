@@ -344,17 +344,17 @@
 
     <section class="section" id="how">
       <h2>이용 방법</h2>
-      <p class="sub">테스트용은 아이디와 비밀번호로 가입하고, 같은 값으로 들어갑니다.</p>
+      <p class="sub">테스트용은 처음 가입할 때 시리얼키를 넣고, 다음부터는 아이디와 비밀번호로 들어갑니다.</p>
       <div class="steps">
         <div class="step">
           <span>1</span>
           <strong>회원가입</strong>
-          <p>아이디, 비밀번호, 전화번호를 입력합니다.</p>
+          <p>아이디, 비밀번호, 전화번호, 시리얼키를 입력합니다.</p>
         </div>
         <div class="step">
           <span>2</span>
           <strong>테스트 주소로 입장</strong>
-          <p>https://49.247.136.222:8443/ 를 열고 가입한 아이디와 비밀번호를 입력합니다. 설치 파일 없이 서버에서 열립니다.</p>
+          <p>https://49.247.136.222:8443/ 를 열고, 다음부터는 가입한 아이디와 비밀번호만 입력합니다.</p>
         </div>
         <div class="step">
           <span>3</span>
@@ -364,7 +364,7 @@
       </div>
       <form class="buy-panel join-panel" id="joinForm">
         <h3>회원가입</h3>
-        <p>아이디와 비밀번호로 가입합니다. 가입한 뒤 테스트 주소에서 같은 아이디와 비밀번호로 들어갑니다.</p>
+        <p>처음 가입할 때 시리얼키를 입력합니다. 테스트 주소에서는 다음부터 아이디와 비밀번호만 입력합니다.</p>
         <label>아이디
           <input name="login_id" autocomplete="username" required minlength="4" maxlength="40" placeholder="영문, 숫자 4자 이상" />
         </label>
@@ -373,6 +373,9 @@
         </label>
         <label>전화번호
           <input name="phone" type="tel" autocomplete="tel" required placeholder="010-0000-0000" />
+        </label>
+        <label>시리얼키
+          <input name="serial" autocomplete="off" required placeholder="발급받은 시리얼키" />
         </label>
         <button class="btn btn-primary" type="submit">가입하기</button>
         <p class="pay-status" id="joinStatus"></p>
@@ -529,6 +532,6 @@
     <button type="button" id="jumpBottom" title="맨 아래로">▼</button>
   </nav>
   <script src="./config.js?v=6"></script>
-  <script src="./script.js?v=8"></script>
+  <script src="./script.js?v=9"></script>
 </body>
 </html>
