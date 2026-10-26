@@ -747,8 +747,11 @@ button.header-share {
 .step p { margin: 0; color: var(--muted); }
 
 .join-panel { margin-top: 28px; max-width: 520px; }
-.join-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-.join-actions .btn-line { color: #fff; border-color: rgba(255, 255, 255, 0.45); }
+.join-social { display: grid; gap: 8px; margin-bottom: 14px; }
+.join-provider { width: 100%; font-weight: 700; }
+.join-google { background: #fff; color: #222; }
+.join-kakao { background: #fee500; color: #191919; }
+.join-naver { background: #03c75a; color: #fff; }
 .join-download { margin-top: 14px; }
 .join-download a { color: #fff; font-weight: 700; }
 

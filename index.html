@@ -14,7 +14,7 @@
   <link rel="canonical" href="https://modumoduai.github.io/modumodu-ai-site/" />
   <link rel="icon" href="./favicon.svg?v=3" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="stylesheet" href="./styles.css?v=14" />
+  <link rel="stylesheet" href="./styles.css?v=15" />
   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 <body>
@@ -349,7 +349,7 @@
         <div class="step">
           <span>1</span>
           <strong>회원가입</strong>
-          <p>이메일과 전화번호를 남기면 이 페이지에서 시험용을 받습니다.</p>
+          <p>구글, 카카오, 네이버 중 하나로 로그인하면 이 페이지에서 시험용을 받습니다. 전화번호는 이어서 남깁니다.</p>
         </div>
         <div class="step">
           <span>2</span>
@@ -364,24 +364,21 @@
       </div>
       <form class="buy-panel join-panel" id="joinForm">
         <h3>회원가입</h3>
-        <p>이메일로 가입합니다. 전화번호도 함께 남깁니다. 이미 가입한 이메일이면 로그인하면 시험용 다운로드가 나옵니다.</p>
-        <label>
-          이메일
-          <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
-        </label>
-        <label>
-          비밀번호
-          <input name="password" type="password" autocomplete="new-password" minlength="8" placeholder="8자 이상" required />
-        </label>
-        <label>
-          전화번호
-          <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" required />
-        </label>
-        <p class="pay-status" id="joinStatus"></p>
-        <div class="join-actions">
-          <button class="btn btn-primary" id="joinSubmit" type="submit">회원가입</button>
-          <button class="btn btn-line" id="joinLogin" type="button">로그인</button>
+        <p>구글, 카카오, 네이버로 로그인합니다. 비밀번호는 저장하지 않습니다. 로그인 다음에 전화번호를 남기면 시험용을 받습니다.</p>
+        <div class="join-social">
+          <button type="button" class="btn join-provider join-google" data-provider="google">구글로 시작</button>
+          <button type="button" class="btn join-provider join-kakao" data-provider="kakao">카카오로 시작</button>
+          <button type="button" class="btn join-provider join-naver" data-provider="naver">네이버로 시작</button>
         </div>
+        <div id="joinPhoneBox" hidden>
+          <p id="joinWho"></p>
+          <label>
+            전화번호
+            <input name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" />
+          </label>
+          <button class="btn btn-primary" type="submit">전화번호 저장하고 시험용 받기</button>
+        </div>
+        <p class="pay-status" id="joinStatus"></p>
         <p class="join-download" id="joinDownload" hidden></p>
       </form>
     </section>
@@ -535,6 +532,6 @@
     <button type="button" id="jumpBottom" title="맨 아래로">▼</button>
   </nav>
   <script src="./config.js?v=5"></script>
-  <script src="./script.js?v=6"></script>
+  <script src="./script.js?v=7"></script>
 </body>
 </html>
