@@ -14,7 +14,7 @@
   <link rel="canonical" href="https://modumoduai.github.io/modumodu-ai-site/" />
   <link rel="icon" href="./favicon.svg?v=3" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="stylesheet" href="./styles.css?v=20" />
+  <link rel="stylesheet" href="./styles.css?v=21" />
   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 <body>
@@ -24,14 +24,13 @@
       <span><span class="logo-a">모두</span><span class="logo-b">모두</span><span class="logo-ai">AI</span></span>
     </a>
     <div class="header-actions">
-      <a class="header-link" href="#shots">화면</a>
-      <a class="header-link" href="#features">기능</a>
-      <a class="header-link" href="#compare">비교</a>
-      <a class="header-link" href="#plans">요금</a>
-      <a class="header-link" href="#how">이용 방법</a>
-      <a class="header-link" href="#how">회원가입</a>
-      <a class="header-link" href="#faq">FAQ</a>
-      <button type="button" class="header-link header-share" id="sharePageLink">링크 공유</button>
+      <nav class="site-nav" aria-label="메뉴">
+        <a href="#plans">요금</a>
+        <a href="#suppliers">공급사</a>
+        <a href="#how">이용 방법</a>
+        <a href="#join">회원가입</a>
+        <a href="#faq">FAQ</a>
+      </nav>
       <a class="btn btn-primary" href="#buy">구매·결제</a>
     </div>
   </header>
@@ -321,6 +320,7 @@
         </article>
       </div>
 
+      <div id="suppliers">
       <h3 class="plans-heading">공급사 추가</h3>
       <p class="plans-note">프로그램 이용료와 따로 계산합니다. 10개까지는 무료입니다.</p>
       <div class="supplier-fees">
@@ -339,6 +339,7 @@
           <h3>오너클랜 전체 월 30,000원</h3>
           <p>오너클랜 상품 전체를 쓰는 요금입니다.</p>
         </article>
+      </div>
       </div>
 
       <h3 class="plans-heading">예상 사용료</h3>
@@ -382,7 +383,7 @@
           <p>계속 쓰려면 아래에서 기간을 고르고 결제합니다. 이용 키를 이메일로 보내 드립니다.</p>
         </div>
       </div>
-      <form class="buy-panel join-panel" id="joinForm">
+      <form class="buy-panel join-panel" id="join">
         <h3>회원가입</h3>
         <p>처음 가입할 때 시리얼키를 입력합니다. 테스트 주소에서는 다음부터 아이디와 비밀번호만 입력합니다.</p>
         <label>아이디
@@ -578,6 +579,6 @@
     <button type="button" id="jumpBottom" title="맨 아래로">▼</button>
   </nav>
   <script src="./config.js?v=11"></script>
-  <script src="./script.js?v=13"></script>
+  <script src="./script.js?v=14"></script>
 </body>
 </html>

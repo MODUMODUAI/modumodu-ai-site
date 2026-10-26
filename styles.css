@@ -43,13 +43,15 @@ button, .btn {
 }
 
 .site-header {
-  position: absolute;
-  inset: 0 0 auto;
-  z-index: 5;
-  display: flex;
-  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 12px 18px;
   align-items: center;
-  padding: 22px clamp(18px, 4vw, 56px);
+  padding: 12px clamp(18px, 3vw, 40px);
+  background: #08305c;
   color: #fff;
 }
 
@@ -70,18 +72,29 @@ button, .btn {
   margin-left: 1px;
 }
 
-.header-actions { display: flex; gap: 10px; align-items: center; }
-.header-link {
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 600;
-  padding: 8px 10px;
+.header-actions { display: contents; }
+.logo { grid-column: 1; grid-row: 1; }
+.site-nav { grid-column: 2; grid-row: 1; }
+.site-header > .btn-primary,
+.header-actions > .btn-primary { grid-column: 3; grid-row: 1; }
+.site-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
 }
-.header-link:hover { color: #fff; }
-button.header-share {
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-  font: inherit;
+.site-nav a {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+.site-nav a:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+#plans, #suppliers, #how, #join, #faq, #buy {
+  scroll-margin-top: 76px;
 }
 
 .btn {
@@ -136,7 +149,7 @@ button.header-share {
   position: relative;
   z-index: 2;
   width: min(640px, 100%);
-  padding: clamp(110px, 16vh, 160px) clamp(18px, 4vw, 56px) clamp(40px, 8vh, 72px);
+  padding: clamp(36px, 6vh, 72px) clamp(18px, 4vw, 56px) clamp(40px, 8vh, 72px);
 }
 
 .brand-mark {
@@ -994,10 +1007,13 @@ button.header-share {
   .shot-card-wide { grid-column: auto; }
 }
 
+@media (max-width: 800px) {
+  .site-header { grid-template-columns: 1fr auto; }
+  .site-nav { grid-column: 1 / -1; grid-row: 2; }
+}
 @media (max-width: 640px) {
   .plans { grid-template-columns: 1fr; }
   .plan:first-child { grid-column: auto; }
-  .header-link { display: none; }
   .hero-shot,
   .hero-video,
   .hero-stage .sample-badge { display: none; }

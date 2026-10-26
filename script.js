@@ -367,7 +367,7 @@
     if (window.location.hash) setTimeout(scrollToHashTarget, 80);
   });
 
-  const joinForm = document.getElementById("joinForm");
+  const joinForm = document.getElementById("join");
   const joinStatus = document.getElementById("joinStatus");
 
   joinForm?.addEventListener("submit", (event) => {
