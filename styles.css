@@ -753,7 +753,7 @@ button.header-share {
 .join-kakao { background: #fee500; color: #191919; }
 .join-naver { background: #03c75a; color: #fff; }
 .join-download { margin-top: 14px; }
-.join-download a { color: #fff; font-weight: 700; }
+.join-panel a { color: #fff; font-weight: 700; }
 
 .policy,
 .faq {
