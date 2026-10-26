@@ -363,23 +363,35 @@
   });
 
   window.addEventListener("hashchange", scrollToHashTarget);
-  document.querySelectorAll('a[href="#how"]').forEach((link) => {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", () => {
       window.__modumoduOpenAtTop = false;
     });
   });
   function stayAtTop() {
     if (!window.__modumoduOpenAtTop) return;
+    const root = document.documentElement;
+    const previous = root.style.scrollBehavior;
+    root.style.scrollBehavior = "auto";
     window.scrollTo(0, 0);
+    root.style.scrollBehavior = previous;
   }
 
+  window.addEventListener("scroll", stayAtTop, { passive: true });
   window.addEventListener("pageshow", stayAtTop);
+  window.addEventListener("wheel", () => { window.__modumoduOpenAtTop = false; }, { passive: true, once: true });
+  window.addEventListener("touchstart", () => { window.__modumoduOpenAtTop = false; }, { passive: true, once: true });
+  window.addEventListener("keydown", () => { window.__modumoduOpenAtTop = false; }, { once: true });
   window.addEventListener("load", () => {
     if (window.__modumoduOpenAtTop) {
       stayAtTop();
-      history.replaceState(null, "", location.pathname + location.search + "#how");
-      stayAtTop();
-      window.setTimeout(stayAtTop, 50);
+      if (window.__modumoduSavedHash) {
+        history.replaceState(null, "", location.pathname + location.search + window.__modumoduSavedHash);
+        stayAtTop();
+      }
+      window.setTimeout(stayAtTop, 60);
+      window.setTimeout(stayAtTop, 400);
+      window.setTimeout(() => { window.__modumoduOpenAtTop = false; }, 1200);
       return;
     }
     if (window.location.hash) setTimeout(scrollToHashTarget, 80);
