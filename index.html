@@ -14,7 +14,7 @@
   <link rel="canonical" href="https://modumoduai.github.io/modumodu-ai-site/" />
   <link rel="icon" href="./favicon.svg?v=3" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="stylesheet" href="./styles.css?v=24" />
+  <link rel="stylesheet" href="./styles.css?v=25" />
   <script>
     history.scrollRestoration = "manual";
     window.__modumoduOpenAtTop = true;
@@ -133,9 +133,23 @@
     </section>
 
     <section class="section" id="usage">
-      <h2>짧은 사용 영상</h2>
-      <p class="sub">상품명, 태그, 속성, 이미지를 화면에서 직접 누르는 장면입니다. 상품 정보는 샘플입니다.</p>
+      <h2>사용 영상</h2>
+      <p class="sub">상품담기와 상품가공은 화면을 따라가며 조금 길게 보여 줍니다. 이름·태그·속성·이미지는 짧은 장면입니다. 상품 정보는 샘플입니다.</p>
       <div class="shot-grid">
+        <figure class="shot-card shot-card-wide">
+          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-collect.jpg?v=1" width="1440" height="900">
+            <source src="./shots/use-collect.webm?v=1" type="video/webm" />
+            <source src="./shots/use-collect.mp4?v=1" type="video/mp4" />
+          </video>
+          <figcaption><strong>상품담기</strong> · 분류를 고르고 검색한 뒤 상품관리로 보냅니다</figcaption>
+        </figure>
+        <figure class="shot-card shot-card-wide">
+          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-process.jpg?v=1" width="1440" height="900">
+            <source src="./shots/use-process.webm?v=1" type="video/webm" />
+            <source src="./shots/use-process.mp4?v=1" type="video/mp4" />
+          </video>
+          <figcaption><strong>상품가공</strong> · 상품명, 태그, 속성, 이미지를 고치고 저장하면 목록에 반영됩니다</figcaption>
+        </figure>
         <figure class="shot-card">
           <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-name.jpg?v=1" width="1440" height="900">
             <source src="./shots/use-name.webm?v=1" type="video/webm" />
@@ -212,87 +226,81 @@
     </section>
 
     <section class="section" id="compare">
-      <h2>일반 등록 도구와 비교</h2>
-      <p class="sub">기본 수집만 되는 등록기와 달리, AI·수동 가공·주문까지 한곳에서 이어 갑니다. AI는 필요할 때만 쓰면 됩니다.</p>
+      <h2>다른 프로그램과 비교</h2>
+      <p class="sub">플레이오토, 이셀러스, 샵링커, 사방넷과 나란히 봤습니다. 숫자는 각 회사 공개 안내를 옮긴 것이고, 요금제는 바뀔 수 있습니다.</p>
       <div class="compare-wrap">
         <table class="compare-table">
           <thead>
             <tr>
-              <th scope="col">기능</th>
+              <th scope="col">항목</th>
               <th scope="col" class="compare-us">모두모두AI</th>
-              <th scope="col">일반 등록기</th>
+              <th scope="col">플레이오토</th>
+              <th scope="col">이셀러스</th>
+              <th scope="col">샵링커</th>
+              <th scope="col">사방넷</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope="row">상품 수집</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
+              <th scope="row">월 이용료</th>
+              <td class="us">8만 원<br />정가 20만, 지금 할인</td>
+              <td>15만 원<br />STANDARD</td>
+              <td>상품 7.15만~13.2만<br />배송은 같은 구간으로 별도</td>
+              <td>요금제별</td>
+              <td>15만 원<br />공개 비교 기준</td>
             </tr>
             <tr>
-              <th scope="row">AI 상품명</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-no" aria-label="미지원">X</span></td>
+              <th scope="row">가입비</th>
+              <td class="us">없음</td>
+              <td>없음</td>
+              <td>공개 안내에 없음</td>
+              <td>요금제별</td>
+              <td>10만 원</td>
             </tr>
             <tr>
-              <th scope="row">AI 속성</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-no" aria-label="미지원">X</span></td>
+              <th scope="row">쇼핑몰 아이디</th>
+              <td class="us">20개 기본<br />10개당 월 5만 원</td>
+              <td>10개</td>
+              <td>공개 안내에 없음</td>
+              <td>요금제별</td>
+              <td>8개</td>
             </tr>
             <tr>
-              <th scope="row">AI 태그</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-no" aria-label="미지원">X</span></td>
+              <th scope="row">상품 등록</th>
+              <td class="us">무제한</td>
+              <td>전송 무제한</td>
+              <td>월 1,000건<br />또는 무제한</td>
+              <td>대량 등록</td>
+              <td>상품 DB 700개</td>
             </tr>
             <tr>
-              <th scope="row">AI 상세페이지</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-no" aria-label="미지원">X</span></td>
+              <th scope="row">주문 수집</th>
+              <td class="us">무제한</td>
+              <td>월 3,000건</td>
+              <td>월 5,000건<br />또는 무제한</td>
+              <td>주문 수집</td>
+              <td>월 2,000건</td>
             </tr>
             <tr>
-              <th scope="row">AI 이미지 가공</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-no" aria-label="미지원">X</span></td>
+              <th scope="row">AI 가공</th>
+              <td class="us">상품명·태그·속성·이미지<br />안 쓰면 추가 요금 없음</td>
+              <td>셀핏AI<br />월 2,400 크레딧</td>
+              <td>공개 안내에 없음</td>
+              <td>상세·상품 AI 안내</td>
+              <td>그 비교에는 미지원</td>
             </tr>
             <tr>
-              <th scope="row">표에서 수동 가공</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-partial">일부</span></td>
-            </tr>
-            <tr>
-              <th scope="row">AI 안 쓰면 프로그램 값만</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-no" aria-label="미지원">X</span></td>
-            </tr>
-            <tr>
-              <th scope="row">무제한 가공 · 등록</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-partial">일부</span></td>
-            </tr>
-            <tr>
-              <th scope="row">최저가 상품 찾기</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-no" aria-label="미지원">X</span></td>
-            </tr>
-            <tr>
-              <th scope="row">광고·월간검색어 보조</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-no" aria-label="미지원">X</span></td>
-            </tr>
-            <tr>
-              <th scope="row">품절·재판매 연동</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-partial">일부</span></td>
-            </tr>
-            <tr>
-              <th scope="row">주문·문의·마진 통계</th>
-              <td><span class="mark-yes" aria-label="지원">O</span></td>
-              <td><span class="mark-partial">일부</span></td>
+              <th scope="row">쓰는 곳</th>
+              <td class="us">Windows<br />PC 대수 제한 없음</td>
+              <td>웹·모바일 앱<br />사용자 5명</td>
+              <td>웹</td>
+              <td>웹</td>
+              <td>사용자 5명<br />앱은 그 비교에 미지원</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="compare-note">AI 기능은 본인 API로 직접 결제합니다. 자동가공을 켜지 않으면 모두모두AI에는 프로그램 이용료만 듭니다.</p>
+      <p class="compare-note">플레이오토 STANDARD와 사방넷 칸은 플레이오토가 2026년 1월 공시가로 적은 동일 요금제 비교를 옮겼습니다. 이셀러스 주머니 요금은 부가세 포함 공개가입니다. 샵링커는 상품 등록, 주문, 문의, AI 상세 안내가 공개되어 있고 금액은 요금제마다 다릅니다. AI를 모두모두AI에서 끄면 프로그램 이용료만 냅니다.</p>
     </section>
 
     <section class="section" id="plans">
