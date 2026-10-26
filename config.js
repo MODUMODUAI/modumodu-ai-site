@@ -4,7 +4,7 @@ window.MODUMODU_SITE = {
   contactBank: "안내 후 개별 전달",
   maxPcs: 5,
   /** 공개 주소. 링크 공유·FAQ 공유에 이 주소를 씁니다. */
-  siteUrl: "https://ibccomae-cpu.github.io/modumodu-ai-site",
+  siteUrl: "https://modumoduai.github.io/modumodu-ai-site",
   /** 회원가입 주소. 비어 있으면 가입 버튼이 준비 중으로 남습니다. */
   memberApi: "https://modumodu-join.newfeeld.workers.dev",
 

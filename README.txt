@@ -30,10 +30,10 @@
 - 여러 PC에 걸쳐 대수를 강제하려면 LICENSE_SERVER_URL(또는 license_url.txt) 필요
 
 공개 주소 (GitHub Pages)
-- https://ibccomae-cpu.github.io/modumodu-ai-site/
-- 이용 방법·시험용: https://ibccomae-cpu.github.io/modumodu-ai-site/#how
-- FAQ: https://ibccomae-cpu.github.io/modumodu-ai-site/#faq
-- 저장소: https://github.com/ibccomae-cpu/modumodu-ai-site
+- https://modumoduai.github.io/modumodu-ai-site/
+- 이용 방법·시험용: https://modumoduai.github.io/modumodu-ai-site/#how
+- FAQ: https://modumoduai.github.io/modumodu-ai-site/#faq
+- 저장소: https://github.com/MODUMODUAI/modumodu-ai-site
 - siteUrl 은 website/config.js 에 넣어 두었습니다. 링크 공유 시 이 주소를 씁니다.
 - 사이트 다시 올릴 때: website 폴더만 그 저장소 main 에 푸시하면 Pages가 갱신됩니다.
 
