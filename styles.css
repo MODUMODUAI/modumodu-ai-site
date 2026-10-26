@@ -825,7 +825,10 @@ button.header-share {
   padding: 11px 12px;
   font: inherit;
 }
-.buy-panel textarea { min-height: 96px; resize: vertical; }
+.buy-panel select option {
+  color: #10233a;
+  background: #fff;
+}
 .buy-panel input::placeholder,
 .buy-panel textarea::placeholder { color: rgba(255, 255, 255, 0.45); }
 .buy-panel label.check-line {

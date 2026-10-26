@@ -65,6 +65,16 @@
   function paymentQuote() {
     const plan = planSelect?.value || "m3";
     const info = cfg.plans?.[plan] || { label: plan, price: "", amount: 0, months: 0 };
+    if (info.ownerclanOnly) {
+      return {
+        plan,
+        info,
+        extra: { label: "오너클랜 전체", monthly: Number(info.amount || 0), packs: 0, ownerclan: true, count: 0 },
+        months: 1,
+        supplierAmount: 0,
+        amount: Number(info.amount || 0),
+      };
+    }
     const extra = supplierChoice();
     const months = Number(info.months || 0);
     const supplierAmount = extra.monthly * months;
@@ -78,7 +88,19 @@
     };
   }
 
+  function syncAddonFields() {
+    const only = Boolean(cfg.plans?.[planSelect?.value || ""]?.ownerclanOnly);
+    const packs = document.getElementById("supplierPacks");
+    const box = document.getElementById("ownerclan");
+    if (packs) packs.disabled = only;
+    if (box) {
+      box.disabled = only;
+      if (only) box.checked = false;
+    }
+  }
+
   function updatePayHint() {
+    syncAddonFields();
     const quote = paymentQuote();
     const button = document.getElementById("paySubmit");
     if (!quote.amount) {

@@ -3,7 +3,7 @@ window.MODUMODU_SITE = {
   contactPhone: "010-9214-6997",
   contactKakao: "",
   contactBank: "안내 후 개별 전달",
-  maxPcs: 5,
+  maxPcs: 0,
   /** 공개 주소. 링크 공유·FAQ 공유에 이 주소를 씁니다. */
   siteUrl: "https://modumoduai.github.io/modumodu-ai-site",
   /** 회원가입 주소. 비어 있으면 가입 버튼이 준비 중으로 남습니다. */
@@ -22,6 +22,7 @@ window.MODUMODU_SITE = {
     m3: { label: "프로그램 3개월", price: "210,000원", amount: 210000, was: "600,000원", months: 3 },
     m6: { label: "프로그램 6개월", price: "360,000원", amount: 360000, was: "1,200,000원", months: 6 },
     y1: { label: "프로그램 1년", price: "600,000원", amount: 600000, was: "2,400,000원", months: 12 },
+    ownerclan: { label: "오너클랜만 추가", price: "30,000원", amount: 30000, months: 1, ownerclanOnly: true },
   },
   supplier: {
     freeCount: 10,
