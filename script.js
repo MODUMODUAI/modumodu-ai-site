@@ -51,6 +51,14 @@
     return `${Number(amount || 0).toLocaleString("ko-KR")}원`;
   }
 
+  function mallChoice() {
+    const packs = Math.max(0, Number(document.getElementById("mallPacks")?.value || 0));
+    const rule = cfg.mallAccounts || {};
+    const monthly = packs * Number(rule.packMonthly || 0);
+    const count = Number(rule.freeCount || 20) + packs * Number(rule.packSize || 10);
+    return { packs, monthly, count, label: `쇼핑몰 아이디 ${count}개` };
+  }
+
   function supplierChoice() {
     const packs = Math.max(0, Number(document.getElementById("supplierPacks")?.value || 0));
     const ownerclan = Boolean(document.getElementById("ownerclan")?.checked);
@@ -76,23 +84,32 @@
       };
     }
     const extra = supplierChoice();
+    const mall = mallChoice();
     const months = Number(info.months || 0);
     const supplierAmount = extra.monthly * months;
+    const mallAmount = mall.monthly * months;
     return {
       plan,
       info,
       extra,
+      mall,
       months,
       supplierAmount,
-      amount: Number(info.amount || 0) + supplierAmount,
+      mallAmount,
+      amount: Number(info.amount || 0) + supplierAmount + mallAmount,
     };
   }
 
   function syncAddonFields() {
     const only = Boolean(cfg.plans?.[planSelect?.value || ""]?.ownerclanOnly);
     const packs = document.getElementById("supplierPacks");
+    const malls = document.getElementById("mallPacks");
     const box = document.getElementById("ownerclan");
     if (packs) packs.disabled = only;
+    if (malls) {
+      malls.disabled = only;
+      if (only) malls.value = "0";
+    }
     if (box) {
       box.disabled = only;
       if (only) box.checked = false;
@@ -105,10 +122,11 @@
     const button = document.getElementById("paySubmit");
     if (!quote.amount) {
       if (button) button.textContent = "무료 신청";
-      setPayStatus("무료 체험은 결제 없이 신청됩니다. 공급사 추가 요금은 유료 기간에 월 단위로 붙습니다.");
+      setPayStatus("무료 체험은 결제 없이 신청됩니다. 쇼핑몰 아이디와 공급사 추가 요금은 유료 기간에 월 단위로 붙습니다.");
       return;
     }
     const parts = [`${quote.info.label} ${quote.info.price || won(quote.info.amount)}`];
+    if (quote.mallAmount) parts.push(`${quote.mall.label} ${won(quote.mallAmount)}`);
     if (quote.supplierAmount) parts.push(`${quote.extra.label} ${won(quote.supplierAmount)}`);
     if (button) button.textContent = `${won(quote.amount)} 결제하기`;
     const total = `${parts.join(" + ")} · 합계 ${won(quote.amount)}`;
@@ -139,6 +157,7 @@
       "모두모두AI 이용 문의입니다.",
       "",
       `요금: ${planInfo.label} (${planInfo.price})`,
+      `쇼핑몰 아이디: ${planInfo.mallLabel || "-"}`,
       `공급사: ${planInfo.supplierLabel || "-"}`,
       `합계: ${planInfo.totalLabel || planInfo.price}`,
       `결제수단: ${payLabel || "-"}`,
@@ -203,7 +222,7 @@
         pg: method.pg,
         pay_method: "card",
         merchant_uid: merchantUid,
-        name: `모두모두AI ${planInfo.label}${planInfo.supplierLabel ? ` + ${planInfo.supplierLabel}` : ""}`,
+        name: `모두모두AI ${planInfo.label}${planInfo.mallLabel ? ` + ${planInfo.mallLabel}` : ""}${planInfo.supplierLabel ? ` + ${planInfo.supplierLabel}` : ""}`,
         amount: planInfo.amount,
         buyer_email: email,
         buyer_name: name,
@@ -271,6 +290,7 @@
 
   planSelect?.addEventListener("change", updatePayHint);
   document.getElementById("supplierPacks")?.addEventListener("change", updatePayHint);
+  document.getElementById("mallPacks")?.addEventListener("change", updatePayHint);
   document.getElementById("ownerclan")?.addEventListener("change", updatePayHint);
 
   form?.addEventListener("submit", (event) => {
@@ -280,6 +300,7 @@
     const planInfo = {
       ...quote.info,
       amount: quote.amount,
+      mallLabel: quote.mall?.label || "",
       supplierLabel: quote.extra.label,
       totalLabel: won(quote.amount),
     };

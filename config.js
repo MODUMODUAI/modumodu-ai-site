@@ -25,6 +25,11 @@ window.MODUMODU_SITE = {
     y1: { label: "프로그램 1년", price: "600,000원", amount: 600000, was: "2,400,000원", months: 12 },
     ownerclan: { label: "오너클랜만 추가", price: "30,000원", amount: 30000, months: 1, ownerclanOnly: true },
   },
+  mallAccounts: {
+    freeCount: 20,
+    packSize: 10,
+    packMonthly: 50000,
+  },
   supplier: {
     freeCount: 10,
     packSize: 10,
