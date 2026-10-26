@@ -1,6 +1,7 @@
 window.MODUMODU_SITE = {
-  contactEmail: "hello@example.com",
-  contactKakao: "채널명 입력 예정",
+  contactEmail: "wjmorning@naver.com",
+  contactPhone: "010-9214-6997",
+  contactKakao: "",
   contactBank: "안내 후 개별 전달",
   maxPcs: 5,
   /** 공개 주소. 링크 공유·FAQ 공유에 이 주소를 씁니다. */
