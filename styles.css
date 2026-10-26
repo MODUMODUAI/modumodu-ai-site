@@ -424,6 +424,16 @@ button, .btn {
   font-weight: 800;
   font-size: 0.95rem;
 }
+.compare-boast {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #e7f2ff;
+  color: #14385f;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
 .compare-note {
   margin: 14px 0 0;
   color: var(--muted);
