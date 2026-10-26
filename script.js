@@ -363,7 +363,25 @@
   });
 
   window.addEventListener("hashchange", scrollToHashTarget);
+  document.querySelectorAll('a[href="#how"]').forEach((link) => {
+    link.addEventListener("click", () => {
+      window.__modumoduOpenAtTop = false;
+    });
+  });
+  function stayAtTop() {
+    if (!window.__modumoduOpenAtTop) return;
+    window.scrollTo(0, 0);
+  }
+
+  window.addEventListener("pageshow", stayAtTop);
   window.addEventListener("load", () => {
+    if (window.__modumoduOpenAtTop) {
+      stayAtTop();
+      history.replaceState(null, "", location.pathname + location.search + "#how");
+      stayAtTop();
+      window.setTimeout(stayAtTop, 50);
+      return;
+    }
     if (window.location.hash) setTimeout(scrollToHashTarget, 80);
   });
 
@@ -408,5 +426,5 @@
   applyContact();
   syncPayButtons();
   updatePayHint();
-  if (window.location.hash) scrollToHashTarget();
+  if (window.location.hash && !window.__modumoduOpenAtTop) scrollToHashTarget();
 })();

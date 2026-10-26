@@ -15,6 +15,13 @@
   <link rel="icon" href="./favicon.svg?v=3" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link rel="stylesheet" href="./styles.css?v=21" />
+  <script>
+    if (location.hash === "#how") {
+      history.scrollRestoration = "manual";
+      window.__modumoduOpenAtTop = true;
+      history.replaceState(null, "", location.pathname + location.search);
+    }
+  </script>
   <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 </head>
 <body>
@@ -579,6 +586,6 @@
     <button type="button" id="jumpBottom" title="맨 아래로">▼</button>
   </nav>
   <script src="./config.js?v=11"></script>
-  <script src="./script.js?v=14"></script>
+  <script src="./script.js?v=15"></script>
 </body>
 </html>
