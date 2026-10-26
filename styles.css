@@ -549,6 +549,12 @@ button.header-share {
   color: var(--muted);
   line-height: 1.6;
 }
+.supplier-fees {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0 0 28px;
+}
 .plans-heading {
   margin: 8px 0 8px;
   font-family: var(--display);
@@ -959,6 +965,7 @@ button.header-share {
 
 @media (max-width: 980px) {
   .fee-split,
+  .supplier-fees,
   .ai-fee { grid-template-columns: 1fr; }
   .plans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .plan:first-child { grid-column: 1 / -1; }
