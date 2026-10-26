@@ -152,7 +152,29 @@
     window.location.href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 
-  function requestPay({ plan, planInfo, name, email, phone, payKey }) {
+  function showIssuedKey(boxId, fieldId, serial) {
+    const box = document.getElementById(boxId);
+    const field = document.getElementById(fieldId);
+    if (!serial || !box || !field) return;
+    field.value = serial;
+    box.hidden = false;
+  }
+
+  function extendPaidKey({ loginId, password, plan, email }) {
+    const api = String(cfg.memberApi || "").replace(/\/+$/, "");
+    if (!api) return Promise.reject(new Error("회원가입 주소가 아직 없습니다."));
+    return fetch(`${api}/api/account/extend`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ login_id: loginId, password, plan, email }),
+    }).then(async (response) => {
+      const result = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(result.detail || "사용기한을 늘리지 못했습니다.");
+      return result;
+    });
+  }
+
+  function requestPay({ plan, planInfo, name, email, phone, payKey, loginId, password }) {
     const method = cfg.payMethods?.[payKey];
     if (!method) {
       showToast("결제 수단을 다시 골라 주세요.");
@@ -191,23 +213,36 @@
       (response) => {
         if (payButton) payButton.disabled = false;
         if (response?.success || response?.imp_success) {
-          setPayStatus("결제가 완료되었습니다. 이용 키를 이메일로 보내 드립니다.");
+          setPayStatus("결제가 완료되었습니다. 사용기한을 늘리는 중입니다.");
           showToast("결제가 완료되었습니다.");
-          openInquiryMail({
-            planInfo,
-            name,
-            email,
-            phone,
-            message: [
-              form?.elements?.message?.value || "",
-              "",
-              `[결제완료]`,
-              `imp_uid: ${response.imp_uid || "-"}`,
-              `merchant_uid: ${response.merchant_uid || merchantUid}`,
-              `결제수단: ${method.label}`,
-            ].join("\n"),
-            payLabel: method.label,
-          });
+          extendPaidKey({ loginId, password, plan, email })
+            .then((result) => {
+              const serial = String(result.serial || "").trim();
+              showIssuedKey("paySerialBox", "paySerial", serial);
+              const mailed = result.emailed
+                ? "새 시리얼키를 이메일로도 보냈습니다."
+                : "이메일은 보내지 못했습니다. 화면에 나온 키를 복사해 두세요.";
+              setPayStatus(`사용기한 ${result.expires_at || ""}. ${mailed}`);
+            })
+            .catch((error) => {
+              const detail = error?.message || "사용기한을 늘리지 못했습니다.";
+              setPayStatus(detail);
+              openInquiryMail({
+                planInfo,
+                name,
+                email,
+                phone,
+                message: [
+                  form?.elements?.message?.value || "",
+                  "",
+                  "[결제완료, 사용기한 연장 실패]",
+                  detail,
+                  `imp_uid: ${response.imp_uid || "-"}`,
+                  `merchant_uid: ${response.merchant_uid || merchantUid}`,
+                ].join("\n"),
+                payLabel: method.label,
+              });
+            });
           return;
         }
         const reason = response?.error_msg || response?.error_msg || "결제가 취소되었거나 실패했습니다.";
@@ -251,6 +286,8 @@
     const name = String(data.get("name") || "").trim();
     const email = String(data.get("email") || "").trim();
     const phone = String(data.get("phone") || "").trim();
+    const loginId = String(data.get("login_id") || "").trim();
+    const password = String(data.get("password") || "");
     const message = String(data.get("message") || "").trim();
     const payLabel = cfg.payMethods?.[selectedPay]?.label || selectedPay;
 
@@ -259,8 +296,13 @@
       showToast("무료 체험 신청 메일을 열었습니다.");
       return;
     }
+    if (!loginId || !password) {
+      setPayStatus("가입 아이디와 비밀번호를 넣어야 결제한 기간만큼 사용기한을 늘립니다.");
+      showToast("가입 아이디와 비밀번호를 입력해 주세요.");
+      return;
+    }
 
-    requestPay({ plan: quote.plan, planInfo, name, email, phone, payKey: selectedPay });
+    requestPay({ plan: quote.plan, planInfo, name, email, phone, payKey: selectedPay, loginId, password });
   });
 
   const track = document.getElementById("marketsTrack");
@@ -399,14 +441,26 @@
 
   const joinForm = document.getElementById("join");
   const joinStatus = document.getElementById("joinStatus");
+  async function copyField(id) {
+    const value = document.getElementById(id)?.value || "";
+    if (!value) return;
+    try {
+      await navigator.clipboard.writeText(value);
+      showToast("시리얼키를 복사했습니다.");
+    } catch (error) {
+      showToast("시리얼키를 직접 복사해 주세요.");
+    }
+  }
+  document.getElementById("copyJoinSerial")?.addEventListener("click", () => copyField("joinSerial"));
+  document.getElementById("copyPaySerial")?.addEventListener("click", () => copyField("paySerial"));
 
   joinForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(joinForm);
     const loginId = String(data.get("login_id") || "").trim();
     const password = String(data.get("password") || "");
+    const email = String(data.get("email") || "").trim();
     const phone = String(data.get("phone") || "").trim();
-    const serial = String(data.get("serial") || "").trim();
     const api = String(cfg.memberApi || "").replace(/\/+$/, "");
     if (!api) {
       showToast("회원가입 주소가 아직 없습니다.");
@@ -416,7 +470,7 @@
     fetch(`${api}/api/account/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ login_id: loginId, password, phone, serial }),
+      body: JSON.stringify({ login_id: loginId, password, phone, email }),
     })
       .then(async (response) => {
         const result = await response.json().catch(() => ({}));
@@ -426,9 +480,21 @@
           showToast(detail);
           return;
         }
-        if (joinStatus) joinStatus.textContent = `${loginId} 님, 가입되었습니다. 테스트 주소에서 같은 아이디와 비밀번호로 들어가세요.`;
-        showToast("회원가입이 되었습니다.");
+        const serial = String(result.serial || "").trim();
         joinForm.reset();
+        const box = document.getElementById("joinSerialBox");
+        const field = document.getElementById("joinSerial");
+        if (serial && field && box) {
+          field.value = serial;
+          box.hidden = false;
+          const mailed = result.emailed
+            ? "이메일로도 보냈습니다."
+            : "이메일은 보내지 못했습니다. 화면에 나온 키를 복사해 두세요.";
+          if (joinStatus) joinStatus.textContent = `${loginId} 님, 가입되었습니다. 사용기한 ${result.expires_at || ""}. ${mailed} 테스트 주소에서는 아이디와 비밀번호만 입력합니다.`;
+        } else if (joinStatus) {
+          joinStatus.textContent = `${loginId} 님, 가입되었습니다. 테스트 주소에서 같은 아이디와 비밀번호로 들어가세요.`;
+        }
+        showToast(serial ? "회원가입이 되었습니다. 시리얼키를 복사해 두세요." : "회원가입이 되었습니다.");
       })
       .catch(() => {
         if (joinStatus) joinStatus.textContent = "가입 서버에 연결하지 못했습니다.";

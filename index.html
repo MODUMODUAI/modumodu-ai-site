@@ -14,7 +14,7 @@
   <link rel="canonical" href="https://modumoduai.github.io/modumodu-ai-site/" />
   <link rel="icon" href="./favicon.svg?v=3" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="stylesheet" href="./styles.css?v=22" />
+  <link rel="stylesheet" href="./styles.css?v=24" />
   <script>
     history.scrollRestoration = "manual";
     window.__modumoduOpenAtTop = true;
@@ -33,9 +33,10 @@
     </a>
     <div class="header-actions">
       <nav class="site-nav" aria-label="메뉴">
-        <a href="#plans">요금</a>
+        <a href="#plans">판매 상품</a>
         <a href="#suppliers">공급사</a>
         <a href="#how">이용 방법</a>
+        <a href="#usage">사용 영상</a>
         <a href="#join">회원가입</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -127,6 +128,41 @@
           <img src="./shots/05-settings.png?v=14" alt="마켓·AI 설정 화면" width="1440" height="900" loading="lazy" />
           <span class="sample-badge">샘플 화면</span>
           <figcaption><strong>설정</strong> · 마켓 연동 · AI는 쓸 때만</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="usage">
+      <h2>짧은 사용 영상</h2>
+      <p class="sub">상품명, 태그, 속성, 이미지를 화면에서 직접 누르는 장면입니다. 상품 정보는 샘플입니다.</p>
+      <div class="shot-grid">
+        <figure class="shot-card">
+          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-name.jpg?v=1" width="1440" height="900">
+            <source src="./shots/use-name.webm?v=1" type="video/webm" />
+            <source src="./shots/use-name.mp4?v=1" type="video/mp4" />
+          </video>
+          <figcaption><strong>상품명바꾸기</strong> · 카테고리 기반으로 이름을 만들고 저장</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-tags.jpg?v=1" width="1440" height="900">
+            <source src="./shots/use-tags.webm?v=1" type="video/webm" />
+            <source src="./shots/use-tags.mp4?v=1" type="video/mp4" />
+          </video>
+          <figcaption><strong>태그AI</strong> · 태그를 채운 뒤 태그 창에서 확인</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-attrs.jpg?v=1" width="1440" height="900">
+            <source src="./shots/use-attrs.webm?v=1" type="video/webm" />
+            <source src="./shots/use-attrs.mp4?v=1" type="video/mp4" />
+          </video>
+          <figcaption><strong>속성AI</strong> · 상세를 읽고 속성을 채운 뒤 속성 창에서 확인</figcaption>
+        </figure>
+        <figure class="shot-card">
+          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-image.jpg?v=1" width="1440" height="900">
+            <source src="./shots/use-image.webm?v=1" type="video/webm" />
+            <source src="./shots/use-image.mp4?v=1" type="video/mp4" />
+          </video>
+          <figcaption><strong>이미지바꾸기</strong> · 이미지를 고르고 글씨 제거를 실행</figcaption>
         </figure>
       </div>
     </section>
@@ -260,8 +296,8 @@
     </section>
 
     <section class="section" id="plans">
-      <h2>요금</h2>
-      <p class="sub">AI 자동가공을 안 쓰면 프로그램 이용료만 듭니다. 월 정가 20만원 — 지금 전 요금 일시한정 할인.</p>
+      <h2>판매 상품</h2>
+      <p class="sub">모두모두AI 프로그램 이용권입니다. 상품마다 이용 기간, 포함 기능, 판매가가 적혀 있습니다. AI 자동가공을 안 쓰면 이 이용료만 듭니다.</p>
 
       <div class="fee-split">
         <article class="fee-card">
@@ -281,49 +317,49 @@
       <div class="plans">
         <article class="plan" data-plan="trial">
           <span class="plan-tag">체험</span>
-          <div class="name">15일 무료</div>
+          <div class="name">모두모두AI 15일 이용권</div>
           <div class="price">0원</div>
-          <p class="desc">프로그램 이용료 없음. AI 안 쓰면 추가 비용 없음.</p>
+          <p class="desc">15일 동안 Windows PC에서 상품 가공, 오픈마켓 등록, 주문 확인을 씁니다. 프로그램 이용료는 없습니다. AI 자동가공을 켜지 않으면 추가 비용도 없습니다.</p>
           <a class="btn btn-line" href="#buy" data-plan="trial">무료 신청</a>
         </article>
         <article class="plan plan-sale" data-plan="m1">
           <span class="plan-off">-60%</span>
           <span class="plan-tag">일시한정</span>
-          <div class="name">1개월</div>
+          <div class="name">모두모두AI 1개월 이용권</div>
           <div class="price-was">정가 200,000원</div>
           <div class="price">80,000원</div>
           <p class="plan-save"><strong>120,000원</strong> 즉시 할인</p>
-          <p class="desc">수동·AI 가공 · 등록 · 주문 무제한.</p>
+          <p class="desc">1개월 이용권입니다. 상품 가공, 오픈마켓 등록, 주문·문의 처리를 기간 제한 없이 씁니다. 판매가 80,000원. 공급사 10개까지 포함됩니다.</p>
           <a class="btn btn-line" href="#buy" data-plan="m1">할인가로 결제</a>
         </article>
         <article class="plan plan-sale popular" data-plan="m3">
           <span class="plan-off">-65%</span>
           <span class="plan-tag">많이 고름</span>
-          <div class="name">3개월</div>
+          <div class="name">모두모두AI 3개월 이용권</div>
           <div class="price-was">정가 600,000원</div>
           <div class="price">210,000원 <small>월 환산 7만원</small></div>
           <p class="plan-save"><strong>390,000원</strong> 즉시 할인</p>
-          <p class="desc">수동·AI 가공 · 등록 · 주문 무제한.</p>
+          <p class="desc">3개월 이용권입니다. 상품 가공, 등록, 주문·문의, 마진 확인을 씁니다. 판매가 210,000원. 공급사 10개까지 포함됩니다.</p>
           <a class="btn btn-solid" href="#buy" data-plan="m3">할인가로 결제</a>
         </article>
         <article class="plan plan-sale" data-plan="m6">
           <span class="plan-off">-70%</span>
           <span class="plan-tag">장기</span>
-          <div class="name">6개월</div>
+          <div class="name">모두모두AI 6개월 이용권</div>
           <div class="price-was">정가 1,200,000원</div>
           <div class="price">360,000원 <small>월 환산 6만원</small></div>
           <p class="plan-save"><strong>840,000원</strong> 즉시 할인</p>
-          <p class="desc">수동·AI 가공 · 등록 · 주문 무제한.</p>
+          <p class="desc">6개월 이용권입니다. 상품 가공, 등록, 주문·문의, 마진 확인을 씁니다. 판매가 360,000원. 공급사 10개까지 포함됩니다.</p>
           <a class="btn btn-line" href="#buy" data-plan="m6">할인가로 결제</a>
         </article>
         <article class="plan plan-sale plan-sale-max" data-plan="y1">
           <span class="plan-off">-75%</span>
           <span class="plan-tag">최대 할인</span>
-          <div class="name">1년</div>
+          <div class="name">모두모두AI 1년 이용권</div>
           <div class="price-was">정가 2,400,000원</div>
           <div class="price">600,000원 <small>월 환산 5만원</small></div>
           <p class="plan-save"><strong>1,800,000원</strong> 즉시 할인</p>
-          <p class="desc">수동·AI 가공 · 등록 · 주문 무제한.</p>
+          <p class="desc">1년 이용권입니다. 상품 가공, 등록, 주문·문의, 마진 확인을 씁니다. 판매가 600,000원. 공급사 10개까지 포함됩니다.</p>
           <a class="btn btn-line" href="#buy" data-plan="y1">할인가로 결제</a>
         </article>
       </div>
@@ -373,12 +409,12 @@
 
     <section class="section" id="how">
       <h2>이용 방법</h2>
-      <p class="sub">테스트용은 처음 가입할 때 시리얼키를 넣고, 다음부터는 아이디와 비밀번호로 들어갑니다.</p>
+      <p class="sub">가입하면 시리얼키를 화면과 이메일로 받습니다. 테스트 주소에서는 다음부터 아이디와 비밀번호로 들어갑니다.</p>
       <div class="steps">
         <div class="step">
           <span>1</span>
           <strong>회원가입</strong>
-          <p>아이디, 비밀번호, 전화번호, 시리얼키를 입력합니다.</p>
+          <p>아이디, 비밀번호, 이메일, 전화번호를 입력하면 시리얼키가 화면과 이메일로 나옵니다.</p>
         </div>
         <div class="step">
           <span>2</span>
@@ -388,26 +424,31 @@
         <div class="step">
           <span>3</span>
           <strong>기간을 정해 결제</strong>
-          <p>계속 쓰려면 아래에서 기간을 고르고 결제합니다. 이용 키를 이메일로 보내 드립니다.</p>
+          <p>결제한 기간만큼 시리얼키 사용기한을 늘리고, 새 키를 화면과 이메일로 보내 드립니다.</p>
         </div>
       </div>
       <form class="buy-panel join-panel" id="join">
         <h3>회원가입</h3>
-        <p>처음 가입할 때 시리얼키를 입력합니다. 테스트 주소에서는 다음부터 아이디와 비밀번호만 입력합니다.</p>
+        <p>아이디, 비밀번호, 이메일, 전화번호를 넣으면 시리얼키를 화면과 이메일로 보내 드립니다. 테스트 주소에서는 다음부터 아이디와 비밀번호만 입력합니다.</p>
         <label>아이디
           <input name="login_id" autocomplete="username" required minlength="4" maxlength="40" placeholder="영문, 숫자 4자 이상" />
         </label>
         <label>비밀번호
           <input name="password" type="password" autocomplete="new-password" required minlength="8" placeholder="8자 이상" />
         </label>
+        <label>이메일
+          <input name="email" type="email" autocomplete="email" required placeholder="you@example.com" />
+        </label>
         <label>전화번호
           <input name="phone" type="tel" autocomplete="tel" required placeholder="010-0000-0000" />
         </label>
-        <label>시리얼키
-          <input name="serial" autocomplete="off" required placeholder="발급받은 시리얼키" />
-        </label>
         <button class="btn btn-primary" type="submit">가입하기</button>
         <p class="pay-status" id="joinStatus"></p>
+        <p id="joinSerialBox" hidden>
+          <span>발급된 시리얼키</span>
+          <input id="joinSerial" readonly />
+          <button class="btn btn-line" id="copyJoinSerial" type="button">시리얼키 복사</button>
+        </p>
         <p><a href="https://49.247.136.222:8443/">테스트 주소에서 로그인</a></p>
       </form>
     </section>
@@ -528,6 +569,14 @@
             </div>
           </div>
           <label>
+            가입 아이디
+            <input name="login_id" autocomplete="username" placeholder="회원가입한 아이디" />
+          </label>
+          <label>
+            비밀번호
+            <input name="password" type="password" autocomplete="current-password" placeholder="가입 비밀번호" />
+          </label>
+          <label>
             이름
             <input name="name" type="text" autocomplete="name" placeholder="홍길동" required />
           </label>
@@ -544,6 +593,11 @@
             <textarea name="message" placeholder="사용 중인 오픈마켓, 문의 내용"></textarea>
           </label>
           <p class="pay-status" id="payStatus"></p>
+          <p id="paySerialBox" hidden>
+            <span>늘어난 시리얼키</span>
+            <input id="paySerial" readonly />
+            <button class="btn btn-line" id="copyPaySerial" type="button">시리얼키 복사</button>
+          </p>
           <button class="btn btn-primary" id="paySubmit" type="submit">결제하기</button>
         </form>
         <aside class="buy-aside">
@@ -558,7 +612,8 @@
           <p><strong>문의</strong></p>
           <ul>
             <li>이메일: <a id="contactEmail" href="mailto:modumoduai@gmail.com">modumoduai@gmail.com</a></li>
-            <li>전화번호: <a href="tel:010-9214-6997">010-9214-6997</a></li>
+            <li>유선전화: <a href="tel:070-7629-9306">070-7629-9306</a></li>
+            <li>휴대폰: <a href="tel:010-9214-6997">010-9214-6997</a></li>
           </ul>
         </aside>
       </div>
@@ -567,16 +622,17 @@
 
   <footer class="site-footer">
     <div class="biz-info">
-      <strong>모두모두</strong>
+      <strong>상호 모두모두</strong>
       <span>대표자 박태순</span>
       <span>사업자등록번호 534-21-00736</span>
       <span>주소 서울특별시 서초구 양재대로2길 11, 503동 301호(우면동, 호반써밋서초파크뷰)</span>
-      <span>전화번호 010-9214-6997</span>
+      <span>유선전화 <a href="tel:070-7629-9306">070-7629-9306</a></span>
+      <span>휴대폰 <a href="tel:010-9214-6997">010-9214-6997</a></span>
       <span>이메일 <a href="mailto:modumoduai@gmail.com">modumoduai@gmail.com</a></span>
     </div>
     <div class="biz-links">
       <a href="./terms.html">이용약관</a>
-      <a href="./privacy.html">개인정보처리방침</a>
+      <a href="./privacy.html">개인정보취급방침</a>
       <a href="./index.html#policy">환불 정책</a>
     </div>
   </footer>
@@ -586,7 +642,7 @@
     <button type="button" id="jumpTop" title="맨 위로">▲</button>
     <button type="button" id="jumpBottom" title="맨 아래로">▼</button>
   </nav>
-  <script src="./config.js?v=11"></script>
-  <script src="./script.js?v=16"></script>
+  <script src="./config.js?v=12"></script>
+  <script src="./script.js?v=18"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 window.MODUMODU_SITE = {
   contactEmail: "modumoduai@gmail.com",
   contactPhone: "010-9214-6997",
+  contactLandline: "070-7629-9306",
   contactKakao: "",
   contactBank: "안내 후 개별 전달",
   maxPcs: 0,

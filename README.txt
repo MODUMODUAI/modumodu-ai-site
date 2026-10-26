@@ -14,6 +14,7 @@
 - 화면 글·구조: website\index.html
 - 색·레이아웃: website\styles.css
 - 히어로 15초 영상: website\shots\hero-demo.webm (슬라이드)
+- 짧은 사용 영상: website\shots\use-name, use-tags, use-attrs, use-image (상품명·태그·속성·이미지)
   python website\shots\_make_hero_slideshow.py
   익명화 PNG(01~06)로 만들어 실마켓 정보가 들어가지 않습니다.
 
@@ -21,11 +22,11 @@
 1. https://admin.portone.io 에서 가맹점 식별코드(imp…)를 받습니다.
 2. 결제 채널에서 카카오페이, 네이버페이, 토스페이를 켭니다.
 3. website\config.js 의 portoneImpCode 에 코드를 넣습니다.
-4. 결제 완료 후 서버 검증·키 자동 발급은 아직 없습니다. 지금은 완료 안내 + 메일로 주문 정보가 갑니다.
+4. 결제창이 연결되면 결제가 끝난 뒤 가입 아이디의 시리얼키 사용기한을 결제한 기간만큼 늘리고, 새 키를 화면과 이메일로 보냅니다. 가맹 연결 전에는 문의 메일을 엽니다.
 
 이용 범위
-- Windows PC 5대까지 (판매 페이지 FAQ·앱 설정 > 이용 키와 동일)
-- 앱: app/license.py 의 MAX_DEVICES=5, /api/license
+- PC 대수 제한 없음 (판매 페이지와 이용 키 기본값)
+- 앱: app/license.py 의 MAX_DEVICES=0 이면 PC 대수 제한 없음. /api/license
 - 키 발급 예: LICENSE_SIGNING_SECRET=비밀 .venv\Scripts\python.exe -c "from app.license import issue_key; print(issue_key(expires_at='2027-12-31', plan='m3'))"
 - 여러 PC에 걸쳐 대수를 강제하려면 LICENSE_SERVER_URL(또는 license_url.txt) 필요
 
@@ -38,8 +39,7 @@
 - 사이트 다시 올릴 때: website 폴더만 그 저장소 main 에 푸시하면 Pages가 갱신됩니다.
 
 아직 없는 것
-- 결제 완료 서버 검증(웹훅)
-- 결제 후 라이선스 키 자동 발급
+- 포트원 결제 확인 뒤에만 사용기한을 늘리는 잠금
 - 고유 도메인(예: modumodu.ai) 연결
 
 시험용 다운로드
@@ -48,4 +48,4 @@
 - 받는 주소: GitHub Releases `test-2026.10.22.8` 의 modumodu-trial.zip
 - 가입 명단은 서버 프로그램의 고객 화면 「사이트 가입」에 나옵니다. 비밀번호는 저장하지 않습니다.
 
-월 정가 100,000원. 전 요금 일시한정 할인(1개월 -30% ~ 1년 -60%). config.js · index.html.
+월 정가 200,000원. 실 결제액은 1개월 80,000원, 3개월 210,000원(월 7만원), 6개월 360,000원(월 6만원), 1년 600,000원(월 5만원). config.js · index.html.
