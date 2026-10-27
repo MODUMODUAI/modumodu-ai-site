@@ -867,19 +867,22 @@
                 </tr>
               </tbody>
             </table>
-            <div class="inquiry-old">
-              <label>기존 답변 (읽기 전용)<textarea id="inquiryAnswerView" readonly tabindex="-1"></textarea></label>
-              <label>답변일<input id="inquiryAnswerAt" readonly tabindex="-1" /></label>
-            </div>
-            <div class="inquiry-new">
-              <label>새 답변 제목<input id="inquiryAnswerTitle" autocomplete="off" /></label>
-              <label>새 답변 내용<textarea id="inquiryAnswerDraft" placeholder="여기에 답변을 입력하세요"></textarea></label>
+            <div class="inquiry-compose">
+              <div id="inquiryOldWrap" class="inquiry-old" hidden>
+                <label>이전 답변 (읽기 전용)<textarea id="inquiryAnswerView" readonly tabindex="-1"></textarea></label>
+                <label>답변일<input id="inquiryAnswerAt" readonly tabindex="-1" /></label>
+              </div>
+              <div class="inquiry-new">
+                <p class="inquiry-compose-hint">아래에 답변을 입력한 뒤 「답변 전송」을 누르세요.</p>
+                <label>답변 제목<input id="inquiryAnswerTitle" autocomplete="off" placeholder="선택 사항" /></label>
+                <label>답변내용<textarea id="inquiryAnswerDraft" placeholder="답변내용을 여기에 입력하세요" rows="8"></textarea></label>
+              </div>
             </div>
           </div>
           <div id="inquiryPaneBatch" class="inquiry-batch" hidden>
             <p>선택한 <strong id="inquiryBatchCount">0</strong>건에 같은 답변을 보냅니다.</p>
-            <label>새 답변 제목<input id="inquiryBatchTitle" /></label>
-            <label>새 답변 내용<textarea id="inquiryBatchBody"></textarea></label>
+            <label>답변 제목<input id="inquiryBatchTitle" placeholder="선택 사항" /></label>
+            <label>답변내용<textarea id="inquiryBatchBody" placeholder="답변내용을 여기에 입력하세요" rows="8"></textarea></label>
           </div>
           <div class="inquiry-detail-foot">
             <select id="inquiryTemplate" title="답변 템플릿">

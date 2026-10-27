@@ -11937,20 +11937,22 @@ function fillInquiryDetail(item) {
   if ($("#inquiryProductName")) $("#inquiryProductName").textContent = item.product_name || "";
   if ($("#inquiryTitle")) $("#inquiryTitle").textContent = inquiryTitleText(item);
   if ($("#inquiryContent")) $("#inquiryContent").value = item.content || "";
-  if ($("#inquiryAnswerView")) $("#inquiryAnswerView").value = item.answer || "";
+  const previous = String(item.answer || "").trim();
+  if ($("#inquiryAnswerView")) $("#inquiryAnswerView").value = previous;
   if ($("#inquiryAnswerAt")) $("#inquiryAnswerAt").value = item.answer_at ? formatOrderDate(item.answer_at) : "";
+  const oldWrap = $("#inquiryOldWrap");
+  if (oldWrap) oldWrap.hidden = !previous;
   const draft = $("#inquiryAnswerDraft");
   const draftTitle = $("#inquiryAnswerTitle");
-  if (draft) {
-    draft.readOnly = false;
-    draft.disabled = false;
-    draft.removeAttribute("readonly");
-  }
-  if (draftTitle) {
-    draftTitle.readOnly = false;
-    draftTitle.disabled = false;
-    draftTitle.removeAttribute("readonly");
-  }
+  const batchBody = $("#inquiryBatchBody");
+  const batchTitle = $("#inquiryBatchTitle");
+  [draft, draftTitle, batchBody, batchTitle].forEach((field) => {
+    if (!field) return;
+    field.readOnly = false;
+    field.disabled = false;
+    field.removeAttribute("readonly");
+    field.removeAttribute("disabled");
+  });
   if (!same) {
     if (draftTitle) draftTitle.value = "";
     if (draft) draft.value = "";
@@ -11959,7 +11961,8 @@ function fillInquiryDetail(item) {
   loadInquiryTemplates(item.market_id).catch(() => {});
   if (!same && draft && !panel.hidden) {
     requestAnimationFrame(() => {
-      try { draft.focus({ preventScroll: false }); } catch (_) { draft.focus(); }
+      draft.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      try { draft.focus({ preventScroll: true }); } catch (_) { draft.focus(); }
     });
   }
 }
@@ -12003,7 +12006,13 @@ function applyInquiryTemplate() {
   const title = batch ? $("#inquiryBatchTitle") : $("#inquiryAnswerTitle");
   const body = batch ? $("#inquiryBatchBody") : $("#inquiryAnswerDraft");
   if (title && !title.value) title.value = option.dataset.title || "";
-  if (body) body.value = option.dataset.content || body.value;
+  if (body) {
+    body.readOnly = false;
+    body.disabled = false;
+    body.removeAttribute("readonly");
+    body.value = option.dataset.content || body.value;
+    body.focus();
+  }
 }
 
 async function sendInquiryAnswer() {
