@@ -475,6 +475,20 @@
   document.getElementById("copyJoinSerial")?.addEventListener("click", () => copyField("joinSerial"));
   document.getElementById("copyPaySerial")?.addEventListener("click", () => copyField("paySerial"));
 
+  function showDownload() {
+    const box = document.getElementById("joinDownload");
+    const link = document.getElementById("joinDownloadLink");
+    const url = String(cfg.downloadUrl || "").trim();
+    if (!box || !link || !url) return;
+    link.href = url;
+    box.hidden = false;
+    box.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+  document.getElementById("downloadAgain")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    showDownload();
+  });
+
   joinForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(joinForm);
@@ -515,7 +529,9 @@
         } else if (joinStatus) {
           joinStatus.textContent = `${loginId} 님, 가입되었습니다. 테스트 주소에서 같은 아이디와 비밀번호로 들어가세요.`;
         }
-        showToast(serial ? "회원가입이 되었습니다. 시리얼키를 복사해 두세요." : "회원가입이 되었습니다.");
+        showDownload();
+        if (joinStatus) joinStatus.textContent = `${loginId} 님, 가입되었습니다. 7일 무료 체험이 시작되었습니다 (사용기한 ${result.expires_at || ""}). 아래에서 프로그램을 내려받으세요.`;
+        showToast("회원가입이 되었습니다. 프로그램을 내려받으세요.");
       })
       .catch(() => {
         if (joinStatus) joinStatus.textContent = "가입 서버에 연결하지 못했습니다.";

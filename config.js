@@ -9,6 +9,8 @@ window.MODUMODU_SITE = {
   siteUrl: "https://modumoduai.github.io/modumodu-ai-site",
   /** 회원가입 주소. 비어 있으면 가입 버튼이 준비 중으로 남습니다. */
   memberApi: "https://43-200-32-76.sslip.io:8443",
+  /** 프로그램 내려받기 (Windows). 업데이트를 게시하면 항상 최신 셀러용 설치 파일을 가리킵니다. */
+  downloadUrl: "https://github.com/MODUMODUAI/smartstore-uploader/releases/latest/download/MODUMODU-seller-setup.zip",
 
   /**
    * 포트원(구 아임포트) 가맹점 식별코드.
@@ -18,7 +20,7 @@ window.MODUMODU_SITE = {
    */
   portoneImpCode: "",
   plans: {
-    trial: { label: "프로그램 15일 무료", price: "0원", amount: 0, months: 0 },
+    trial: { label: "프로그램 7일 무료", price: "0원", amount: 0, months: 0 },
     m1: { label: "프로그램 1개월", price: "80,000원", amount: 80000, was: "200,000원", months: 1 },
     m3: { label: "프로그램 3개월", price: "210,000원", amount: 210000, was: "600,000원", months: 3 },
     m6: { label: "프로그램 6개월", price: "360,000원", amount: 360000, was: "1,200,000원", months: 6 },

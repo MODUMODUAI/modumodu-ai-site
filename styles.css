@@ -1057,3 +1057,11 @@ main { flex: 1 0 auto; }
 /* refund-policy */
 .policy-list { margin: 6px 0 10px; padding-left: 20px; line-height: 1.7; }
 .policy-formula { display: inline-block; margin: 4px 0 8px; padding: 8px 14px; border-radius: 8px; background: rgba(47, 128, 237, 0.1); font-weight: 700; }
+
+/* download-box */
+.download-box { margin-top: 14px; padding: 14px 16px; border-radius: 12px; border: 1px solid rgba(47, 124, 246, 0.35); background: rgba(47, 124, 246, 0.08); display: grid; gap: 10px; }
+.download-box .btn { justify-self: start; }
+.download-box ol { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.7; }
+.download-again { font-size: 13px; }
+.download-box a.btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 22px; border-radius: 10px; background: #fff; color: #0b4fb3 !important; font-weight: 700; text-decoration: none; }
+.download-box a.btn:hover { background: #eaf2ff; }
