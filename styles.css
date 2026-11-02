@@ -1053,3 +1053,7 @@ main { flex: 1 0 auto; }
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cpath d='M0 80H160M80 0V160' stroke='rgba(255,255,255,0.08)' stroke-width='1'/%3E%3C/svg%3E");
   }
 }
+
+/* refund-policy */
+.policy-list { margin: 6px 0 10px; padding-left: 20px; line-height: 1.7; }
+.policy-formula { display: inline-block; margin: 4px 0 8px; padding: 8px 14px; border-radius: 8px; background: rgba(47, 128, 237, 0.1); font-weight: 700; }
