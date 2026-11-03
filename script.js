@@ -520,6 +520,10 @@
     }, "resetStatus");
   });
   document.getElementById("changeSend")?.addEventListener("click", () => {
+    if (document.getElementById("changeNew").value !== document.getElementById("changeNew2").value) {
+      document.getElementById("changeStatus").textContent = "새 비밀번호와 확인이 다릅니다.";
+      return;
+    }
     memberPost("/api/account/change-password", {
       login_id: document.getElementById("changeId").value.trim(),
       old_password: document.getElementById("changeOld").value,
@@ -532,6 +536,11 @@
     const data = new FormData(joinForm);
     const loginId = String(data.get("login_id") || "").trim();
     const password = String(data.get("password") || "");
+    if (password !== String(data.get("password2") || "")) {
+      if (joinStatus) joinStatus.textContent = "비밀번호와 비밀번호 확인이 다릅니다.";
+      showToast("비밀번호와 비밀번호 확인이 다릅니다.");
+      return;
+    }
     const email = String(data.get("email") || "").trim();
     const phone = String(data.get("phone") || "").trim();
     const api = String(cfg.memberApi || "").replace(/\/+$/, "");
