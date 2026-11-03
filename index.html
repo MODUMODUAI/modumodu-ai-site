@@ -140,6 +140,13 @@
       <p class="sub">상품담기와 상품가공은 화면을 따라가며 조금 길게 보여 줍니다. 이름·태그·속성·이미지는 짧은 장면입니다. 상품 정보는 샘플입니다.</p>
       <div class="shot-grid">
         <figure class="shot-card shot-card-wide">
+          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-all.jpg?v=1" width="1440" height="900">
+            <source src="./shots/use-all.webm?v=1" type="video/webm" />
+            <source src="./shots/use-all.mp4?v=1" type="video/mp4" />
+          </video>
+          <figcaption><strong>한번에 수정 (새 기능)</strong> · 카테고리 → 상품명 → 속성 → 태그 → 이미지 → 상세페이지를 단계 탭으로 오가며 한 상품을 끝까지 다듬습니다</figcaption>
+        </figure>
+        <figure class="shot-card shot-card-wide">
           <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-collect.jpg?v=1" width="1440" height="900">
             <source src="./shots/use-collect.webm?v=1" type="video/webm" />
             <source src="./shots/use-collect.mp4?v=1" type="video/mp4" />
@@ -322,11 +329,35 @@
             </tr>
             <tr>
               <th scope="row">AI 가공</th>
-              <td class="us">상품명·태그·속성<br />상세페이지·이미지<br />안 쓰면 프로그램 값만</td>
+              <td class="us">상품명·태그·속성<br />상세페이지·이미지<br />키 없이 AI 포인트로 · 안 쓰면 0원</td>
               <td>AI 크레딧<br />월 2,400</td>
               <td>공개 안내에 없음</td>
               <td>상세·상품 AI 안내</td>
               <td>그 비교에는 미지원</td>
+            </tr>
+            <tr>
+              <th scope="row">상품명 키워드</th>
+              <td class="us">네이버 쇼핑키워드<br />월간 검색수 순</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+            </tr>
+            <tr>
+              <th scope="row">브랜드·금지어</th>
+              <td class="us">상품명·태그에서 자동 차단<br />태그사전 번호 표시</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+            </tr>
+            <tr>
+              <th scope="row">한 상품 한번에 수정</th>
+              <td class="us">카테고리~상세페이지<br />6단계를 한 흐름으로</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
             </tr>
             <tr>
               <th scope="row">쓰는 곳</th>
@@ -339,8 +370,8 @@
           </tbody>
         </table>
       </div>
-      <p class="compare-boast">모두모두AI는 상품명, 태그, 속성, 상세페이지, 이미지를 AI로 한 화면에서 고칩니다. 표에서 직접 고쳐도 되고, AI를 끄면 프로그램 이용료만 냅니다.</p>
-      <p class="compare-note">A사·D사 칸은 2026년 1월에 공개된 같은 가격대 비교를 옮겼습니다. B사 상품관리 요금은 부가세 포함입니다. 판매자 아이디는 10개 또는 50개이고, 아이디 1개와 등록·수정·주문 1,000건은 각각 월 22,000원에 더할 수 있습니다. 배송은 별도입니다. C사 칸은 공개 요금표의 정가 월 8만 원 칸을 12개월 20%로 본 금액이고, 부가세는 별도입니다. 상품 등록은 원상품 수에 쇼핑몰 수를 곱해 빠집니다. 더 낮거나 높은 요금제도 있습니다.</p>
+      <p class="compare-boast">모두모두AI는 카테고리부터 상세페이지까지 '한번에 수정'으로 한 흐름에서 고치고, 상품명은 네이버 쇼핑키워드로 만들며, 브랜드·금지어는 자동으로 막습니다. AI는 키 없이 AI 포인트로 쓰고, 안 쓰면 프로그램 이용료만 냅니다.</p>
+      <p class="compare-note">'공개 안내에서 확인 안 됨'은 각 회사 공개 안내에서 해당 기능을 찾지 못했다는 뜻이며, 기능이 없다는 뜻은 아닙니다. A사·D사 칸은 2026년 1월에 공개된 같은 가격대 비교를 옮겼습니다. B사 상품관리 요금은 부가세 포함입니다. 판매자 아이디는 10개 또는 50개이고, 아이디 1개와 등록·수정·주문 1,000건은 각각 월 22,000원에 더할 수 있습니다. 배송은 별도입니다. C사 칸은 공개 요금표의 정가 월 8만 원 칸을 12개월 20%로 본 금액이고, 부가세는 별도입니다. 상품 등록은 원상품 수에 쇼핑몰 수를 곱해 빠집니다. 더 낮거나 높은 요금제도 있습니다.</p>
     </section>
 
     <section class="section" id="plans">
