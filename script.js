@@ -179,13 +179,13 @@
     box.hidden = false;
   }
 
-  function extendPaidKey({ loginId, password, plan, email }) {
+  function extendPaidKey({ loginId, password, plan, email, impUid }) {
     const api = String(cfg.memberApi || "").replace(/\/+$/, "");
     if (!api) return Promise.reject(new Error("회원가입 주소가 아직 없습니다."));
     return fetch(`${api}/api/account/extend`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ login_id: loginId, password, plan, email }),
+      body: JSON.stringify({ login_id: loginId, password, plan, email, imp_uid: impUid }),
     }).then(async (response) => {
       const result = await response.json().catch(() => ({}));
       if (!response.ok) throw new Error(result.detail || "사용기한을 늘리지 못했습니다.");
@@ -234,7 +234,7 @@
         if (response?.success || response?.imp_success) {
           setPayStatus("결제가 완료되었습니다. 사용기한을 늘리는 중입니다.");
           showToast("결제가 완료되었습니다.");
-          extendPaidKey({ loginId, password, plan, email })
+          extendPaidKey({ loginId, password, plan, email, impUid: response.imp_uid })
             .then((result) => {
               const serial = String(result.serial || "").trim();
               showIssuedKey("paySerialBox", "paySerial", serial);
@@ -476,7 +476,7 @@
   document.getElementById("copyPaySerial")?.addEventListener("click", () => copyField("paySerial"));
 
   function showDownload() {
-    const box = document.getElementById("joinDownload");
+    const box = document.getElementById("download");
     const link = document.getElementById("joinDownloadLink");
     const url = String(cfg.downloadUrl || "").trim();
     if (!box || !link || !url) return;
@@ -529,6 +529,73 @@
       old_password: document.getElementById("changeOld").value,
       new_password: document.getElementById("changeNew").value,
     }, "changeStatus");
+  });
+
+  // ----- AI 포인트 충전 -----
+  const pointsForm = document.getElementById("pointsForm");
+  let pointsPay = "kakaopay";
+  const pointsSelect = document.getElementById("pointsPack");
+  Object.entries(cfg.aiPoints || {}).forEach(([key, item]) => {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = `${item.label} · ${Number(item.amount).toLocaleString("ko-KR")}원`;
+    pointsSelect?.append(option);
+  });
+  document.querySelectorAll("[data-points-pay]").forEach((button) => {
+    button.addEventListener("click", () => {
+      pointsPay = button.getAttribute("data-points-pay") || "kakaopay";
+      document.querySelectorAll("[data-points-pay]").forEach((node) => node.classList.toggle("active", node === button));
+    });
+  });
+  pointsForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const status = document.getElementById("pointsStatus");
+    const data = new FormData(pointsForm);
+    const loginId = String(data.get("login_id") || "").trim();
+    const password = String(data.get("password") || "");
+    const pack = String(data.get("pack") || "");
+    const item = (cfg.aiPoints || {})[pack];
+    const method = cfg.payMethods?.[pointsPay];
+    const api = String(cfg.memberApi || "").replace(/\/+$/, "");
+    if (!item || !method || !api) return;
+    if (!ensurePortone()) {
+      if (status) status.textContent = "결제 연결 준비 중입니다. 문의해 주시면 포인트를 넣어 드립니다.";
+      return;
+    }
+    const merchantUid = `modumodu_points_${pack}_${Date.now()}`;
+    if (status) status.textContent = `${method.label} 결제창을 여는 중…`;
+    window.IMP.request_pay(
+      {
+        pg: method.pg,
+        pay_method: "card",
+        merchant_uid: merchantUid,
+        name: `모두모두AI AI포인트 ${item.label}`,
+        amount: item.amount,
+        buyer_name: loginId,
+        m_redirect_url: `${window.location.origin}${window.location.pathname}#points`,
+      },
+      (response) => {
+        if (!(response?.success || response?.imp_success)) {
+          if (status) status.textContent = response?.error_msg || "결제가 취소되었거나 실패했습니다.";
+          return;
+        }
+        if (status) status.textContent = "결제가 완료되었습니다. 포인트를 넣는 중입니다.";
+        fetch(`${api}/api/account/add-points`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ login_id: loginId, password, pack, imp_uid: response.imp_uid }),
+        })
+          .then(async (res) => {
+            const result = await res.json().catch(() => ({}));
+            if (!res.ok) throw new Error(result.detail || "포인트를 넣지 못했습니다.");
+            if (status) status.textContent = `${Number(result.added).toLocaleString("ko-KR")}포인트를 넣었습니다. 남은 포인트 ${Number(result.remaining).toLocaleString("ko-KR")}. 프로그램에는 몇 분 안에 자동으로 들어갑니다.`;
+            showToast("AI 포인트를 충전했습니다.");
+          })
+          .catch((error) => {
+            if (status) status.textContent = `${error.message} (결제번호 ${response.imp_uid} — 문의해 주시면 바로 처리합니다)`;
+          });
+      }
+    );
   });
 
   joinForm?.addEventListener("submit", (event) => {

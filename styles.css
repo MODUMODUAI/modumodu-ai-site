@@ -1073,3 +1073,8 @@ main { flex: 1 0 auto; }
 /* account-help */
 .account-help { margin-top: 18px; }
 .account-help h3 + p { margin-top: 0; }
+
+/* points */
+#pointsPay { display: flex; gap: 8px; flex-wrap: wrap; }
+#pointsPay button { padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: inherit; cursor: pointer; }
+#pointsPay button.active { background: #fff; color: #0b4fb3; font-weight: 700; }

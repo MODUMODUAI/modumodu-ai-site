@@ -27,6 +27,12 @@ window.MODUMODU_SITE = {
     y1: { label: "프로그램 1년 + 무료 7일", price: "600,000원", amount: 600000, was: "2,400,000원", months: 12 },
     ownerclan: { label: "오너클랜만 추가", price: "30,000원", amount: 30000, months: 1, ownerclanOnly: true },
   },
+  /** AI 포인트 충전 (프로그램 이용료와 따로). 서버 app/payments.py 의 AI_POINT_PACKS 와 금액을 맞춥니다. */
+  aiPoints: {
+    p1000: { label: "1,000포인트", points: 1000, amount: 9900 },
+    p5000: { label: "5,000포인트", points: 5000, amount: 39000 },
+    p10000: { label: "10,000포인트", points: 10000, amount: 69000 },
+  },
   mallAccounts: {
     freeCount: 20,
     packSize: 10,
