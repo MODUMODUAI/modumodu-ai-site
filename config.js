@@ -44,9 +44,12 @@ window.MODUMODU_SITE = {
     packMonthly: 50000,
     ownerclanMonthly: 30000,
   },
+  /**
+   * 결제: KG이니시스 (포트원 연동). 카드 결제창 안에서 카카오페이·네이버페이·토스페이 등 간편결제도 고를 수 있습니다.
+   * 포트원 관리자에서 KG이니시스 채널을 켜고, 이니시스 상점아이디(MID)가 있으면 pg 를 "html5_inicis.MID값" 으로 바꿉니다.
+   */
   payMethods: {
-    kakaopay: { label: "카카오페이", pg: "kakaopay" },
-    naverpay: { label: "네이버페이", pg: "naverpay" },
-    tosspay: { label: "토스페이", pg: "tosspay" },
+    card: { label: "카드·간편결제", pg: "html5_inicis", method: "card" },
+    trans: { label: "계좌이체", pg: "html5_inicis", method: "trans" },
   },
 };

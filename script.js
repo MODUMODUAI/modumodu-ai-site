@@ -4,7 +4,7 @@
   const planSelect = document.getElementById("planSelect");
   const form = document.getElementById("orderForm");
   const payStatus = document.getElementById("payStatus");
-  let selectedPay = "kakaopay";
+  let selectedPay = "card";
   let portoneReady = false;
 
   function showToast(message) {
@@ -220,7 +220,7 @@
     window.IMP.request_pay(
       {
         pg: method.pg,
-        pay_method: "card",
+        pay_method: method.method || "card",
         merchant_uid: merchantUid,
         name: `모두모두AI ${planInfo.label}${planInfo.mallLabel ? ` + ${planInfo.mallLabel}` : ""}${planInfo.supplierLabel ? ` + ${planInfo.supplierLabel}` : ""}`,
         amount: planInfo.amount,
@@ -282,7 +282,7 @@
 
   document.querySelectorAll("[data-pay]").forEach((node) => {
     node.addEventListener("click", () => {
-      selectedPay = node.getAttribute("data-pay") || "kakaopay";
+      selectedPay = node.getAttribute("data-pay") || "card";
       syncPayButtons();
       updatePayHint();
     });
@@ -533,7 +533,7 @@
 
   // ----- AI 포인트 충전 -----
   const pointsForm = document.getElementById("pointsForm");
-  let pointsPay = "kakaopay";
+  let pointsPay = "card";
   const pointsSelect = document.getElementById("pointsPack");
   Object.entries(cfg.aiPoints || {}).forEach(([key, item]) => {
     const option = document.createElement("option");
@@ -543,7 +543,7 @@
   });
   document.querySelectorAll("[data-points-pay]").forEach((button) => {
     button.addEventListener("click", () => {
-      pointsPay = button.getAttribute("data-points-pay") || "kakaopay";
+      pointsPay = button.getAttribute("data-points-pay") || "card";
       document.querySelectorAll("[data-points-pay]").forEach((node) => node.classList.toggle("active", node === button));
     });
   });
@@ -567,7 +567,7 @@
     window.IMP.request_pay(
       {
         pg: method.pg,
-        pay_method: "card",
+        pay_method: method.method || "card",
         merchant_uid: merchantUid,
         name: `모두모두AI AI포인트 ${item.label}`,
         amount: item.amount,
