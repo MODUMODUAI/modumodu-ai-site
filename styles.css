@@ -1078,3 +1078,6 @@ main { flex: 1 0 auto; }
 #pointsPay { display: flex; gap: 8px; flex-wrap: wrap; }
 #pointsPay button { padding: 8px 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.25); background: transparent; color: inherit; cursor: pointer; }
 #pointsPay button.active { background: #fff; color: #0b4fb3; font-weight: 700; }
+
+/* points-table */
+.points-table { margin: 6px 0 14px; padding-left: 18px; line-height: 1.8; }
