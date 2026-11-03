@@ -19,6 +19,18 @@ window.MODUMODU_SITE = {
    * https://admin.portone.io 에서 발급·채널(카카오페이/네이버페이/토스페이)을 켠 뒤 넣으세요.
    */
   portoneImpCode: "",
+
+  /**
+   * 결제사 설정 (승인 메일이 오면 여기만 채우면 됩니다)
+   * - inicisMid: KG이니시스 상점아이디(MID). 포트원에 이니시스 채널이 하나뿐이면 비워 둬도 됩니다.
+   * - use: "inicis" 가 기본. 이니시스에 문제가 생기면 "kpn" 으로 바꾸면 한국결제네트워크로 결제합니다.
+   * 포트원 REST API 키·시크릿은 여기 넣지 않습니다 (서버 /opt/modumodu/data/portone.json 에만).
+   */
+  pg: {
+    use: "inicis",
+    inicisMid: "",
+    kpnMid: "",
+  },
   plans: {
     trial: { label: "프로그램 7일 무료", price: "0원", amount: 0, months: 0 },
     m1: { label: "프로그램 1개월 + 무료 7일", price: "80,000원", amount: 80000, was: "200,000원", months: 1 },
@@ -49,7 +61,7 @@ window.MODUMODU_SITE = {
    * 포트원 관리자에서 KG이니시스 채널을 켜고, 이니시스 상점아이디(MID)가 있으면 pg 를 "html5_inicis.MID값" 으로 바꿉니다.
    */
   payMethods: {
-    card: { label: "카드·간편결제", pg: "html5_inicis", method: "card" },
-    trans: { label: "계좌이체", pg: "html5_inicis", method: "trans" },
+    card: { label: "카드·간편결제", method: "card" },
+    trans: { label: "계좌이체", method: "trans" },
   },
 };

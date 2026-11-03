@@ -137,6 +137,13 @@
     setPayStatus(`${total} · ${cfg.payMethods?.[selectedPay]?.label || "페이"}로 결제`);
   }
 
+  // 결제사: config.js 의 pg.use 로 이니시스(기본)·KPN(예비)을 고릅니다.
+  function pgCode() {
+    const pg = cfg.pg || {};
+    if (pg.use === "kpn") return pg.kpnMid ? `kpn.${pg.kpnMid}` : "kpn";
+    return pg.inicisMid ? `html5_inicis.${pg.inicisMid}` : "html5_inicis";
+  }
+
   function ensurePortone() {
     if (!cfg.portoneImpCode) return false;
     if (typeof window.IMP === "undefined") {
@@ -219,7 +226,7 @@
 
     window.IMP.request_pay(
       {
-        pg: method.pg,
+        pg: pgCode(),
         pay_method: method.method || "card",
         merchant_uid: merchantUid,
         name: `모두모두AI ${planInfo.label}${planInfo.mallLabel ? ` + ${planInfo.mallLabel}` : ""}${planInfo.supplierLabel ? ` + ${planInfo.supplierLabel}` : ""}`,
@@ -566,7 +573,7 @@
     if (status) status.textContent = `${method.label} 결제창을 여는 중…`;
     window.IMP.request_pay(
       {
-        pg: method.pg,
+        pg: pgCode(),
         pay_method: method.method || "card",
         merchant_uid: merchantUid,
         name: `모두모두AI AI포인트 ${item.label}`,
