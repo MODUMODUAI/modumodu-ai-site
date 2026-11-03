@@ -1065,3 +1065,7 @@ main { flex: 1 0 auto; }
 .download-again { font-size: 13px; }
 .download-box a.btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 22px; border-radius: 10px; background: #fff; color: #0b4fb3 !important; font-weight: 700; text-decoration: none; }
 .download-box a.btn:hover { background: #eaf2ff; }
+
+/* plan-bonus */
+.plan-bonus { margin: 2px 0 6px; font-size: 14px; font-weight: 600; opacity: 0.9; }
+.plan-bonus b { color: #22c55e; }
