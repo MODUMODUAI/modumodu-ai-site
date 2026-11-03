@@ -1069,3 +1069,7 @@ main { flex: 1 0 auto; }
 /* plan-bonus */
 .plan-bonus { margin: 2px 0 6px; font-size: 14px; font-weight: 600; opacity: 0.9; }
 .plan-bonus b { color: #22c55e; }
+
+/* account-help */
+.account-help { margin-top: 18px; }
+.account-help h3 + p { margin-top: 0; }

@@ -489,6 +489,44 @@
     showDownload();
   });
 
+  document.getElementById("openAccountHelp")?.addEventListener("click", (event) => {
+    event.preventDefault();
+    const panel = document.getElementById("account-help");
+    if (!panel) return;
+    panel.hidden = false;
+    panel.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+  async function memberPost(path, body, statusId) {
+    const status = document.getElementById(statusId);
+    const api = String(cfg.memberApi || "").replace(/\/+$/, "");
+    if (!api) return;
+    if (status) status.textContent = "처리하는 중입니다.";
+    try {
+      const response = await fetch(`${api}${path}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+      const data = await response.json().catch(() => ({}));
+      if (status) status.textContent = data.detail || (response.ok ? "처리했습니다." : "처리하지 못했습니다.");
+    } catch (error) {
+      if (status) status.textContent = "회원 서버에 연결하지 못했습니다.";
+    }
+  }
+  document.getElementById("resetSend")?.addEventListener("click", () => {
+    memberPost("/api/account/reset-password", {
+      login_id: document.getElementById("resetId").value.trim(),
+      email: document.getElementById("resetEmail").value.trim(),
+    }, "resetStatus");
+  });
+  document.getElementById("changeSend")?.addEventListener("click", () => {
+    memberPost("/api/account/change-password", {
+      login_id: document.getElementById("changeId").value.trim(),
+      old_password: document.getElementById("changeOld").value,
+      new_password: document.getElementById("changeNew").value,
+    }, "changeStatus");
+  });
+
   joinForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(joinForm);
