@@ -608,7 +608,7 @@
   joinForm?.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(joinForm);
-    const loginId = String(data.get("login_id") || "").trim();
+    const loginId = String(data.get("email") || "").trim();
     const password = String(data.get("password") || "");
     if (password !== String(data.get("password2") || "")) {
       if (joinStatus) joinStatus.textContent = "비밀번호와 비밀번호 확인이 다릅니다.";
@@ -626,7 +626,7 @@
     fetch(`${api}/api/account/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ login_id: loginId, password, phone, email }),
+      body: JSON.stringify({ login_id: "", password, phone, email }),
     })
       .then(async (response) => {
         const result = await response.json().catch(() => ({}));
