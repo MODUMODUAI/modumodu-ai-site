@@ -10,7 +10,7 @@ window.MODUMODU_SITE = {
   /** 회원가입 주소. 비어 있으면 가입 버튼이 준비 중으로 남습니다. */
   memberApi: "https://43-200-32-76.sslip.io:8443",
   /** 프로그램 내려받기 (Windows). 업데이트를 게시하면 항상 최신 셀러용 설치 파일을 가리킵니다. */
-  downloadUrl: "https://github.com/MODUMODUAI/smartstore-uploader/releases/latest/download/MODUMODU-seller-setup.zip",
+  downloadUrl: "https://github.com/MODUMODUAI/smartstore-uploader/releases/latest/download/MODUMODU-seller-alpha-setup.zip",
 
   /**
    * 포트원(구 아임포트) 가맹점 식별코드.
