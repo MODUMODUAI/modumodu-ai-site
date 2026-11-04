@@ -1346,7 +1346,7 @@ main { flex: 1 0 auto; }
 .mchat-row .mchat-face { width: 28px; height: 28px; flex: 0 0 auto; }
 .mchat-eye { transform-box: fill-box; transform-origin: center; animation: mchat-blink 4.8s infinite; }
 .mchat-eye-r { animation-delay: .08s; }
-.mchat-antenna { transform-origin: 48px 20px; animation: mchat-wave 2.8s ease-in-out infinite; }
+.mchat-crown { transform-origin: 48px 28px; animation: mchat-wave 2.8s ease-in-out infinite; }
 .mchat-star { animation: mchat-twinkle 2.2s ease-in-out infinite; }
 .mchat-smile-big, .mchat-think { opacity: 0; pointer-events: none; }
 .mchat[data-mood="happy"] .mchat-smile { opacity: 0; }
@@ -1358,7 +1358,7 @@ main { flex: 1 0 auto; }
 .mchat[data-mood="think"] .mchat-think .d1 { animation: mchat-think-dot 1s ease-in-out infinite; }
 .mchat[data-mood="think"] .mchat-think .d2 { animation: mchat-think-dot 1s ease-in-out infinite .15s; }
 .mchat[data-mood="think"] .mchat-think .d3 { animation: mchat-think-dot 1s ease-in-out infinite .3s; }
-.mchat[data-mood="think"] .mchat-antenna { animation-duration: 1.1s; }
+.mchat[data-mood="think"] .mchat-crown { animation-duration: 1.1s; }
 .mchat-open-bubble.is-hello {
   background: linear-gradient(135deg, #fff7d6, #fff);
   color: #0b5cab;

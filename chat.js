@@ -18,96 +18,87 @@
   ];
   const FACE = `<span class="mchat-face" style="width:72px;height:72px"><svg class="mchat-buddy-svg" viewBox="0 0 96 96" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="MBGs72" x1="18" y1="10" x2="78" y2="88" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#4db2ff"/><stop offset="1" stop-color="#0b7dda"/>
+    <linearGradient id="MBGs72" x1="20" y1="24" x2="76" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6ec2ff"/><stop offset="1" stop-color="#1a86e8"/>
     </linearGradient>
   </defs>
-  <ellipse cx="48" cy="86" rx="26" ry="5" fill="#0b5cab" opacity=".14"/>
-  <circle cx="48" cy="50" r="34" fill="url(#MBGs72)"/>
-  <circle cx="34" cy="38" r="10" fill="#fff" opacity=".22"/>
-  <g class="mchat-antenna">
-    <path d="M48 20v7" stroke="#ffd56a" stroke-width="3" stroke-linecap="round"/>
-    <circle class="mchat-star" cx="48" cy="14" r="5.5" fill="#ffd56a"/>
-    <circle cx="48" cy="14" r="2.4" fill="#fff6c8"/>
+  <ellipse cx="48" cy="88" rx="22" ry="4.5" fill="#0b5cab" opacity=".12"/>
+  <circle cx="48" cy="54" r="30" fill="url(#MBGs72)"/>
+  <g class="mchat-crown">
+    <path d="M24 28 L30 12 L38 24 L48 8 L58 24 L66 12 L72 28 Z" fill="#ffd56a"/>
+    <path d="M24 28 H72 V33.5 Q72 37 68 37 H28 Q24 37 24 33.5 Z" fill="#ffc53d"/>
+    <path d="M33 34 V22.5 L48 32 L63 22.5 V34" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="48" cy="11" r="2.6" fill="#fff6c8"/>
   </g>
   <g class="mchat-think" aria-hidden="true">
-    <circle class="d1" cx="72" cy="22" r="3.2" fill="#fff"/>
-    <circle class="d2" cx="80" cy="14" r="4.2" fill="#fff"/>
-    <circle class="d3" cx="88" cy="8" r="5" fill="#fff"/>
+    <circle class="d1" cx="74" cy="30" r="2.8" fill="#fff"/>
+    <circle class="d2" cx="81" cy="22" r="3.6" fill="#fff"/>
+    <circle class="d3" cx="88" cy="15" r="4.4" fill="#fff"/>
   </g>
-  <ellipse class="mchat-eye mchat-eye-l" cx="36.5" cy="48" rx="6.2" ry="7.2" fill="#fff"/>
-  <ellipse class="mchat-eye mchat-eye-r" cx="59.5" cy="48" rx="6.2" ry="7.2" fill="#fff"/>
-  <circle cx="37.5" cy="50" r="3.1" fill="#17324d"/>
-  <circle cx="60.5" cy="50" r="3.1" fill="#17324d"/>
-  <circle cx="38.8" cy="48.5" r="1.1" fill="#fff"/>
-  <circle cx="61.8" cy="48.5" r="1.1" fill="#fff"/>
-  <ellipse class="mchat-blush" cx="27" cy="58" rx="5" ry="3" fill="#ff9bb8" opacity=".55"/>
-  <ellipse class="mchat-blush" cx="69" cy="58" rx="5" ry="3" fill="#ff9bb8" opacity=".55"/>
-  <path class="mchat-smile" d="M39 61c3.2 4.2 10.8 4.2 14 0" fill="none" stroke="#17324d" stroke-width="2.6" stroke-linecap="round"/>
-  <path class="mchat-smile-big" d="M37 60c4.2 6.2 14.8 6.2 19 0" fill="none" stroke="#17324d" stroke-width="2.8" stroke-linecap="round"/>
-  <path d="M41 72v-6.5l7 5.2 7-5.2V72" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
+  <circle class="mchat-eye mchat-eye-l" cx="38" cy="52" r="5.2" fill="#17324d"/>
+  <circle class="mchat-eye mchat-eye-r" cx="58" cy="52" r="5.2" fill="#17324d"/>
+  <circle cx="39.6" cy="50.4" r="1.5" fill="#fff"/>
+  <circle cx="59.6" cy="50.4" r="1.5" fill="#fff"/>
+  <ellipse class="mchat-blush" cx="30" cy="60" rx="4.5" ry="2.8" fill="#ff9bb8" opacity=".55"/>
+  <ellipse class="mchat-blush" cx="66" cy="60" rx="4.5" ry="2.8" fill="#ff9bb8" opacity=".55"/>
+  <path class="mchat-smile" d="M40 63c2.6 3.4 9.4 3.4 12 0" fill="none" stroke="#17324d" stroke-width="2.4" stroke-linecap="round"/>
+  <path class="mchat-smile-big" d="M38 62c3.6 5.2 12.4 5.2 16 0" fill="none" stroke="#17324d" stroke-width="2.6" stroke-linecap="round"/>
 </svg></span>`;
   const FACE_SM = `<span class="mchat-face" style="width:40px;height:40px"><svg class="mchat-buddy-svg" viewBox="0 0 96 96" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="MBGs40" x1="18" y1="10" x2="78" y2="88" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#4db2ff"/><stop offset="1" stop-color="#0b7dda"/>
+    <linearGradient id="MBGs40" x1="20" y1="24" x2="76" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6ec2ff"/><stop offset="1" stop-color="#1a86e8"/>
     </linearGradient>
   </defs>
-  <ellipse cx="48" cy="86" rx="26" ry="5" fill="#0b5cab" opacity=".14"/>
-  <circle cx="48" cy="50" r="34" fill="url(#MBGs40)"/>
-  <circle cx="34" cy="38" r="10" fill="#fff" opacity=".22"/>
-  <g class="mchat-antenna">
-    <path d="M48 20v7" stroke="#ffd56a" stroke-width="3" stroke-linecap="round"/>
-    <circle class="mchat-star" cx="48" cy="14" r="5.5" fill="#ffd56a"/>
-    <circle cx="48" cy="14" r="2.4" fill="#fff6c8"/>
+  <ellipse cx="48" cy="88" rx="22" ry="4.5" fill="#0b5cab" opacity=".12"/>
+  <circle cx="48" cy="54" r="30" fill="url(#MBGs40)"/>
+  <g class="mchat-crown">
+    <path d="M24 28 L30 12 L38 24 L48 8 L58 24 L66 12 L72 28 Z" fill="#ffd56a"/>
+    <path d="M24 28 H72 V33.5 Q72 37 68 37 H28 Q24 37 24 33.5 Z" fill="#ffc53d"/>
+    <path d="M33 34 V22.5 L48 32 L63 22.5 V34" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="48" cy="11" r="2.6" fill="#fff6c8"/>
   </g>
   <g class="mchat-think" aria-hidden="true">
-    <circle class="d1" cx="72" cy="22" r="3.2" fill="#fff"/>
-    <circle class="d2" cx="80" cy="14" r="4.2" fill="#fff"/>
-    <circle class="d3" cx="88" cy="8" r="5" fill="#fff"/>
+    <circle class="d1" cx="74" cy="30" r="2.8" fill="#fff"/>
+    <circle class="d2" cx="81" cy="22" r="3.6" fill="#fff"/>
+    <circle class="d3" cx="88" cy="15" r="4.4" fill="#fff"/>
   </g>
-  <ellipse class="mchat-eye mchat-eye-l" cx="36.5" cy="48" rx="6.2" ry="7.2" fill="#fff"/>
-  <ellipse class="mchat-eye mchat-eye-r" cx="59.5" cy="48" rx="6.2" ry="7.2" fill="#fff"/>
-  <circle cx="37.5" cy="50" r="3.1" fill="#17324d"/>
-  <circle cx="60.5" cy="50" r="3.1" fill="#17324d"/>
-  <circle cx="38.8" cy="48.5" r="1.1" fill="#fff"/>
-  <circle cx="61.8" cy="48.5" r="1.1" fill="#fff"/>
-  <ellipse class="mchat-blush" cx="27" cy="58" rx="5" ry="3" fill="#ff9bb8" opacity=".55"/>
-  <ellipse class="mchat-blush" cx="69" cy="58" rx="5" ry="3" fill="#ff9bb8" opacity=".55"/>
-  <path class="mchat-smile" d="M39 61c3.2 4.2 10.8 4.2 14 0" fill="none" stroke="#17324d" stroke-width="2.6" stroke-linecap="round"/>
-  <path class="mchat-smile-big" d="M37 60c4.2 6.2 14.8 6.2 19 0" fill="none" stroke="#17324d" stroke-width="2.8" stroke-linecap="round"/>
-  <path d="M41 72v-6.5l7 5.2 7-5.2V72" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
+  <circle class="mchat-eye mchat-eye-l" cx="38" cy="52" r="5.2" fill="#17324d"/>
+  <circle class="mchat-eye mchat-eye-r" cx="58" cy="52" r="5.2" fill="#17324d"/>
+  <circle cx="39.6" cy="50.4" r="1.5" fill="#fff"/>
+  <circle cx="59.6" cy="50.4" r="1.5" fill="#fff"/>
+  <ellipse class="mchat-blush" cx="30" cy="60" rx="4.5" ry="2.8" fill="#ff9bb8" opacity=".55"/>
+  <ellipse class="mchat-blush" cx="66" cy="60" rx="4.5" ry="2.8" fill="#ff9bb8" opacity=".55"/>
+  <path class="mchat-smile" d="M40 63c2.6 3.4 9.4 3.4 12 0" fill="none" stroke="#17324d" stroke-width="2.4" stroke-linecap="round"/>
+  <path class="mchat-smile-big" d="M38 62c3.6 5.2 12.4 5.2 16 0" fill="none" stroke="#17324d" stroke-width="2.6" stroke-linecap="round"/>
 </svg></span>`;
   const FACE_AV = `<span class="mchat-face" style="width:28px;height:28px"><svg class="mchat-buddy-svg" viewBox="0 0 96 96" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="MBGs28" x1="18" y1="10" x2="78" y2="88" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#4db2ff"/><stop offset="1" stop-color="#0b7dda"/>
+    <linearGradient id="MBGs28" x1="20" y1="24" x2="76" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6ec2ff"/><stop offset="1" stop-color="#1a86e8"/>
     </linearGradient>
   </defs>
-  <ellipse cx="48" cy="86" rx="26" ry="5" fill="#0b5cab" opacity=".14"/>
-  <circle cx="48" cy="50" r="34" fill="url(#MBGs28)"/>
-  <circle cx="34" cy="38" r="10" fill="#fff" opacity=".22"/>
-  <g class="mchat-antenna">
-    <path d="M48 20v7" stroke="#ffd56a" stroke-width="3" stroke-linecap="round"/>
-    <circle class="mchat-star" cx="48" cy="14" r="5.5" fill="#ffd56a"/>
-    <circle cx="48" cy="14" r="2.4" fill="#fff6c8"/>
+  <ellipse cx="48" cy="88" rx="22" ry="4.5" fill="#0b5cab" opacity=".12"/>
+  <circle cx="48" cy="54" r="30" fill="url(#MBGs28)"/>
+  <g class="mchat-crown">
+    <path d="M24 28 L30 12 L38 24 L48 8 L58 24 L66 12 L72 28 Z" fill="#ffd56a"/>
+    <path d="M24 28 H72 V33.5 Q72 37 68 37 H28 Q24 37 24 33.5 Z" fill="#ffc53d"/>
+    <path d="M33 34 V22.5 L48 32 L63 22.5 V34" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="48" cy="11" r="2.6" fill="#fff6c8"/>
   </g>
   <g class="mchat-think" aria-hidden="true">
-    <circle class="d1" cx="72" cy="22" r="3.2" fill="#fff"/>
-    <circle class="d2" cx="80" cy="14" r="4.2" fill="#fff"/>
-    <circle class="d3" cx="88" cy="8" r="5" fill="#fff"/>
+    <circle class="d1" cx="74" cy="30" r="2.8" fill="#fff"/>
+    <circle class="d2" cx="81" cy="22" r="3.6" fill="#fff"/>
+    <circle class="d3" cx="88" cy="15" r="4.4" fill="#fff"/>
   </g>
-  <ellipse class="mchat-eye mchat-eye-l" cx="36.5" cy="48" rx="6.2" ry="7.2" fill="#fff"/>
-  <ellipse class="mchat-eye mchat-eye-r" cx="59.5" cy="48" rx="6.2" ry="7.2" fill="#fff"/>
-  <circle cx="37.5" cy="50" r="3.1" fill="#17324d"/>
-  <circle cx="60.5" cy="50" r="3.1" fill="#17324d"/>
-  <circle cx="38.8" cy="48.5" r="1.1" fill="#fff"/>
-  <circle cx="61.8" cy="48.5" r="1.1" fill="#fff"/>
-  <ellipse class="mchat-blush" cx="27" cy="58" rx="5" ry="3" fill="#ff9bb8" opacity=".55"/>
-  <ellipse class="mchat-blush" cx="69" cy="58" rx="5" ry="3" fill="#ff9bb8" opacity=".55"/>
-  <path class="mchat-smile" d="M39 61c3.2 4.2 10.8 4.2 14 0" fill="none" stroke="#17324d" stroke-width="2.6" stroke-linecap="round"/>
-  <path class="mchat-smile-big" d="M37 60c4.2 6.2 14.8 6.2 19 0" fill="none" stroke="#17324d" stroke-width="2.8" stroke-linecap="round"/>
-  <path d="M41 72v-6.5l7 5.2 7-5.2V72" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
+  <circle class="mchat-eye mchat-eye-l" cx="38" cy="52" r="5.2" fill="#17324d"/>
+  <circle class="mchat-eye mchat-eye-r" cx="58" cy="52" r="5.2" fill="#17324d"/>
+  <circle cx="39.6" cy="50.4" r="1.5" fill="#fff"/>
+  <circle cx="59.6" cy="50.4" r="1.5" fill="#fff"/>
+  <ellipse class="mchat-blush" cx="30" cy="60" rx="4.5" ry="2.8" fill="#ff9bb8" opacity=".55"/>
+  <ellipse class="mchat-blush" cx="66" cy="60" rx="4.5" ry="2.8" fill="#ff9bb8" opacity=".55"/>
+  <path class="mchat-smile" d="M40 63c2.6 3.4 9.4 3.4 12 0" fill="none" stroke="#17324d" stroke-width="2.4" stroke-linecap="round"/>
+  <path class="mchat-smile-big" d="M38 62c3.6 5.2 12.4 5.2 16 0" fill="none" stroke="#17324d" stroke-width="2.6" stroke-linecap="round"/>
 </svg></span>`;
 
   const root = document.createElement("div");
