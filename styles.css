@@ -996,8 +996,8 @@ main { flex: 1 0 auto; }
 .page-jump {
   position: fixed;
   right: 18px;
-  /* 상담 버튼(아래) 위에 두어 겹치지 않게 합니다. */
-  bottom: 86px;
+  /* ▲▼는 맨 아래, 상담은 그 위에 둡니다. */
+  bottom: 20px;
   z-index: 30;
   display: flex;
   flex-direction: column;
@@ -1091,7 +1091,8 @@ main { flex: 1 0 auto; }
 .points-table { margin: 6px 0 14px; padding-left: 18px; line-height: 1.8; }
 
 /* 상담 채팅 */
-.mchat { position: fixed; right: 16px; bottom: 16px; z-index: 9999; font-size: 14px; }
+/* 상담은 ▲▼(맨 아래)보다 위로 올려 손이 닿기 쉽게 합니다. */
+.mchat { position: fixed; right: 16px; bottom: 128px; z-index: 9999; font-size: 14px; }
 .mchat-open { display: inline-flex; align-items: center; gap: 6px; padding: 12px 18px; border: 0; border-radius: 999px; background: #1a73e8; color: #fff; font-weight: 700; box-shadow: 0 6px 20px rgba(0,0,0,.2); cursor: pointer; }
 .mchat.is-open .mchat-open { display: none; }
 .mchat-panel { width: min(360px, calc(100vw - 32px)); max-height: min(560px, calc(100vh - 32px)); display: flex; flex-direction: column; background: #fff; color: #1f2937; border-radius: 14px; box-shadow: 0 12px 40px rgba(0,0,0,.25); overflow: hidden; }
