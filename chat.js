@@ -40,13 +40,59 @@
   const quick = root.querySelector(".mchat-quick");
   const leaveForm = root.querySelector(".mchat-leave");
 
+  function renderCard(card) {
+    if (!card || typeof card !== "object") return "";
+    const rows = Array.isArray(card.rows) ? card.rows : [];
+    const list = rows.map((row) => {
+      const label = esc(row && row.label);
+      const value = esc(row && row.value);
+      return `<li><span>${label}</span><strong>${value}</strong></li>`;
+    }).join("");
+    const badge = card.badge ? `<span class="mchat-card-badge">${esc(card.badge)}</span>` : "";
+    const note = card.note ? `<p class="mchat-card-note">${esc(card.note)}</p>` : "";
+    return `<div class="mchat-card" data-type="${esc(card.type || "")}">
+      <div class="mchat-card-head"><strong>${esc(card.title || "")}</strong>${badge}</div>
+      <ul>${list}</ul>
+      ${note}
+    </div>`;
+  }
+
+  function renderCta(cta) {
+    if (cta !== "trial") return "";
+    return `<a class="mchat-cta" href="#join">무료 체험 시작</a>`;
+  }
+
+  function renderAssistant(m) {
+    const parts = [];
+    if (m.card) parts.push(renderCard(m.card));
+    const text = String(m.text || "").trim();
+    if (text) parts.push(`<div class="mchat-msg ai">${esc(text).replace(/\n/g, "<br>")}</div>`);
+    if (m.cta) parts.push(renderCta(m.cta));
+    return `<div class="mchat-block">${parts.join("")}</div>`;
+  }
+
   function paint(busy) {
     const greet = `<div class="mchat-msg ai">안녕하세요, 모두모두AI입니다. 가격·무료 체험·기능·설치 무엇이든 물어보세요.</div>`;
-    log.innerHTML = greet + messages.map((m) => `<div class="mchat-msg ${m.role === "user" ? "me" : "ai"}">${esc(m.text).replace(/\n/g, "<br>")}</div>`).join("")
+    log.innerHTML = greet + messages.map((m) => {
+      if (m.role === "user") return `<div class="mchat-msg me">${esc(m.text).replace(/\n/g, "<br>")}</div>`;
+      return renderAssistant(m);
+    }).join("")
       + (busy ? `<div class="mchat-msg ai mchat-typing">답을 쓰는 중…</div>` : "");
     quick.innerHTML = messages.length ? "" : QUICK.map((q) => `<button type="button">${esc(q)}</button>`).join("");
     log.scrollTop = log.scrollHeight;
   }
+
+  function goJoin(e) {
+    const link = e.target.closest("a.mchat-cta");
+    if (!link) return;
+    e.preventDefault();
+    panel.hidden = true;
+    root.classList.remove("is-open");
+    const target = document.getElementById("join");
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    else location.hash = "join";
+  }
+
   async function ask(text) {
     const q = String(text || "").trim();
     if (!q) return;
@@ -63,10 +109,14 @@
       if (help.length) {
         answer = `${answer}\n\n(프로그램 도움말: ${help.join(" · ")})`;
       }
-      messages.push({ role: "assistant", text: answer });
+      const item = { role: "assistant", text: answer };
+      if (data.card && typeof data.card === "object") item.card = data.card;
+      if (data.cta) item.cta = data.cta;
+      else if (data.card && data.card.cta) item.cta = data.card.cta;
+      messages.push(item);
       if (data.ai === false) showLeave(true);
     } catch (error) {
-      messages.push({ role: "assistant", text: `${error.message} '담당자에게 남기기'로 남겨 주시면 이메일로 답드리겠습니다.` });
+      messages.push({ role: "assistant", text: `${error.message} '담당자에게 남기기'로 남겨 주시면 이메일로 답드리겠습니다.`, cta: "trial" });
       showLeave(true);
     }
     save();
@@ -76,6 +126,7 @@
   root.querySelector(".mchat-close").addEventListener("click", () => { panel.hidden = true; root.classList.remove("is-open"); });
   root.querySelector(".mchat-form").addEventListener("submit", (e) => { e.preventDefault(); const t = input.value; input.value = ""; ask(t); });
   quick.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) ask(b.textContent); });
+  log.addEventListener("click", goJoin);
   function showLeave(open) {
     leaveForm.hidden = !open;
     panel.classList.toggle("is-leave", Boolean(open));
@@ -92,11 +143,11 @@
       const res = await fetch(`${api}/api/site/chat/leave`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email, text, messages }) });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.detail || "보내지 못했습니다.");
-      messages.push({ role: "assistant", text: data.message || "담당자에게 전달했습니다." });
+      messages.push({ role: "assistant", text: data.message || "담당자에게 전달했습니다.", cta: "trial" });
       showLeave(false);
       leaveForm.reset();
     } catch (error) {
-      messages.push({ role: "assistant", text: `${error.message} ${cfg.contactEmail || "modumoduai@gmail.com"}로 메일 주셔도 됩니다.` });
+      messages.push({ role: "assistant", text: `${error.message} ${cfg.contactEmail || "modumoduai@gmail.com"}로 메일 주셔도 됩니다.`, cta: "trial" });
     } finally {
       button.disabled = false;
       save();

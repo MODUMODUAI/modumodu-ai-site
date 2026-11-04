@@ -1104,6 +1104,46 @@ main { flex: 1 0 auto; }
 .mchat-msg.ai { align-self: flex-start; background: #fff; border: 1px solid #e5e7eb; }
 .mchat-msg.me { align-self: flex-end; background: #1a73e8; color: #fff; }
 .mchat-typing { color: #6b7280; }
+.mchat-block { align-self: stretch; display: flex; flex-direction: column; gap: 8px; max-width: 100%; }
+.mchat-card {
+  align-self: stretch;
+  background: #fff;
+  border: 1px solid #dbe7fb;
+  border-radius: 12px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.08);
+}
+.mchat-card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+.mchat-card-head strong { font-size: 13px; color: #0f172a; }
+.mchat-card-badge {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a73e8;
+  background: #e8f1ff;
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+.mchat-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.mchat-card li { display: flex; justify-content: space-between; gap: 10px; font-size: 12px; line-height: 1.4; color: #334155; }
+.mchat-card li span { color: #64748b; }
+.mchat-card li strong { text-align: right; font-weight: 700; color: #0f172a; }
+.mchat-card-note { margin: 8px 0 0; font-size: 11px; color: #64748b; line-height: 1.45; }
+.mchat-cta {
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #0f9d58;
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none !important;
+  box-shadow: 0 6px 16px rgba(15, 157, 88, 0.28);
+}
+.mchat-cta:hover { filter: brightness(1.05); }
 .mchat-quick { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px 0; background: #f7f8fa; }
 .mchat-quick button { border: 1px solid #c7d7f5; background: #fff; color: #1a73e8; border-radius: 999px; padding: 5px 10px; font-size: 12px; cursor: pointer; }
 .mchat-form, .mchat-leave { display: flex; gap: 6px; padding: 10px 12px; border-top: 1px solid #e5e7eb; }
@@ -1118,6 +1158,10 @@ main { flex: 1 0 auto; }
   .mchat-panel { background: #111827; color: #e5e7eb; }
   .mchat-log, .mchat-quick { background: #0b1220; }
   .mchat-msg.ai { background: #1f2937; border-color: #374151; }
+  .mchat-card { background: #1f2937; border-color: #374151; box-shadow: none; }
+  .mchat-card-head strong, .mchat-card li strong { color: #e5e7eb; }
+  .mchat-card li, .mchat-card-note { color: #9ca3af; }
+  .mchat-card-badge { background: #1e3a5f; color: #93b4ff; }
   .mchat-quick button { background: #1f2937; border-color: #374151; color: #93b4ff; }
   .mchat-form, .mchat-leave { border-top-color: #374151; }
   .mchat-leave { background: #0b1220; }
