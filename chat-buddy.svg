@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="¨P¨P">
+  <defs>
+    <linearGradient id="g" x1="18" y1="10" x2="78" y2="88" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4db2ff"/>
+      <stop offset="1" stop-color="#0b7dda"/>
+    </linearGradient>
+  </defs>
+  <!-- soft ground shadow -->
+  <ellipse cx="48" cy="86" rx="26" ry="5" fill="#0b5cab" opacity=".14"/>
+  <!-- body -->
+  <circle cx="48" cy="50" r="34" fill="url(#g)"/>
+  <circle cx="34" cy="38" r="10" fill="#fff" opacity=".22"/>
+  <!-- ears / antenna -->
+  <circle cx="48" cy="14" r="5.5" fill="#ffd56a"/>
+  <circle cx="48" cy="14" r="2.4" fill="#fff6c8"/>
+  <path d="M48 20v7" stroke="#ffd56a" stroke-width="3" stroke-linecap="round"/>
+  <!-- eyes -->
+  <ellipse cx="36.5" cy="48" rx="6.2" ry="7.2" fill="#fff"/>
+  <ellipse cx="59.5" cy="48" rx="6.2" ry="7.2" fill="#fff"/>
+  <circle cx="37.5" cy="50" r="3.1" fill="#17324d"/>
+  <circle cx="60.5" cy="50" r="3.1" fill="#17324d"/>
+  <circle cx="38.8" cy="48.5" r="1.1" fill="#fff"/>
+  <circle cx="61.8" cy="48.5" r="1.1" fill="#fff"/>
+  <!-- blush -->
+  <ellipse cx="27" cy="58" rx="5" ry="3" fill="#ff9bb8" opacity=".55"/>
+  <ellipse cx="69" cy="58" rx="5" ry="3" fill="#ff9bb8" opacity=".55"/>
+  <!-- smile -->
+  <path d="M39 61c3.2 4.2 10.8 4.2 14 0" fill="none" stroke="#17324d" stroke-width="2.6" stroke-linecap="round"/>
+  <!-- tiny M badge -->
+  <path d="M41 72v-6.5l7 5.2 7-5.2V72" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity=".92"/>
+</svg>
