@@ -942,20 +942,27 @@ main { flex: 1 0 auto; }
   border-top: 1px solid var(--line);
   padding: 28px clamp(18px, 4vw, 56px) 40px;
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px 32px;
+  gap: 20px 40px;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
 }
-.site-footer strong { color: var(--ink); }
-.biz-info,
+.site-footer strong { color: var(--ink); font-weight: 700; }
+.biz-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1.55;
+  max-width: 640px;
+}
 .biz-links {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 16px;
   line-height: 1.6;
+  align-items: center;
 }
 .biz-links a { color: var(--ink); }
 .legal {
