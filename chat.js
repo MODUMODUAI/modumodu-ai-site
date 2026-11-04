@@ -231,12 +231,96 @@
     paint(false);
   }
 
-  root.querySelector(".mchat-open").addEventListener("click", () => {
-    panel.hidden = false;
-    root.classList.add("is-open");
-    paint(false);
-    input.focus();
+
+  const POS_KEY = "modumodu-site-chat-pos-v1";
+  const openBtn = root.querySelector(".mchat-open");
+  const headBar = panel.querySelector("header");
+  openBtn.title = "끌어서 위치 이동 · 클릭하면 대화 열기";
+  if (headBar) headBar.title = "끌어서 위치 이동";
+
+  function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+  function applyPos(left, top) {
+    const rect = root.getBoundingClientRect();
+    const w = Math.max(rect.width || 96, 72);
+    const h = Math.max(rect.height || 120, 72);
+    const x = clamp(left, 8, Math.max(8, window.innerWidth - w - 8));
+    const y = clamp(top, 8, Math.max(8, window.innerHeight - h - 8));
+    root.style.left = x + "px";
+    root.style.top = y + "px";
+    root.style.right = "auto";
+    root.style.bottom = "auto";
+    return { left: x, top: y };
+  }
+  function loadPos() {
+    try {
+      const raw = JSON.parse(localStorage.getItem(POS_KEY) || "null");
+      if (raw && Number.isFinite(Number(raw.left)) && Number.isFinite(Number(raw.top))) {
+        applyPos(Number(raw.left), Number(raw.top));
+      }
+    } catch (e) { /* CSS 기본 위치 */ }
+  }
+  function savePos() {
+    try {
+      const rect = root.getBoundingClientRect();
+      localStorage.setItem(POS_KEY, JSON.stringify({ left: rect.left, top: rect.top }));
+    } catch (e) { /* ignore */ }
+  }
+  loadPos();
+  window.addEventListener("resize", () => {
+    if (!root.style.left) return;
+    const rect = root.getBoundingClientRect();
+    applyPos(rect.left, rect.top);
   });
+
+  function bindDrag(handle, openOnClick) {
+    if (!handle) return;
+    let drag = null;
+    handle.addEventListener("pointerdown", (e) => {
+      if (e.button !== 0) return;
+      if (e.target.closest(".mchat-close, a, input, textarea, button.mchat-cta")) return;
+      if (handle === headBar && e.target.closest("button")) return;
+      const rect = root.getBoundingClientRect();
+      drag = { id: e.pointerId, startX: e.clientX, startY: e.clientY, origL: rect.left, origT: rect.top, moved: false };
+      try { handle.setPointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+    });
+    handle.addEventListener("pointermove", (e) => {
+      if (!drag || drag.id !== e.pointerId) return;
+      const dx = e.clientX - drag.startX;
+      const dy = e.clientY - drag.startY;
+      if (!drag.moved && Math.hypot(dx, dy) < 6) return;
+      drag.moved = true;
+      root.classList.add("is-dragging");
+      applyPos(drag.origL + dx, drag.origT + dy);
+    });
+    function endDrag(e) {
+      if (!drag || drag.id !== e.pointerId) return;
+      const moved = drag.moved;
+      drag = null;
+      root.classList.remove("is-dragging");
+      try { handle.releasePointerCapture(e.pointerId); } catch (err) { /* ignore */ }
+      if (moved) savePos();
+      handle._skipClick = moved;
+    }
+    handle.addEventListener("pointerup", endDrag);
+    handle.addEventListener("pointercancel", endDrag);
+    if (openOnClick) {
+      handle.addEventListener("click", (e) => {
+        if (handle._skipClick) {
+          handle._skipClick = false;
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+        panel.hidden = false;
+        root.classList.add("is-open");
+        paint(false);
+        input.focus();
+      });
+    }
+  }
+  bindDrag(openBtn, true);
+  bindDrag(headBar, false);
+
   root.querySelector(".mchat-close").addEventListener("click", () => {
     panel.hidden = true;
     root.classList.remove("is-open");

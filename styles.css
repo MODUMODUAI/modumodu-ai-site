@@ -1400,3 +1400,11 @@ main { flex: 1 0 auto; }
   100% { transform: scale(1) translateY(0); opacity: 1; }
 }
 .mchat-status { display: block; margin-top: 1px; font-style: normal; font-size: 11px; opacity: .9; }
+
+/* mchat-drag1 */
+.mchat-open { cursor: grab; touch-action: none; user-select: none; }
+.mchat.is-dragging .mchat-open,
+.mchat.is-dragging .mchat-panel header { cursor: grabbing; }
+.mchat-panel header { cursor: grab; touch-action: none; user-select: none; }
+.mchat.is-dragging { opacity: .96; }
+.mchat.is-dragging .mchat-open .mchat-face { animation: none; }
