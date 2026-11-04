@@ -1106,17 +1106,19 @@ main { flex: 1 0 auto; }
 .mchat-quick { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px 0; background: #f7f8fa; }
 .mchat-quick button { border: 1px solid #c7d7f5; background: #fff; color: #1a73e8; border-radius: 999px; padding: 5px 10px; font-size: 12px; cursor: pointer; }
 .mchat-form, .mchat-leave { display: flex; gap: 6px; padding: 10px 12px; border-top: 1px solid #e5e7eb; }
-.mchat-leave { flex-direction: column; }
-.mchat-leave[hidden] { display: none; }
-.mchat-form input, .mchat-leave input, .mchat-leave textarea { flex: 1; min-width: 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 8px; font: inherit; }
+.mchat-leave { flex-direction: column; gap: 8px; margin: 0; background: #f7f8fa; }
+.mchat-leave[hidden] { display: none !important; }
+.mchat-form input, .mchat-leave input, .mchat-leave textarea { flex: 1; min-width: 0; padding: 8px 10px; border: 1px solid #d1d5db; border-radius: 8px; font: inherit; background: #fff; }
 .mchat-form button, .mchat-leave button { border: 0; border-radius: 8px; padding: 8px 12px; background: #1a73e8; color: #fff; font-weight: 700; cursor: pointer; }
-.mchat-leave-open { border: 0; background: transparent; color: #1a73e8; padding: 4px 12px 0; text-align: left; font-size: 12px; cursor: pointer; text-decoration: underline; }
-.mchat-note { margin: 0; padding: 4px 12px 10px; color: #9ca3af; font-size: 11px; }
+.mchat-leave-open { display: block; width: 100%; box-sizing: border-box; border: 0; background: transparent; color: #1a73e8; margin: 0; padding: 10px 12px 6px; text-align: left; font-size: 12px; cursor: pointer; text-decoration: underline; line-height: 1.4; }
+.mchat-panel.is-leave .mchat-leave-open { display: none; }
+.mchat-note { margin: 0; padding: 6px 12px 12px; color: #9ca3af; font-size: 11px; }
 @media (prefers-color-scheme: dark) {
   .mchat-panel { background: #111827; color: #e5e7eb; }
   .mchat-log, .mchat-quick { background: #0b1220; }
   .mchat-msg.ai { background: #1f2937; border-color: #374151; }
   .mchat-quick button { background: #1f2937; border-color: #374151; color: #93b4ff; }
   .mchat-form, .mchat-leave { border-top-color: #374151; }
+  .mchat-leave { background: #0b1220; }
   .mchat-form input, .mchat-leave input, .mchat-leave textarea { background: #1f2937; color: #e5e7eb; border-color: #374151; }
 }

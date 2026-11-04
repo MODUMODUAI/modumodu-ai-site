@@ -64,10 +64,10 @@
         answer = `${answer}\n\n(프로그램 도움말: ${help.join(" · ")})`;
       }
       messages.push({ role: "assistant", text: answer });
-      if (data.ai === false) leaveForm.hidden = false;
+      if (data.ai === false) showLeave(true);
     } catch (error) {
       messages.push({ role: "assistant", text: `${error.message} '담당자에게 남기기'로 남겨 주시면 이메일로 답드리겠습니다.` });
-      leaveForm.hidden = false;
+      showLeave(true);
     }
     save();
     paint(false);
@@ -76,7 +76,12 @@
   root.querySelector(".mchat-close").addEventListener("click", () => { panel.hidden = true; root.classList.remove("is-open"); });
   root.querySelector(".mchat-form").addEventListener("submit", (e) => { e.preventDefault(); const t = input.value; input.value = ""; ask(t); });
   quick.addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) ask(b.textContent); });
-  root.querySelector(".mchat-leave-open").addEventListener("click", () => { leaveForm.hidden = !leaveForm.hidden; if (!leaveForm.hidden) leaveForm.querySelector("input").focus(); });
+  function showLeave(open) {
+    leaveForm.hidden = !open;
+    panel.classList.toggle("is-leave", Boolean(open));
+    if (open) leaveForm.querySelector("input")?.focus();
+  }
+  root.querySelector(".mchat-leave-open").addEventListener("click", () => showLeave(leaveForm.hidden));
   leaveForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const email = leaveForm.querySelector("input").value.trim();
@@ -88,7 +93,7 @@
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.detail || "보내지 못했습니다.");
       messages.push({ role: "assistant", text: data.message || "담당자에게 전달했습니다." });
-      leaveForm.hidden = true;
+      showLeave(false);
       leaveForm.reset();
     } catch (error) {
       messages.push({ role: "assistant", text: `${error.message} ${cfg.contactEmail || "modumoduai@gmail.com"}로 메일 주셔도 됩니다.` });
