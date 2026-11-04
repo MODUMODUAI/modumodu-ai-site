@@ -996,7 +996,8 @@ main { flex: 1 0 auto; }
 .page-jump {
   position: fixed;
   right: 18px;
-  bottom: 22px;
+  /* 상담 버튼(아래) 위에 두어 겹치지 않게 합니다. */
+  bottom: 86px;
   z-index: 30;
   display: flex;
   flex-direction: column;
