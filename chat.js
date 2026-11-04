@@ -7,7 +7,14 @@
   try { messages = JSON.parse(sessionStorage.getItem(KEY) || "[]"); } catch (e) { messages = []; }
   const save = () => { try { sessionStorage.setItem(KEY, JSON.stringify(messages.slice(-30))); } catch (e) { /* 무시 */ } };
   const esc = (t) => String(t || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const QUICK = ["가격이 궁금해요", "무료 체험은 어떻게 하나요?", "어떤 마켓을 지원하나요?", "설치는 어떻게 하나요?"];
+  const QUICK = [
+    "가격이 궁금해요",
+    "무료 체험은 어떻게 하나요?",
+    "품절 자동 관리는 어떻게 쓰나요?",
+    "공급처는 어떻게 추가하나요?",
+    "마진율·마진액은 어디서 보나요?",
+    "설치는 어떻게 하나요?",
+  ];
 
   const root = document.createElement("div");
   root.className = "mchat";
@@ -24,7 +31,7 @@
         <textarea rows="3" maxlength="2000" placeholder="남길 내용 (대화 내용도 함께 전달됩니다)" aria-label="남길 내용"></textarea>
         <button type="submit">담당자에게 보내기</button>
       </form>
-      <p class="mchat-note">AI가 안내 자료로 답합니다. 비밀번호·카드번호는 적지 마세요.</p>
+      <p class="mchat-note">AI가 홈페이지 안내와 프로그램 도움말을 보고 답합니다. 비밀번호·카드번호는 적지 마세요.</p>
     </section>`;
   document.body.append(root);
   const panel = root.querySelector(".mchat-panel");
@@ -51,7 +58,12 @@
       const res = await fetch(`${api}/api/site/chat`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages }) });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.detail || "상담 연결이 원활하지 않습니다.");
-      messages.push({ role: "assistant", text: data.answer || "" });
+      let answer = String(data.answer || "").trim();
+      const help = Array.isArray(data.help) ? data.help.filter(Boolean) : [];
+      if (help.length) {
+        answer = `${answer}\n\n(프로그램 도움말: ${help.join(" · ")})`;
+      }
+      messages.push({ role: "assistant", text: answer });
       if (data.ai === false) leaveForm.hidden = false;
     } catch (error) {
       messages.push({ role: "assistant", text: `${error.message} '담당자에게 남기기'로 남겨 주시면 이메일로 답드리겠습니다.` });
