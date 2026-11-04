@@ -4,17 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>모두모두</title>
-  <meta name="description" content="모두모두AI. AI 자동가공 안 하면 프로그램 이용료만. 수동 가공도 쉽게. 무제한 가공·무제한 등록. 원하는 공급사 추가, 마진 통계." />
+  <meta name="description" content="모두모두AI. 무제한 가공·등록. 원하는 공급처 추가. 전체 마켓 자동 품절관리. 마진율·마진액 자동계산." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="모두모두AI — 오픈마켓 상품 등록 프로그램" />
-  <meta property="og:description" content="AI 자동가공 안 하면 프로그램 이용료만. 수동 가공도 쉽게. PC 대수 제한 없음." />
+  <meta property="og:description" content="원하는 공급처 추가 · 전체 마켓 자동 품절관리 · 마진율·마진액 자동계산. AI는 필요할 때만." />
   <meta property="og:url" content="https://modumoduai.github.io/modumodu-ai-site/" />
   <meta property="og:image" content="https://modumoduai.github.io/modumodu-ai-site/shots/01-products.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://modumoduai.github.io/modumodu-ai-site/" />
   <link rel="icon" href="./favicon.svg?v=3" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="stylesheet" href="./styles.css?v=27" />
+  <link rel="stylesheet" href="./styles.css?v=28" />
   <script>
     history.scrollRestoration = "manual";
     window.__modumoduOpenAtTop = true;
@@ -51,7 +51,7 @@
       <div class="hero-copy">
         <p class="brand-mark"><span class="a">모두</span><span class="b">모두</span><span class="ai">AI</span></p>
         <h1>무제한 가공 · 무제한 등록<br />이 프로그램 하나로 완성</h1>
-        <p class="hero-lead">AI 자동가공은 필요할 때만. 안 쓰면 프로그램 이용료만 듭니다. 표에서 직접 고치는 수동 가공도 쉽습니다.</p>
+        <p class="hero-lead">원하는 공급처를 추가하고, 전체 마켓 자동 품절관리와 마진율·마진액 자동계산까지. AI는 필요할 때만, 안 쓰면 프로그램 이용료만 듭니다.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#join">7일 무료로 시작</a>
           <a class="btn btn-ghost" href="https://github.com/MODUMODUAI/smartstore-uploader/releases/latest/download/MODUMODU-seller-alpha-setup.zip" rel="noopener">셀러용 내려받기 (Windows)</a>
@@ -110,7 +110,7 @@
         <figure class="shot-card">
           <img src="./shots/02-orders.png?v=14" alt="주문관리 화면" width="1440" height="900" loading="lazy" />
           <span class="sample-badge">샘플 화면</span>
-          <figcaption><strong>주문관리</strong> · 주문 처리 · 마진·마진율 통계</figcaption>
+          <figcaption><strong>주문관리</strong> · 주문 처리 · 마진율·마진액 자동계산</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="./shots/03-inquiries.png?v=14" alt="고객문의 화면" width="1440" height="900" loading="lazy" />
@@ -125,7 +125,7 @@
         <figure class="shot-card">
           <img src="./shots/06-wholesalers.png?v=14" alt="공급처 관리 화면" width="1440" height="900" loading="lazy" />
           <span class="sample-badge">샘플 화면</span>
-          <figcaption><strong>공급처</strong> · 원하는 공급사 추가</figcaption>
+          <figcaption><strong>공급처</strong> · 사용자가 원하는 공급처 직접 추가</figcaption>
         </figure>
         <figure class="shot-card">
           <img src="./shots/05-settings.png?v=14" alt="마켓·AI 설정 화면" width="1440" height="900" loading="lazy" />
@@ -151,7 +151,7 @@
             <source src="./shots/use-stock.webm?v=1" type="video/webm" />
             <source src="./shots/use-stock.mp4?v=1" type="video/mp4" />
           </video>
-          <figcaption><strong>품절 자동 관리 (새 기능)</strong> · 공급처 품절을 찾아 품절처리하면 스마트스토어 상품이 바로 판매중지됩니다. 판매중지만 모아 보고, 매일 정한 시각에 자동으로 돌게 둡니다</figcaption>
+          <figcaption><strong>품절 자동 관리 (새 기능)</strong> · 공급처 품절을 찾아 연동한 전체 마켓 상품을 품절·판매중지로 맞춥니다. 매일 정한 시각에 자동으로 돌게 두고, 판매중지만 모아 볼 수 있습니다</figcaption>
         </figure>
         <figure class="shot-card shot-card-wide">
           <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-collect.jpg?v=1" width="1440" height="900">
@@ -238,10 +238,22 @@
           <p>상품 사진의 홍보 글씨만 골라 지우고 상품은 그대로 둡니다. AI 이미지 바꾸기, 순서·대표 지정까지 되돌리기·재실행으로 마음 편히 고칩니다.</p>
         </article>
 
-        <article class="feature-block">
-          <p class="feature-kicker">품절 관리</p>
-          <h3>품절 자동 관리 · 스토어 판매중지</h3>
-          <p>공급처 품절을 찾아 품절처리하면 스마트스토어 상품이 바로 판매중지되고, 다시 팔면 판매중으로 돌아갑니다. 매일 정한 시각에 자동으로 돌려 품절 주문 취소를 막습니다. 판매중·판매중지·전시중지를 목록에서 색깔로 보고, 판매변경·전시변경도 여러 상품을 한 번에 합니다. 메뉴 이름은 마켓 판매자센터 그대로입니다.</p>
+        <article class="feature-block feature-block-strong">
+          <p class="feature-kicker">품절 관리 · 전체 마켓</p>
+          <h3>자동 품절관리 · 연동 마켓 일괄 반영</h3>
+          <p>공급처에서 품절·재판매를 찾아, 연동한 전체 마켓 상품에 품절·판매중지(또는 다시 판매)를 맞춥니다. 매일 정한 시각에 자동으로 돌려 품절 주문을 줄입니다. 판매중·판매중지·전시중지를 목록에서 색깔로 보고, 여러 상품을 한 번에 바꿉니다.</p>
+        </article>
+
+        <article class="feature-block feature-block-strong">
+          <p class="feature-kicker">공급처</p>
+          <h3>원하는 공급처 직접 추가</h3>
+          <p>쓰는 도매·공급처를 사용자가 직접 등록해 상품을 가져옵니다. 기본 제공 공급처만 쓰지 않고, 본인이 거래하는 곳을 이어서 붙일 수 있습니다. 도매처 검색·상품담기도 같은 프로그램 안에 있습니다.</p>
+        </article>
+
+        <article class="feature-block feature-block-strong">
+          <p class="feature-kicker">수익 확인</p>
+          <h3>마진율 · 마진액 자동계산</h3>
+          <p>판매가·공급가·배송비·마켓 수수료를 반영해 마진율과 마진액이 자동으로 계산됩니다. 상품 목록과 주문관리에서 남긴 이익을 바로 보고, 기간 통계로도 확인합니다.</p>
         </article>
 
         <article class="feature-block">
@@ -257,13 +269,8 @@
         </article>
 
         <article class="feature-block">
-          <h3>주문관리 무제한 · 마진 통계</h3>
-          <p>주문 확인부터 발주·송장까지 이어서 처리하고, 마진과 마진율 통계로 남긴 이익을 확인합니다.</p>
-        </article>
-
-        <article class="feature-block">
-          <h3>원하는 공급사 추가</h3>
-          <p>쓰는 공급사를 직접 등록해 상품을 가져옵니다. 도매처 검색 화면도 같은 프로그램 안에 있습니다.</p>
+          <h3>주문관리 무제한</h3>
+          <p>주문 확인부터 발주·송장까지 이어서 처리합니다. 마진율·마진액 자동계산과 통계로 남긴 이익을 확인합니다.</p>
         </article>
 
         <article class="feature-block">
@@ -360,7 +367,23 @@
             </tr>
             <tr>
               <th scope="row">품절 자동 관리</th>
-              <td class="us">매일 정한 시각에 품절 확인<br />→ 스토어 자동 판매중지</td>
+              <td class="us">매일 정한 시각에 품절 확인<br />→ 연동 전체 마켓 반영</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+            </tr>
+            <tr>
+              <th scope="row">원하는 공급처 추가</th>
+              <td class="us">사용자가 거래하는 공급처를<br />직접 등록·연결</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+              <td>공개 안내에서 확인 안 됨</td>
+            </tr>
+            <tr>
+              <th scope="row">마진율·마진액</th>
+              <td class="us">상품·주문에서<br />자동계산·통계</td>
               <td>공개 안내에서 확인 안 됨</td>
               <td>공개 안내에서 확인 안 됨</td>
               <td>공개 안내에서 확인 안 됨</td>
@@ -629,7 +652,15 @@
         </details>
         <details>
           <summary>쓰는 공급사(도매처)를 추가할 수 있나요?</summary>
-          <p>네. 공급사 10개까지는 무료입니다. 그다음부터는 10개당 월 50,000원이고, 오너클랜 전체는 월 30,000원입니다.</p>
+          <p>네. 사용자가 원하는 공급처를 직접 추가해 상품을 가져올 수 있습니다. 공급사 10개까지는 무료이고, 그다음부터는 10개당 월 50,000원, 오너클랜 전체는 월 30,000원입니다.</p>
+        </details>
+        <details>
+          <summary>품절 관리는 어떤 마켓에 적용되나요?</summary>
+          <p>공급처 품절·재판매를 찾아 연동한 전체 마켓 상품에 맞춥니다. 매일 정한 시각에 자동으로 돌릴 수 있고, 판매중지·재판매도 이어서 처리합니다.</p>
+        </details>
+        <details>
+          <summary>마진율·마진액은 어떻게 보나요?</summary>
+          <p>상품 목록과 주문관리에서 판매가·공급가·배송비·수수료를 반영해 마진율과 마진액이 자동으로 계산됩니다. 기간 통계로도 남긴 이익을 확인할 수 있습니다.</p>
         </details>
         <details>
           <summary>7일 무료는 어떻게 시작하나요?</summary>
