@@ -1408,3 +1408,40 @@ main { flex: 1 0 auto; }
 .mchat-panel header { cursor: grab; touch-action: none; user-select: none; }
 .mchat.is-dragging { opacity: .96; }
 .mchat.is-dragging .mchat-open .mchat-face { animation: none; }
+
+/* core-features1: 핵심 기능 8가지 + 히어로 칩 */
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -12px 0 24px;
+  padding: 0;
+  list-style: none;
+  opacity: 0;
+  transform: translateY(18px);
+  animation: rise 700ms 330ms ease forwards;
+}
+.hero-chips li {
+  padding: 5px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 0.86rem;
+  font-weight: 600;
+}
+.core-catalog {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.core-catalog .feature-block {
+  grid-column: auto;
+}
+.core-catalog .feature-kicker {
+  font-weight: 700;
+}
+@media (max-width: 1100px) {
+  .core-catalog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .core-catalog { grid-template-columns: minmax(0, 1fr); }
+}
