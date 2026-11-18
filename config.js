@@ -32,7 +32,7 @@ window.MODUMODU_SITE = {
     kpnMid: "",
   },
   plans: {
-    trial: { label: "프로그램 7일 무료", price: "0원", amount: 0, months: 0 },
+    trial: { label: "프로그램 15일 무료", price: "0원", amount: 0, months: 0 },
     m1: { label: "프로그램 1개월 + 무료 7일", price: "80,000원", amount: 80000, was: "200,000원", months: 1 },
     m3: { label: "프로그램 3개월 + 무료 7일", price: "210,000원", amount: 210000, was: "600,000원", months: 3 },
     m6: { label: "프로그램 6개월 + 무료 7일", price: "360,000원", amount: 360000, was: "1,200,000원", months: 6 },
