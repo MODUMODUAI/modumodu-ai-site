@@ -664,3 +664,40 @@
   updatePayHint();
   if (window.location.hash && !window.__modumoduOpenAtTop) scrollToHashTarget();
 })();
+
+/* core-video1: 핵심 기능 영상은 화면에 보일 때만 재생합니다 (데이터·배터리 절약). */
+(() => {
+  const videos = [...document.querySelectorAll(".core-video")];
+  if (!videos.length) return;
+  const play = (video) => {
+    if (video.preload !== "auto") video.preload = "auto";
+    const result = video.play();
+    if (result && typeof result.catch === "function") result.catch(() => {});
+  };
+  if (!("IntersectionObserver" in window)) {
+    videos.forEach((video) => { video.controls = true; });
+    return;
+  }
+  const watcher = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.35) play(entry.target);
+      else entry.target.pause();
+    });
+  }, { threshold: [0, 0.35, 0.7] });
+  videos.forEach((video) => watcher.observe(video));
+})();
+
+/* core-video2: 영상을 누르면 크게(전체 화면) 봅니다. */
+(() => {
+  document.querySelectorAll(".core-video").forEach((video) => {
+    video.title = "누르면 크게 봅니다";
+    video.addEventListener("click", () => {
+      const open = video.requestFullscreen || video.webkitRequestFullscreen || video.webkitEnterFullscreen;
+      if (open) {
+        try { open.call(video); } catch (error) { /* 크게 보기를 못 하면 그대로 둡니다 */ }
+      }
+      const result = video.play();
+      if (result && typeof result.catch === "function") result.catch(() => {});
+    });
+  });
+})();

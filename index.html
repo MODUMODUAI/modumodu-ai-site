@@ -14,7 +14,7 @@
   <link rel="canonical" href="https://modumoduai.github.io/modumodu-ai-site/" />
   <link rel="icon" href="./favicon.svg?v=3" type="image/svg+xml" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-  <link rel="stylesheet" href="./styles.css?v=37" />
+  <link rel="stylesheet" href="./styles.css?v=38" />
   <script>
     history.scrollRestoration = "manual";
     window.__modumoduOpenAtTop = true;
@@ -34,14 +34,12 @@
     <div class="header-actions">
       <nav class="site-nav" aria-label="메뉴">
         <a href="#core">핵심 기능</a>
-        <a href="#plans">판매 상품</a>
-        <a href="#suppliers">공급사</a>
+        <a href="#compare">비교</a>
+        <a href="#plans">요금</a>
         <a href="#how">이용 방법</a>
-        <a href="#usage">사용 영상</a>
-        <a href="#join">회원가입</a>
-        <a href="#download">내려받기</a>
         <a href="#points">AI 포인트</a>
         <a href="#faq">FAQ</a>
+        <a href="#join">회원가입</a>
       </nav>
       <a class="btn btn-primary" href="#buy">구매·결제</a>
     </div>
@@ -52,14 +50,14 @@
       <div class="hero-copy">
         <p class="brand-mark"><span class="a">모두</span><span class="b">모두</span><span class="ai">AI</span></p>
         <h1>무제한 가공 · 무제한 등록<br />이 프로그램 하나로 완성</h1>
-        <p class="hero-lead">상품 담기부터 등록·품절·주문·공급사 발주·수익 확인까지 한 프로그램으로. AI는 필요할 때만, 안 쓰면 프로그램 이용료만 듭니다. 사무실·집 어느 PC에서나 같은 아이디로 이어서 씁니다.</p>
+        <p class="hero-lead">공급사 상품 담기부터 AI가공, 마켓 등록, 품절·주문·발주, 수익 확인까지 한 프로그램으로 끝냅니다. AI는 필요할 때만 쓰고, 안 쓰면 이용료만 냅니다.</p>
         <ul class="hero-chips" aria-label="핵심 기능">
           <li>자동품절</li><li>AI가공</li><li>공급사 10개 무료</li><li>내상품가져오기</li><li>주문관리</li><li>공급사 주문 연동</li><li>마진율·마진액 자동</li><li>판매 통계</li>
         </ul>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#join">15일 무료로 시작</a>
           <a class="btn btn-ghost" href="https://github.com/MODUMODUAI/smartstore-uploader/releases/latest/download/MODUMODU-seller-alpha-setup.zip" rel="noopener">셀러용 내려받기 (Windows)</a>
-          <a class="btn btn-ghost" href="#shots">화면 보기</a>
+          <a class="btn btn-ghost" href="#core">기능 영상 보기</a>
           <button type="button" class="btn btn-ghost" id="sharePageLinkHero">이 페이지 링크 공유</button>
         </div>
       </div>
@@ -104,240 +102,154 @@
 
     <section class="section" id="core">
       <h2>핵심 기능 8가지</h2>
-      <p class="sub">상품 담기부터 등록, 품절, 주문, 공급사 발주, 수익 확인까지 프로그램 하나로 이어집니다.</p>
-      <div class="feature-catalog core-catalog">
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">01 · 자동품절</p>
-          <h3>공급사 품절을 전체 마켓에 자동 반영</h3>
-          <p>매일 정한 시각에 공급사 품절·재입고를 확인해, 연동한 모든 마켓 상품을 품절·판매중지 또는 다시 판매로 맞춥니다. 확실한 근거가 있을 때만 바꾸고, 왜 품절로 봤는지 이유도 보여 줍니다.</p>
+      <p class="sub">영상은 모두 실제 모두모두AI 프로그램 화면을 녹화한 것입니다. 상품·마켓·주문 정보만 샘플로 바꿨습니다.</p>
+      <div class="core-grid">
+        <article class="core-card">
+          <div class="core-media">
+            <video class="core-video" muted loop playsinline preload="none" poster="./shots/feat-stock.jpg?v=1" width="1440" height="900" aria-label="자동품절 실제 화면 영상">
+              <source src="./shots/feat-stock.mp4?v=1" type="video/mp4" />
+              <source src="./shots/feat-stock.webm?v=1" type="video/webm" />
+            </video>
+          </div>
+          <div class="core-text">
+            <p class="core-kicker"><span>01</span>자동품절</p>
+            <h3>공급사 품절, 모든 마켓에 자동 반영</h3>
+            <p>매일 정한 시각에 공급사 품절·재입고를 확인해 연동한 마켓 상품을 판매중지하거나 다시 판매로 돌립니다. 왜 그렇게 판단했는지 이유도 남깁니다.</p>
+          </div>
         </article>
-        <article class="feature-block feature-block-ai">
-          <p class="feature-kicker">02 · AI가공</p>
-          <h3>상품명·태그·속성·이미지를 AI로 한 번에</h3>
-          <p>상세페이지를 읽고 상품명, 네이버 추천 태그, 속성, 카테고리, 이미지를 채웁니다. 100개를 골라도 빠르게 처리하고, 브랜드·금지어는 자동으로 뺍니다. AI 키 없이 AI 포인트로 쓰고, 안 쓰면 0원입니다.</p>
+        <article class="core-card">
+          <div class="core-media">
+            <video class="core-video" muted loop playsinline preload="none" poster="./shots/feat-ai.jpg?v=1" width="1440" height="900" aria-label="AI가공 실제 화면 영상">
+              <source src="./shots/feat-ai.mp4?v=1" type="video/mp4" />
+              <source src="./shots/feat-ai.webm?v=1" type="video/webm" />
+            </video>
+          </div>
+          <div class="core-text">
+            <p class="core-kicker"><span>02</span>AI가공</p>
+            <h3>상품명·태그·속성을 한 번에</h3>
+            <p>여러 상품을 골라 AI원클릭을 누르면 상세페이지를 읽고 상품명, 태그, 속성을 채웁니다. 브랜드·금지어는 알아서 뺍니다.</p>
+          </div>
         </article>
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">03 · 공급사 10개 무료</p>
-          <h3>내가 원하는 공급사 10개</h3>
-          <p>오너클랜은 물론 내가 거래하는 도매·공급사를 직접 추가해 상품을 담습니다. 10개까지는 무료이고, 저장한 아이디로 자동 로그인해 회원가로 가격을 가져옵니다.</p>
+        <article class="core-card">
+          <div class="core-media">
+            <video class="core-video" muted loop playsinline preload="none" poster="./shots/feat-suppliers.jpg?v=1" width="1440" height="900" aria-label="공급사 10개 무료 실제 화면 영상">
+              <source src="./shots/feat-suppliers.mp4?v=1" type="video/mp4" />
+              <source src="./shots/feat-suppliers.webm?v=1" type="video/webm" />
+            </video>
+          </div>
+          <div class="core-text">
+            <p class="core-kicker"><span>03</span>공급사 10개 무료</p>
+            <h3>내가 원하는 공급사를 직접 추가</h3>
+            <p>거래하는 도매처의 주소와 아이디만 넣으면 바로 상품담기에 나타납니다. 10개까지는 추가 요금이 없습니다.</p>
+          </div>
         </article>
-        <article class="feature-block">
-          <p class="feature-kicker">04 · 내상품가져오기</p>
-          <h3>이미 파는 상품도 그대로 관리</h3>
-          <p>스마트스토어에 등록해 둔 내 상품을 목록으로 불러와 검색어·카테고리·판매상태로 골라 가져옵니다. 가져온 상품은 다른 마켓으로 보내고 품절·가격도 함께 관리합니다.</p>
+        <article class="core-card">
+          <div class="core-media">
+            <video class="core-video" muted loop playsinline preload="none" poster="./shots/feat-myproducts.jpg?v=1" width="1440" height="900" aria-label="내상품가져오기 실제 화면 영상">
+              <source src="./shots/feat-myproducts.mp4?v=1" type="video/mp4" />
+              <source src="./shots/feat-myproducts.webm?v=1" type="video/webm" />
+            </video>
+          </div>
+          <div class="core-text">
+            <p class="core-kicker"><span>04</span>내상품가져오기</p>
+            <h3>이미 파는 상품도 그대로</h3>
+            <p>스마트스토어에 올려 둔 상품을 불러와 검색어·카테고리로 골라 가져옵니다. 가져온 상품은 다른 마켓으로 보내고 품절·가격도 함께 관리합니다.</p>
+          </div>
         </article>
-        <article class="feature-block">
-          <p class="feature-kicker">05 · 주문관리</p>
-          <h3>여러 마켓 주문을 한 화면에</h3>
-          <p>스마트스토어·쿠팡·11번가 등 주문을 한곳에 모아 발주확인, 송장수집, 송장보내기까지 이어서 처리합니다. 고객문의도 주문관리 안에서 바로 답합니다. 주문 수집은 무제한입니다.</p>
+        <article class="core-card">
+          <div class="core-media">
+            <video class="core-video" muted loop playsinline preload="none" poster="./shots/feat-orders.jpg?v=1" width="1440" height="900" aria-label="주문관리 실제 화면 영상">
+              <source src="./shots/feat-orders.mp4?v=1" type="video/mp4" />
+              <source src="./shots/feat-orders.webm?v=1" type="video/webm" />
+            </video>
+          </div>
+          <div class="core-text">
+            <p class="core-kicker"><span>05</span>주문관리</p>
+            <h3>주문 수집부터 발주확인까지</h3>
+            <p>수집하기 한 번으로 새 주문을 모으고, 골라서 주문확인하면 발송대기로 넘어갑니다. 주문 수집은 횟수 제한이 없습니다.</p>
+          </div>
         </article>
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">06 · 공급사 주문 연동</p>
-          <h3>공급사에서 주문하기</h3>
-          <p>들어온 주문을 골라 누르면 저장한 아이디로 공급사에 로그인하고, 옵션을 고른 주문서까지 자동으로 열어 줍니다. 결제만 직접 하면 되고, 엑셀 발주서 양식으로도 내보냅니다.</p>
+        <article class="core-card">
+          <div class="core-media">
+            <video class="core-video" muted loop playsinline preload="none" poster="./shots/feat-wholesale.jpg?v=1" width="1440" height="900" aria-label="공급사 주문 연동 실제 화면 영상">
+              <source src="./shots/feat-wholesale.mp4?v=1" type="video/mp4" />
+              <source src="./shots/feat-wholesale.webm?v=1" type="video/webm" />
+            </video>
+          </div>
+          <div class="core-text">
+            <p class="core-kicker"><span>06</span>공급사 주문 연동</p>
+            <h3>공급사 주문서를 자동으로</h3>
+            <p>주문을 골라 ‘공급처에서 주문하기’를 누르면 로그인, 옵션, 바로구매, 주소 입력까지 알아서 합니다. 결제만 직접 하세요.</p>
+          </div>
         </article>
-        <article class="feature-block">
-          <p class="feature-kicker">07 · 마진율·마진액 자동</p>
-          <h3>팔기 전에 남는 돈을 확인</h3>
-          <p>판매가·공급가·배송비·마켓 수수료로 마진율과 마진액이 자동으로 계산됩니다. 상품표와 주문 화면에서 바로 보고, 손해 나는 상품을 미리 거릅니다.</p>
+        <article class="core-card">
+          <div class="core-media">
+            <video class="core-video" muted loop playsinline preload="none" poster="./shots/feat-margin.jpg?v=1" width="1440" height="900" aria-label="마진율·마진액 자동 실제 화면 영상">
+              <source src="./shots/feat-margin.mp4?v=1" type="video/mp4" />
+              <source src="./shots/feat-margin.webm?v=1" type="video/webm" />
+            </video>
+          </div>
+          <div class="core-text">
+            <p class="core-kicker"><span>07</span>마진율·마진액 자동</p>
+            <h3>가격을 바꾸면 마진이 바로</h3>
+            <p>판매가를 고치면 원가·배송비·수수료를 반영한 마진율이 그 자리에서 다시 계산됩니다. 손해 보는 상품을 미리 거릅니다.</p>
+          </div>
         </article>
-        <article class="feature-block">
-          <p class="feature-kicker">08 · 판매 통계</p>
-          <h3>기간·마켓·상품별 판매 통계</h3>
-          <p>저장된 주문으로 기간별·마켓별·상품별 매출과 마진을 바로 봅니다. 상품표의 판매개수 칸으로 잘 팔리는 상품도 한눈에 찾습니다.</p>
+        <article class="core-card">
+          <div class="core-media">
+            <video class="core-video" muted loop playsinline preload="none" poster="./shots/feat-stats.jpg?v=1" width="1440" height="900" aria-label="판매 통계 실제 화면 영상">
+              <source src="./shots/feat-stats.mp4?v=1" type="video/mp4" />
+              <source src="./shots/feat-stats.webm?v=1" type="video/webm" />
+            </video>
+          </div>
+          <div class="core-text">
+            <p class="core-kicker"><span>08</span>판매 통계</p>
+            <h3>기간·공급사·상품별 한눈에</h3>
+            <p>오늘·일주일·한달 버튼 하나로 결제·정산·마진, 일별 추이, 공급사별·상품별 순위를 봅니다.</p>
+          </div>
         </article>
       </div>
     </section>
 
-    <section class="section" id="shots">
-      <h2>프로그램 화면</h2>
-      <p class="sub">실제 UI를 찍은 화면입니다. 마켓·상품 정보는 샘플로 바꿔 두었습니다.</p>
-      <div class="shot-grid">
-        <figure class="shot-card shot-card-wide">
-          <img src="./shots/01-products.png?v=14" alt="상품관리 화면" width="1440" height="900" loading="lazy" />
-          <span class="sample-badge">샘플 화면</span>
-          <figcaption><strong>상품관리</strong> · 무제한 가공 · 무제한 등록</figcaption>
-        </figure>
-        <figure class="shot-card">
-          <img src="./shots/02-orders.png?v=14" alt="주문관리 화면" width="1440" height="900" loading="lazy" />
-          <span class="sample-badge">샘플 화면</span>
-          <figcaption><strong>주문관리</strong> · 주문 처리 · 마진율·마진액 자동계산</figcaption>
-        </figure>
-        <figure class="shot-card">
-          <img src="./shots/03-inquiries.png?v=14" alt="고객문의 화면" width="1440" height="900" loading="lazy" />
-          <span class="sample-badge">샘플 화면</span>
-          <figcaption><strong>고객문의</strong> · 목록과 답변</figcaption>
-        </figure>
-        <figure class="shot-card shot-card-wide">
-          <img src="./shots/04-ownerclan.png?v=16" alt="상품담기 화면" width="1440" height="900" loading="lazy" />
-          <span class="sample-badge">샘플 화면</span>
-          <figcaption><strong>상품담기</strong> · 공급사에서 상품 고르기</figcaption>
-        </figure>
-        <figure class="shot-card">
-          <img src="./shots/06-wholesalers.png?v=14" alt="공급처 관리 화면" width="1440" height="900" loading="lazy" />
-          <span class="sample-badge">샘플 화면</span>
-          <figcaption><strong>공급처</strong> · 사용자가 원하는 공급처 직접 추가</figcaption>
-        </figure>
-        <figure class="shot-card">
-          <img src="./shots/05-settings.png?v=14" alt="마켓·AI 설정 화면" width="1440" height="900" loading="lazy" />
-          <span class="sample-badge">샘플 화면</span>
-          <figcaption><strong>설정</strong> · 마켓 연동 · AI는 쓸 때만</figcaption>
-        </figure>
-      </div>
+    <section class="section" id="more">
+      <h2>이것도 됩니다</h2>
+      <ul class="more-list">
+          <li><strong>한번에 수정</strong><span>카테고리부터 상세페이지까지 6단계를 한 화면 흐름으로 고칩니다.</span></li>
+          <li><strong>네이버 쇼핑키워드 상품명</strong><span>월간 검색수 순으로 키워드를 보여 주고, 누르기만 하면 새 상품명이 됩니다.</span></li>
+          <li><strong>브랜드·금지어 자동 차단</strong><span>상품명과 태그에 들어간 브랜드·홍보문구·등록금지어를 바로 알려 주고 뺍니다.</span></li>
+          <li><strong>이미지 글씨 지우기·로고 넣기</strong><span>홍보 글씨만 지우고, 로고와 글씨를 얹고, 언제든 되돌립니다.</span></li>
+          <li><strong>어느 PC에서나 이어서</strong><span>같은 아이디로 들어가면 사무실·집 PC가 10초 안에 같은 화면이 됩니다.</span></li>
+          <li><strong>무제한 가공·등록</strong><span>상품을 다듬는 횟수, 마켓에 올리는 횟수에 한도가 없습니다.</span></li>
+          <li><strong>오픈마켓을 한곳에</strong><span>스마트스토어, 쿠팡, 11번가, G마켓, 옥션, 카카오, 토스, 롯데ON, SSG, 테무.</span></li>
+          <li><strong>AI는 선택</strong><span>AI를 안 쓰면 프로그램 이용료만. 표에서 바로 고치는 수동 가공도 쉽습니다.</span></li>
+      </ul>
     </section>
 
     <section class="section" id="usage">
-      <h2>사용 영상</h2>
-      <p class="sub">상품담기와 상품가공은 화면을 따라가며 조금 길게 보여 줍니다. 이름·태그·속성·이미지는 짧은 장면입니다. 상품 정보는 샘플입니다.</p>
-      <div class="shot-grid">
-        <figure class="shot-card shot-card-wide">
-          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-all.jpg?v=1" width="1440" height="900">
+      <h2>조금 더 긴 사용 영상</h2>
+      <p class="sub">한 상품을 끝까지 다듬는 과정과 상품을 담는 과정을 따라가며 보여 줍니다.</p>
+      <div class="usage-grid">
+        <figure class="shot-card">
+          <video class="usage-video" controls playsinline preload="none" poster="./shots/use-all.jpg?v=1" width="1440" height="900">
             <source src="./shots/use-all.webm?v=1" type="video/webm" />
             <source src="./shots/use-all.mp4?v=1" type="video/mp4" />
           </video>
-          <figcaption><strong>한번에 수정 (새 기능)</strong> · 카테고리 → 상품명 → 속성 → 태그 → 이미지 → 상세페이지를 단계 탭으로 오가며 한 상품을 끝까지 다듬습니다</figcaption>
+          <figcaption><strong>한번에 수정</strong> · 카테고리 → 상품명 → 속성 → 태그 → 이미지 → 상세페이지</figcaption>
         </figure>
-        <figure class="shot-card shot-card-wide">
-          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-stock.jpg?v=1" width="1440" height="900">
-            <source src="./shots/use-stock.webm?v=1" type="video/webm" />
-            <source src="./shots/use-stock.mp4?v=1" type="video/mp4" />
-          </video>
-          <figcaption><strong>품절 자동 관리 (새 기능)</strong> · 공급처 품절을 찾아 연동한 전체 마켓 상품을 품절·판매중지로 맞춥니다. 매일 정한 시각에 자동으로 돌게 두고, 판매중지만 모아 볼 수 있습니다</figcaption>
-        </figure>
-        <figure class="shot-card shot-card-wide">
-          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-collect.jpg?v=1" width="1440" height="900">
+        <figure class="shot-card">
+          <video class="usage-video" controls playsinline preload="none" poster="./shots/use-collect.jpg?v=1" width="1440" height="900">
             <source src="./shots/use-collect.webm?v=1" type="video/webm" />
             <source src="./shots/use-collect.mp4?v=1" type="video/mp4" />
           </video>
-          <figcaption><strong>상품담기</strong> · 분류를 고르고 검색한 뒤 상품관리로 보냅니다</figcaption>
-        </figure>
-        <figure class="shot-card shot-card-wide">
-          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-process.jpg?v=1" width="1440" height="900">
-            <source src="./shots/use-process.webm?v=1" type="video/webm" />
-            <source src="./shots/use-process.mp4?v=1" type="video/mp4" />
-          </video>
-          <figcaption><strong>상품가공</strong> · 상품명, 태그, 속성, 이미지를 고치고 저장하면 목록에 반영됩니다</figcaption>
+          <figcaption><strong>상품담기</strong> · 분류를 고르고 검색한 뒤 상품관리로 보내기</figcaption>
         </figure>
         <figure class="shot-card">
-          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-name.jpg?v=1" width="1440" height="900">
-            <source src="./shots/use-name.webm?v=1" type="video/webm" />
-            <source src="./shots/use-name.mp4?v=1" type="video/mp4" />
-          </video>
-          <figcaption><strong>상품명바꾸기</strong> · 카테고리 기반으로 이름을 만들고 저장</figcaption>
-        </figure>
-        <figure class="shot-card">
-          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-tags.jpg?v=1" width="1440" height="900">
-            <source src="./shots/use-tags.webm?v=1" type="video/webm" />
-            <source src="./shots/use-tags.mp4?v=1" type="video/mp4" />
-          </video>
-          <figcaption><strong>태그AI</strong> · 태그를 채운 뒤 태그 창에서 확인</figcaption>
-        </figure>
-        <figure class="shot-card">
-          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-attrs.jpg?v=1" width="1440" height="900">
-            <source src="./shots/use-attrs.webm?v=1" type="video/webm" />
-            <source src="./shots/use-attrs.mp4?v=1" type="video/mp4" />
-          </video>
-          <figcaption><strong>속성AI</strong> · 상세를 읽고 속성을 채운 뒤 속성 창에서 확인</figcaption>
-        </figure>
-        <figure class="shot-card">
-          <video class="usage-video" controls playsinline preload="metadata" poster="./shots/use-image.jpg?v=1" width="1440" height="900">
+          <video class="usage-video" controls playsinline preload="none" poster="./shots/use-image.jpg?v=1" width="1440" height="900">
             <source src="./shots/use-image.webm?v=1" type="video/webm" />
             <source src="./shots/use-image.mp4?v=1" type="video/mp4" />
           </video>
-          <figcaption><strong>이미지바꾸기</strong> · 이미지를 고르고 글씨 제거를 실행</figcaption>
+          <figcaption><strong>이미지바꾸기</strong> · 이미지를 고르고 글씨 지우기</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="section" id="features">
-      <h2>이렇게 씁니다</h2>
-      <p class="sub">AI 자동가공은 선택입니다. 수동으로도 쉽게 다듬고, 가공·등록은 횟수 제한 없이 이어 갑니다.</p>
-
-      <div class="feature-catalog">
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">어느 PC에서나 이어서</p>
-          <h3>사무실 PC와 집 PC가 같은 화면</h3>
-          <p>새 PC에 설치하고 같은 아이디로 들어가면 상품·마켓 연결·공급처 로그인·설정·화면이 그대로 들어옵니다. 한 PC에서 고치면 10초 안에 다른 PC에도 반영됩니다. 데이터는 잠가서 보관하고 매일 백업해, PC가 고장 나도 새 PC에서 바로 이어 갑니다.</p>
-        </article>
-        <article class="feature-block feature-block-ai">
-          <p class="feature-kicker">AI는 선택</p>
-          <h3>자동가공 안 하면 프로그램 값만</h3>
-          <p>AI 자동가공을 켜지 않으면 프로그램 이용료만 듭니다. AI는 키를 따로 만들 필요 없이 <b>모두모두 AI 포인트</b>로 바로 씁니다. 가입하면 1,000포인트(AI가공 약 300개)를 드립니다.</p>
-        </article>
-        <article class="feature-block">
-          <p class="feature-kicker">수동도 쉽게</p>
-          <h3>표에서 바로 고치는 수동 가공</h3>
-          <p>상품명·가격·옵션·속성을 표에서 더블클릭해 바로 고칩니다. AI 없이도 등록·주문·문의까지 이 프로그램 하나로 편하게 돌릴 수 있습니다.</p>
-        </article>
-
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">새 기능</p>
-          <h3>한번에 수정</h3>
-          <p>카테고리 → 상품명 → 속성 → 태그 → 이미지 → 상세페이지를 한 흐름으로 오가며 고칩니다. 위쪽 단계 탭으로 같은 상품의 다른 항목으로 바로 넘어갑니다.</p>
-        </article>
-
-        <article class="feature-block">
-          <p class="feature-kicker">팔리는 상품명</p>
-          <h3>네이버 쇼핑키워드로 상품명</h3>
-          <p>네이버 쇼핑 자동완성과 실제 노출 상품의 태그에서 키워드를 모아 월간 검색수 순으로 보여 줍니다. 원본 상품명을 보면서 누르기만 하면 새 상품명이 됩니다.</p>
-        </article>
-
-        <article class="feature-block">
-          <p class="feature-kicker">제재 걱정 없이</p>
-          <h3>브랜드·금지어 자동 차단</h3>
-          <p>새 상품명과 태그에 브랜드·홍보문구(무료배송·최저가 등)·등록금지키워드가 들어가면 바로 알리고 빼 줍니다. 태그는 네이버 태그사전 번호까지 함께 보여 줍니다.</p>
-        </article>
-
-        <article class="feature-block">
-          <p class="feature-kicker">사진 정리</p>
-          <h3>대표이미지 글씨제거 · 되돌리기</h3>
-          <p>상품 사진의 홍보 글씨만 골라 지우고 상품은 그대로 둡니다. AI 이미지 바꾸기, 순서·대표 지정까지 되돌리기·재실행으로 마음 편히 고칩니다.</p>
-        </article>
-
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">품절 관리 · 전체 마켓</p>
-          <h3>자동 품절관리 · 연동 마켓 일괄 반영</h3>
-          <p>공급처에서 품절·재판매를 찾아, 연동한 전체 마켓 상품에 품절·판매중지(또는 다시 판매)를 맞춥니다. 매일 정한 시각에 자동으로 돌려 품절 주문을 줄입니다. 판매중·판매중지·전시중지를 목록에서 색깔로 보고, 여러 상품을 한 번에 바꿉니다.</p>
-        </article>
-
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">공급처</p>
-          <h3>원하는 공급처 직접 추가 · 10개 무료</h3>
-          <p>쓰는 도매·공급처를 사용자가 직접 등록해 상품을 가져옵니다. 10개까지는 무료입니다. 기본 제공 공급처만 쓰지 않고, 본인이 거래하는 곳을 이어서 붙일 수 있습니다. 도매처 검색·상품담기도 같은 프로그램 안에 있습니다.</p>
-        </article>
-
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">수익 확인</p>
-          <h3>마진율 · 마진액 자동계산</h3>
-          <p>판매가·공급가·배송비·마켓 수수료를 반영해 마진율과 마진액이 자동으로 계산됩니다. 상품 목록과 주문관리에서 남긴 이익을 바로 보고, 기간 통계로도 확인합니다.</p>
-        </article>
-
-        <article class="feature-block">
-          <p class="feature-kicker">이미 파는 상품도</p>
-          <h3>내상품 가져오기</h3>
-          <p>스마트스토어에 이미 등록한 내 상품을 목록으로 불러와 검색어·카테고리·판매상태로 골라 가져오고, 다른 마켓으로 보낼 수 있습니다.</p>
-        </article>
-
-        <article class="feature-block feature-block-strong">
-          <p class="feature-kicker">횟수 제한 없음</p>
-          <h3>무제한 가공 · 무제한 등록</h3>
-          <p>상품을 다듬는 횟수, 마켓에 올리는 횟수에 한도가 없습니다. 많이 팔수록 프로그램을 더 자주 쓰면 됩니다.</p>
-        </article>
-
-        <article class="feature-block">
-          <h3>주문관리 무제한</h3>
-          <p>주문 확인부터 공급사에서 주문하기, 송장까지 이어서 처리합니다. 마진율·마진액 자동계산과 판매 통계로 남긴 이익을 확인합니다.</p>
-        </article>
-
-        <article class="feature-block">
-          <h3>오픈마켓을 한곳에</h3>
-          <p>스마트스토어, 쿠팡, 11번가, 지마켓, 옥션, 카카오쇼핑, 토스, 테무, SSG, 롯데ON 등 계정을 묶어 상품·주문·문의를 이어 갑니다.</p>
-        </article>
-
-        <article class="feature-block">
-          <h3>이 프로그램 하나로 완성</h3>
-          <p>공급사 추가부터 수동·AI 가공, 등록, 주문, 문의까지 따로 프로그램을 나누지 않습니다. AI 없이도 충분히 쓸 수 있습니다.</p>
-        </article>
       </div>
     </section>
 
@@ -946,7 +858,7 @@
     <button type="button" id="jumpBottom" title="맨 아래로">▼</button>
   </nav>
   <script src="./config.js?v=15"></script>
-  <script src="./script.js?v=19"></script>
+  <script src="./script.js?v=20"></script>
   <script src="./chat.js?v=8"></script>
 </body>
 </html>
