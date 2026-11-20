@@ -617,6 +617,12 @@
     }
     const email = String(data.get("email") || "").trim();
     const phone = String(data.get("phone") || "").trim();
+    const name = String(data.get("name") || "").trim();
+    if (!name) {
+      if (joinStatus) joinStatus.textContent = "이름을 입력해 주세요.";
+      showToast("이름을 입력해 주세요.");
+      return;
+    }
     const api = String(cfg.memberApi || "").replace(/\/+$/, "");
     if (!api) {
       showToast("회원가입 주소가 아직 없습니다.");
@@ -626,7 +632,7 @@
     fetch(`${api}/api/account/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ login_id: "", password, phone, email }),
+      body: JSON.stringify({ login_id: "", password, phone, email, name }),
     })
       .then(async (response) => {
         const result = await response.json().catch(() => ({}));
