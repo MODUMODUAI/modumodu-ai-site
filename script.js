@@ -248,7 +248,7 @@
               const mailed = result.emailed
                 ? "새 시리얼키를 이메일로도 보냈습니다."
                 : "이메일은 보내지 못했습니다. 화면에 나온 키를 복사해 두세요.";
-              setPayStatus(`사용기한 ${result.expires_at || ""}. ${mailed}`);
+              setPayStatus(`사용기한 ${result.expires_at || ""}. ${mailed}${result.referral_months ? " 추천 혜택으로 나와 추천인 모두 한 달이 더해졌습니다." : ""}`);
             })
             .catch((error) => {
               const detail = error?.message || "사용기한을 늘리지 못했습니다.";
@@ -480,6 +480,24 @@
     }
   }
   document.getElementById("copyJoinSerial")?.addEventListener("click", () => copyField("joinSerial"));
+  document.getElementById("copyJoinReferral")?.addEventListener("click", async () => {
+    const value = document.getElementById("joinReferralLink")?.value || "";
+    if (!value) return;
+    try {
+      await navigator.clipboard.writeText(value);
+      showToast("추천 링크를 복사했습니다.");
+    } catch (error) {
+      document.getElementById("joinReferralLink")?.select();
+    }
+  });
+  // referral1: 추천 링크(?ref=아이디)로 들어오면 가입 칸의 추천인을 채워 둡니다.
+  try {
+    const ref = new URLSearchParams(location.search).get("ref");
+    const refInput = joinForm?.elements?.referrer;
+    if (ref && refInput && !refInput.value) refInput.value = ref.slice(0, 80);
+  } catch (error) {
+    /* 주소를 못 읽으면 비워 둡니다 */
+  }
   document.getElementById("copyPaySerial")?.addEventListener("click", () => copyField("paySerial"));
 
   function showDownload() {
@@ -659,8 +677,14 @@
         }
         showDownload();
         if (joinStatus) joinStatus.textContent = `${loginId} 님, 가입되었습니다. 15일 무료 체험이 시작되었습니다 (사용기한 ${result.expires_at || ""}). 아래에서 프로그램을 내려받으세요.`;
-        if (result.referral_months && joinStatus) {
-          joinStatus.textContent += " 추천 혜택으로 나와 추천인 모두 사용기간 한 달이 더해졌습니다.";
+        if (result.referrer && joinStatus) {
+          joinStatus.textContent += " 추천인이 확인되었습니다. 처음 결제하면 나와 추천인 모두 사용기간 한 달이 더해집니다.";
+        }
+        const refBox = document.getElementById("joinReferralBox");
+        const refField = document.getElementById("joinReferralLink");
+        if (result.referral_link && refBox && refField) {
+          refField.value = result.referral_link;
+          refBox.hidden = false;
         }
         showToast("회원가입이 되었습니다. 프로그램을 내려받으세요.");
       })

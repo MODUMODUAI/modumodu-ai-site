@@ -563,7 +563,12 @@
         <label>추천인 (선택)
           <input name="referrer" type="text" autocomplete="off" maxlength="80" placeholder="추천해 준 분의 가입 이메일 또는 전화번호" />
         </label>
-        <p class="join-referral-note">추천인을 넣으면 <b>나와 추천인 모두 사용기간 한 달</b>이 더해집니다.</p>
+        <p class="join-referral-note">추천인을 넣고 가입한 뒤 <b>처음 결제하면 나와 추천인 모두 사용기간 한 달</b>이 더해집니다.</p>
+        <p id="joinReferralBox" class="join-referral-link" hidden>
+          <span>내 추천 링크 (이 링크로 가입한 분이 결제하면 두 분 모두 한 달 더)</span>
+          <input id="joinReferralLink" readonly />
+          <button class="btn btn-line" id="copyJoinReferral" type="button">추천 링크 복사</button>
+        </p>
         <button class="btn btn-primary" type="submit">가입하기</button>
         <p class="pay-status" id="joinStatus"></p>
         <p id="joinSerialBox" hidden>
