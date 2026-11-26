@@ -618,6 +618,7 @@
     const email = String(data.get("email") || "").trim();
     const phone = String(data.get("phone") || "").trim();
     const name = String(data.get("name") || "").trim();
+    const referrer = String(data.get("referrer") || "").trim(); // referral1
     if (!name) {
       if (joinStatus) joinStatus.textContent = "이름을 입력해 주세요.";
       showToast("이름을 입력해 주세요.");
@@ -632,7 +633,7 @@
     fetch(`${api}/api/account/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ login_id: "", password, phone, email, name }),
+      body: JSON.stringify({ login_id: "", password, phone, email, name, referrer }),
     })
       .then(async (response) => {
         const result = await response.json().catch(() => ({}));
@@ -658,6 +659,9 @@
         }
         showDownload();
         if (joinStatus) joinStatus.textContent = `${loginId} 님, 가입되었습니다. 15일 무료 체험이 시작되었습니다 (사용기한 ${result.expires_at || ""}). 아래에서 프로그램을 내려받으세요.`;
+        if (result.referral_months && joinStatus) {
+          joinStatus.textContent += " 추천 혜택으로 나와 추천인 모두 사용기간 한 달이 더해졌습니다.";
+        }
         showToast("회원가입이 되었습니다. 프로그램을 내려받으세요.");
       })
       .catch(() => {
